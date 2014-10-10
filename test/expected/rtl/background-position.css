@@ -1,0 +1,70 @@
+/* RTL background-position mirroring */
+.rtlBackgroundPositionMirroring {
+  background-position: top;
+  background-position: left;
+  background-position: right top;
+  background-position: 2cm 1cm;
+  background-position: 80% 40%;
+  background-position: 70%;
+  background-position: 99.5%;
+  background-position: 120% 40%;
+  background-position: 100% 0;
+  background-position: 0 0;
+  background-position: 0% 0;
+  background-position: 0 100%;
+  background-position: 0% /* some comment */ 100%;
+  background-position: top, top;
+  background-position: right top, right top, center bottom;
+  background-position: 2cm 1cm,3cm 4cm;
+  background-position: 80% 40%,90% 90%,67% 66%;
+  background-position: /* some comment */ 70%, 40%;
+  background-position: 20em 40%, 10px 90%,67% 66%;
+  background-position: 130%;
+  background-position: 120% /* some comment */ -40%, /* some comment */ 105% 30%, 110% 80%;
+}
+.rtlBackgroundPositionMirroring1 {
+  background-position: top;
+  background-position: left;
+  background-position: right top;
+  background-position: 2cm 1cm;
+  background-position: 80% 40%;
+  background-position: 70%;
+  background-position: 99.5%;
+  background-position: 120% 40%;
+  background-position: 100% 0;
+  background-position: 0 0;
+  background-position: 0% 0;
+  background-position: 0 100%;
+  background-position: 0% /* some comment */ 100%;
+  background-position: top, top;
+  background-position: right top, right top, center bottom;
+  background-position: 2cm 1cm,3cm 4cm;
+  background-position: 80% 40%,90% 90%,67% 66%;
+  background-position: /* some comment */ 70%, 40%;
+  background-position: 20em 40%, 10px 90%,67% 66%;
+  background-position: 130%;
+  background-position: 120% /* some comment */ -40%, /* some comment */ 105% 30%, 110% 80%;
+}
+.rtlBackgroundPositionMirroring2 {
+  background-position: top;
+  background-position: left;
+  background-position: right top;
+  background-position: 2cm 1cm;
+  background-position: 80% 40%;
+  background-position: 70%;
+  background-position: 99.5%;
+  background-position: 120% 40%;
+  background-position: 100% 0;
+  background-position: 0 0;
+  background-position: 0% 0;
+  background-position: 0 100%;
+  background-position: 0% /* some comment */ 100%;
+  background-position: top, top;
+  background-position: right top, right top, center bottom;
+  background-position: 2cm 1cm,3cm 4cm;
+  background-position: 80% 40%,90% 90%,67% 66%;
+  background-position: /* some comment */ 70%, 40%;
+  background-position: 20em 40%, 10px 90%,67% 66%;
+  background-position: 130%;
+  background-position: 120% /* some comment */ -40%, /* some comment */ 105% 30%, 110% 80%;
+}

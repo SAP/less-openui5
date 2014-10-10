@@ -1,0 +1,76 @@
+/* RTL background-image linear-gradient mirroring */
+.rtlBackgroundImageLinearGradientMirroring {
+  background-image: linear-gradient(#ff0000, blue);
+  background-image: linear-gradient(rgb(100,200, 222), blue);
+  background-image: linear-gradient(left top, #ff0000, blue);
+  background-image: linear-gradient(20% top, #ff0000, blue);
+  background-image: linear-gradient(90deg, #ff0000, blue);
+  background-image: linear-gradient(45deg, #ff0000, blue);
+  background-image: linear-gradient(190deg, #ff0000, blue);
+  background-image: linear-gradient(-10.4deg, #ff0000, blue);
+  background-image: linear-gradient(right top 270deg, #ff0000, blue) /* some comment */;
+  // multiple
+  background-image: linear-gradient(45deg, #ff0000, blue), linear-gradient(135deg, #ff0000, blue);
+  // browsers
+  background-image: -moz-linear-gradient(-10deg, #ff0000, blue);
+  background-image: -webkit-linear-gradient(-10deg, #ff0000, blue);
+  // repeating
+  background-image: repeating-linear-gradient(-10deg, #ff0000, blue);
+  background-image: -moz-repeating-linear-gradient(-10deg, #ff0000, blue);
+  background-image: -webkit-repeating-linear-gradient(-10deg, #ff0000, blue);
+  // grad
+  background-image: linear-gradient(10grad, #ff0000, blue);
+  background-image: -moz-linear-gradient(210.5grad, #ff0000, blue);
+  // rad
+  background-image: linear-gradient(3.141rad, #ff0000, blue);
+  background-image: -webkit-repeating-linear-gradient(0.42rad, #ff0000, blue);
+  // turn
+  background-image: /* some comment */ linear-gradient(0.1turn, #ff0000, blue);
+  background-image: linear-gradient(-0.1turn, #ff0000, blue);
+  // bug regression check
+  background-image: -moz-linear-gradient(center top, #D0DBE9 0%, #FFFFFF 10%, #DBE1EC 47%, #DBE1EC 85%, #CDD5E4 90%);
+  background-image: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(center top, #D0DBE9 0%, #FFFFFF 10%, #DBE1EC 47%, #DBE1EC 85%, #CDD5E4 90%);
+  background: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: url(img.png), /* some comment */ -webkit-gradient(linear, left top, right bottom, from(#ffffff), to(#000000));
+}
+
+.rtlBackgroundImageLinearGradientMirroringMixIn(@num) {
+  .rtlBackgroundImageLinearGradientMirroring@{num} {
+    background-image: linear-gradient(#ff0000, blue);
+    background-image: linear-gradient(rgb(100,200, 222), blue);
+    background-image: linear-gradient(left top, #ff0000, blue);
+    background-image: linear-gradient(20% top, #ff0000, blue);
+    background-image: linear-gradient(90deg, #ff0000, blue);
+    background-image: linear-gradient(45deg, #ff0000, blue);
+    background-image: linear-gradient(190deg, #ff0000, blue);
+    background-image: linear-gradient(-10.4deg, #ff0000, blue);
+    background-image: linear-gradient(right top 270deg, #ff0000, blue) /* some comment */;
+    // multiple
+    background-image: linear-gradient(45deg, #ff0000, blue), linear-gradient(135deg, #ff0000, blue);
+    // browsers
+    background-image: -moz-linear-gradient(-10deg, #ff0000, blue);
+    background-image: -webkit-linear-gradient(-10deg, #ff0000, blue);
+    // repeating
+    background-image: repeating-linear-gradient(-10deg, #ff0000, blue);
+    background-image: -moz-repeating-linear-gradient(-10deg, #ff0000, blue);
+    background-image: -webkit-repeating-linear-gradient(-10deg, #ff0000, blue);
+    // grad
+    background-image: linear-gradient(10grad, #ff0000, blue);
+    background-image: -moz-linear-gradient(210.5grad, #ff0000, blue);
+    // rad
+    background-image: linear-gradient(3.141rad, #ff0000, blue);
+    background-image: -webkit-repeating-linear-gradient(0.42rad, #ff0000, blue);
+    // turn
+    background-image: /* some comment */ linear-gradient(0.1turn, #ff0000, blue);
+    background-image: linear-gradient(-0.1turn, #ff0000, blue);
+    // bug regression check
+    background-image: -moz-linear-gradient(center top, #D0DBE9 0%, #FFFFFF 10%, #DBE1EC 47%, #DBE1EC 85%, #CDD5E4 90%);
+    background-image: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+    background: -moz-linear-gradient(center top, #D0DBE9 0%, #FFFFFF 10%, #DBE1EC 47%, #DBE1EC 85%, #CDD5E4 90%);
+    background: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+    background-image: url(img.png), /* some comment */ -webkit-gradient(linear, left top, right bottom, from(#ffffff), to(#000000));
+  }
+}
+.rtlBackgroundImageLinearGradientMirroringMixIn(1);
+.rtlBackgroundImageLinearGradientMirroringMixIn(2);

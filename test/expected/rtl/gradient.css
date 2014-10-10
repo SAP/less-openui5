@@ -1,0 +1,85 @@
+/* RTL background-image linear-gradient mirroring */
+.rtlBackgroundImageLinearGradientMirroring {
+  background-image: linear-gradient(#ff0000, #0000ff);
+  background-image: linear-gradient(#64c8de, #0000ff);
+  background-image: linear-gradient(right top, #ff0000, #0000ff);
+  background-image: linear-gradient(80% top, #ff0000, #0000ff);
+  background-image: linear-gradient(90deg, #ff0000, #0000ff);
+  background-image: linear-gradient(135deg, #ff0000, #0000ff);
+  background-image: linear-gradient(-10deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190.4deg, #ff0000, #0000ff);
+  background-image: linear-gradient(left top -90deg, #ff0000, #0000ff) /* some comment */;
+  background-image: linear-gradient(135deg, #ff0000, #0000ff), linear-gradient(45deg, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -moz-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190grad, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(-10.5grad, #ff0000, #0000ff);
+  background-image: linear-gradient(0rad, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(2.72rad, #ff0000, #0000ff);
+  background-image: /* some comment */ linear-gradient(0.4turn, #ff0000, #0000ff);
+  background-image: linear-gradient(0.6turn, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: url(img.png), /* some comment */ -webkit-gradient(linear, right top, left bottom, from(#ffffff), to(#000000));
+}
+.rtlBackgroundImageLinearGradientMirroring1 {
+  background-image: linear-gradient(#ff0000, #0000ff);
+  background-image: linear-gradient(#64c8de, #0000ff);
+  background-image: linear-gradient(right top, #ff0000, #0000ff);
+  background-image: linear-gradient(80% top, #ff0000, #0000ff);
+  background-image: linear-gradient(90deg, #ff0000, #0000ff);
+  background-image: linear-gradient(135deg, #ff0000, #0000ff);
+  background-image: linear-gradient(-10deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190.4deg, #ff0000, #0000ff);
+  background-image: linear-gradient(left top -90deg, #ff0000, #0000ff) /* some comment */;
+  background-image: linear-gradient(135deg, #ff0000, #0000ff), linear-gradient(45deg, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -moz-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190grad, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(-10.5grad, #ff0000, #0000ff);
+  background-image: linear-gradient(0rad, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(2.72rad, #ff0000, #0000ff);
+  background-image: /* some comment */ linear-gradient(0.4turn, #ff0000, #0000ff);
+  background-image: linear-gradient(0.6turn, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: url(img.png), /* some comment */ -webkit-gradient(linear, right top, left bottom, from(#ffffff), to(#000000));
+}
+.rtlBackgroundImageLinearGradientMirroring2 {
+  background-image: linear-gradient(#ff0000, #0000ff);
+  background-image: linear-gradient(#64c8de, #0000ff);
+  background-image: linear-gradient(right top, #ff0000, #0000ff);
+  background-image: linear-gradient(80% top, #ff0000, #0000ff);
+  background-image: linear-gradient(90deg, #ff0000, #0000ff);
+  background-image: linear-gradient(135deg, #ff0000, #0000ff);
+  background-image: linear-gradient(-10deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190.4deg, #ff0000, #0000ff);
+  background-image: linear-gradient(left top -90deg, #ff0000, #0000ff) /* some comment */;
+  background-image: linear-gradient(135deg, #ff0000, #0000ff), linear-gradient(45deg, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -moz-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(190deg, #ff0000, #0000ff);
+  background-image: linear-gradient(190grad, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(-10.5grad, #ff0000, #0000ff);
+  background-image: linear-gradient(0rad, #ff0000, #0000ff);
+  background-image: -webkit-repeating-linear-gradient(2.72rad, #ff0000, #0000ff);
+  background-image: /* some comment */ linear-gradient(0.4turn, #ff0000, #0000ff);
+  background-image: linear-gradient(0.6turn, #ff0000, #0000ff);
+  background-image: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(center top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background: -moz-linear-gradient(top, #d0dbe9 0%, #ffffff 10%, #dbe1ec 47%, #dbe1ec 85%, #cdd5e4 90%);
+  background-image: url(img.png), /* some comment */ -webkit-gradient(linear, right top, left bottom, from(#ffffff), to(#000000));
+}

@@ -1,0 +1,36 @@
+{
+  "name": "less-openui5",
+  "version": "0.1.0-pre",
+  "description": "Build OpenUI5 themes with Less.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/less-openui5.git"
+  },
+  "keywords": [
+    "less",
+    "less.js",
+    "openui5",
+    "theme"
+  ],
+  "author": "SAP SE",
+  "license": {
+    "type": "Apache 2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "less": "1.6.3",
+    "object-assign": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-eslint": "^1.1.0",
+    "grunt-mocha-test": "^0.12.1"
+  }
+}

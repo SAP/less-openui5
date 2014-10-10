@@ -1,0 +1,50 @@
+/* RTL box-shadow mirroring */
+.rtlBoxShadowMirroring {
+  box-shadow: none;
+  box-shadow: inherit;
+  box-shadow: -1px 2px;
+  box-shadow: 5cm 2px;
+  box-shadow: -1px 2px red;
+  box-shadow: -1px 2px #010203;
+  box-shadow: -2px -20px 30px 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 1em -0.0625rem 0 rgba(0, 0, 0, 0.6);
+  text-shadow: 0 -0.0625rem 0 rgba(0, 0, 0, 0.6);
+  box-shadow: /* some comment */ -1px 2px, -3px 4px;
+  box-shadow: -1px 2px, -3px 4px, 5px 6px;
+  box-shadow: -1px 2px 10px, -3px 4px 20px /* some comment */;
+  box-shadow: -1px -2cm 10px 2ex, 3px 4em 20px #ff0000;
+  box-shadow: -1px -2cm 10px 2ex #00ffac, 3px 4em 20px #0c212a;
+  box-shadow: /* some comment */ inset -1px 2px;
+  box-shadow: inset 5cm 2px;
+  box-shadow: inset -1px 2px red;
+  box-shadow: inset -1px 2px #010203;
+  box-shadow: inset /* some comment */ -1px 2px, -3px 4px;
+  box-shadow: -1px 2px, inset -3px 4px, 5px 6px;
+  box-shadow: inset -1px -2cm 10px 2ex #00ffac, inset 3px 4em 20px #0c212a;
+  -moz-box-shadow: -1px 2px;
+  -webkit-box-shadow: -1px 2px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5), inset -2px 3px;
+  -moz-box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5), inset -2px 3px;
+  -webkit-box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5), inset -2px 3px;
+}
+.rtlBoxShadowMirroring1 {
+  box-shadow: inset -1px 1px 0px 0px #000000, inset 1px -1px 0px 0px #123456, inset 0 -0.1875rem 0 #333333, inset 0 -0.25rem #000000;
+  background: url("chess.png") right top / 10% #808080 round fixed border-box;
+  left: 0;
+}
+.rtlBoxShadowMirroring2 {
+  box-shadow: inset -1px 1px 0px 0px #000000, inset 1px -1px 0px 0px #123456, inset 0 -0.1875rem 0 #333333, inset 0 -0.25rem #000000;
+  background: url("chess.png") right top / 10% #808080 round fixed border-box;
+  left: 0;
+}
+/* RTL text-shadow mirroring */
+.rtlTextShadowMirroring {
+  text-shadow: none;
+  text-shadow: inherit;
+  text-shadow: -1px /* some comment */ 2px;
+  text-shadow: 5cm 2px;
+  text-shadow: -1px 2px /* some comment */ #ff0000;
+  text-shadow: -1px 2px #010203;
+  text-shadow: -1px 2px,-3px 4px;
+  text-shadow: -1px 2px, -3px /* some comment */ 4px, 5px 6px /* some comment */;
+}

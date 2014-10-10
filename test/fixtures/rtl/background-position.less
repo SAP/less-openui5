@@ -1,0 +1,76 @@
+/* RTL background-position mirroring */
+.rtlBackgroundPositionMirroring {
+  background-position: top;
+  background-position: right;
+  background-position: left top;
+
+  // no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  background-position: 2cm 1cm;
+
+  background-position: 20% 40%;
+  background-position: 30%;
+  background-position: 0.5%;
+  background-position: -20% 40%;
+  background-position: 0% 0;
+  background-position: 0 0;
+  background-position: 100% 0;
+  background-position: 0 100%;
+  background-position: 100% /* some comment */ 100%;
+
+  // multiple backgrounds
+  background-position: top, top;
+  background-position: left top, left top, center bottom;
+
+  // no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1
+  background-position: 2cm 1cm,3cm 4cm;
+
+  background-position: 20% 40%, 10% 90%,33% 66%;
+  background-position: /* some comment */ 30%, 60%;
+
+  // mixed units
+  background-position: 20em 40%, 10px 90%,33% 66%;
+
+  // negative values
+  background-position: -30%;
+  background-position: -20% /* some comment */ -40%, /* some comment */ -5% 30%, -10% 80%;
+}
+
+.rtlBackgroundPositionMirroringMixIn(@num) {
+  .rtlBackgroundPositionMirroring@{num} {
+    background-position: top;
+    background-position: right;
+    background-position: left top;
+
+    // no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+    background-position: 2cm 1cm;
+
+    background-position: 20% 40%;
+    background-position: 30%;
+    background-position: 0.5%;
+    background-position: -20% 40%;
+    background-position: 0% 0;
+    background-position: 0 0;
+    background-position: 100% 0;
+    background-position: 0 100%;
+    background-position: 100% /* some comment */ 100%;
+
+    // multiple backgrounds
+    background-position: top, top;
+    background-position: left top, left top, center bottom;
+
+    // no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1
+    background-position: 2cm 1cm,3cm 4cm;
+
+    background-position: 20% 40%, 10% 90%,33% 66%;
+    background-position: /* some comment */ 30%, 60%;
+
+    // mixed units
+    background-position: 20em 40%, 10px 90%,33% 66%;
+
+    // negative values
+    background-position: -30%;
+    background-position: -20% /* some comment */ -40%, /* some comment */ -5% 30%, -10% 80%;
+  }
+}
+.rtlBackgroundPositionMirroringMixIn(1);
+.rtlBackgroundPositionMirroringMixIn(2);

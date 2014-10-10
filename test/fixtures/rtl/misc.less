@@ -1,0 +1,259 @@
+/* RTL break-after mirroring */
+.rtlBreakAfterMirroring {
+  break-after: left;
+  break-after: right;
+  break-after: auto;
+}
+
+/* RTL break-before mirroring */
+.rtlBreakBeforeMirroring {
+  break-before: left;
+  break-before: right;
+  break-before: auto;
+}
+
+/* RTL fit-position mirroring */
+.rtlObjectPositionMirroring {
+  object-position: top;
+  object-position: right /* some comment */;
+  object-position: left top;
+
+  /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  object-position: 2cm 1cm;
+
+  object-position: 20% /* some comment */ 40%;
+  object-position: 30%;
+  object-position: -20% 40%;
+}
+
+/* RTL float mirroring */
+.rtlFloatMirroring {
+  float: left;
+  float: /* some comment */ right;
+  float: none;
+}
+
+/* RTL left mirroring */
+.rtlLeftMirroring {
+  left: 2px;
+}
+
+/* RTL margin mirroring */
+.rtlMarginMirroring {
+  margin: 1px /* some comment */;
+  margin: 1px 2px;
+  margin: 1px 2px /* some comment */ 3px;
+  margin: 1px 2px 3px 4px;
+  margin: /* some comment */ -8px 0 0 -8px;
+}
+
+/* RTL margin-left mirroring */
+.rtlMarginLeftMirroring {
+  margin-left: 1px;
+}
+
+/* RTL margin-right mirroring */
+.rtlMarginRightMirroring {
+  margin-right: 1px;
+}
+
+/* RTL nav-left mirroring */
+.rtlNavLeftMirroring {
+  nav-left: auto;
+}
+
+/* RTL nav-right mirroring */
+.rtlNavRightMirroring {
+  nav-right: auto;
+}
+
+/* RTL padding mirroring */
+.rtlPaddingMirroring {
+  padding: 1px;
+  padding: 1px 2px;
+  padding: 1px 2px 3px;
+  padding: 1px 2px 3px 4px;
+}
+
+/* RTL padding-left mirroring */
+.rtlPaddingLeftMirroring {
+  padding-left: 1px;
+}
+
+/* RTL padding-right mirroring */
+.rtlPaddingRightMirroring {
+  padding-right: 1px;
+}
+
+/* RTL page-break-after mirroring */
+.rtlPageBreakAfterMirroring {
+  page-break-after: left;
+  page-break-after: right;
+  page-break-after: auto;
+}
+
+/* RTL page-break-before mirroring */
+.rtlPageBreakBefore {
+  page-break-before: left;
+  page-break-before: right;
+  page-break-before: auto;
+}
+
+/* RTL perspective-origin mirroring */
+.rtlPerspectiveOriginMirroring {
+  perspective-origin: top;
+  perspective-origin: right 0;
+  perspective-origin: left top;
+
+  /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  perspective-origin: 2cm 1cm;
+
+  perspective-origin: 20% 40%;
+  perspective-origin: 30%;
+  perspective-origin: -20% 40%;
+}
+
+/* RTL right mirroring */
+.rtlRightMirroring {
+  right: 2px;
+}
+
+/* RTL ruby-align mirroring */
+.rtlRubyAlignMirroring {
+  ruby-align: left;
+  ruby-align: right;
+  ruby-align: auto;
+}
+
+.rtlMiscMirroringMixIn(@num) {
+
+  /* RTL break-after mirroring */
+  .rtlBreakAfterMirroring@{num} {
+    break-after: left;
+    break-after: right;
+    break-after: auto;
+  }
+
+  /* RTL break-before mirroring */
+  .rtlBreakBeforeMirroring@{num} {
+    break-before: left;
+    break-before: right;
+    break-before: auto;
+  }
+
+  /* RTL fit-position mirroring */
+  .rtlObjectPositionMirroring@{num} {
+    object-position: top;
+    object-position: right /* some comment */;
+    object-position: left top;
+
+    /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+    object-position: 2cm 1cm;
+
+    object-position: 20% /* some comment */ 40%;
+    object-position: 30%;
+    object-position: -20% 40%;
+  }
+
+  /* RTL float mirroring */
+  .rtlFloatMirroring@{num} {
+    float: left;
+    float: /* some comment */ right;
+    float: none;
+  }
+
+  /* RTL left mirroring */
+  .rtlLeftMirroring@{num} {
+    left: 2px;
+  }
+
+  /* RTL margin mirroring */
+  .rtlMarginMirroring@{num} {
+    margin: 1px /* some comment */;
+    margin: 1px 2px;
+    margin: 1px 2px /* some comment */ 3px;
+    margin: 1px 2px 3px 4px;
+    margin: /* some comment */ -8px 0 0 -8px;
+  }
+
+  /* RTL margin-left mirroring */
+  .rtlMarginLeftMirroring@{num} {
+    margin-left: 1px;
+  }
+
+  /* RTL margin-right mirroring */
+  .rtlMarginRightMirroring@{num} {
+    margin-right: 1px;
+  }
+
+  /* RTL nav-left mirroring */
+  .rtlNavLeftMirroring@{num} {
+    nav-left: auto;
+  }
+
+  /* RTL nav-right mirroring */
+  .rtlNavRightMirroring@{num} {
+    nav-right: auto;
+  }
+
+  /* RTL padding mirroring */
+  .rtlPaddingMirroring@{num} {
+    padding: 1px;
+    padding: 1px 2px;
+    padding: 1px 2px 3px;
+    padding: 1px 2px 3px 4px;
+  }
+
+  /* RTL padding-left mirroring */
+  .rtlPaddingLeftMirroring@{num} {
+    padding-left: 1px;
+  }
+
+  /* RTL padding-right mirroring */
+  .rtlPaddingRightMirroring@{num} {
+    padding-right: 1px;
+  }
+
+  /* RTL page-break-after mirroring */
+  .rtlPageBreakAfterMirroring@{num} {
+    page-break-after: left;
+    page-break-after: right;
+    page-break-after: auto;
+  }
+
+  /* RTL page-break-before mirroring */
+  .rtlPageBreakBefore@{num} {
+    page-break-before: left;
+    page-break-before: right;
+    page-break-before: auto;
+  }
+
+  /* RTL perspective-origin mirroring */
+  .rtlPerspectiveOriginMirroring@{num} {
+    perspective-origin: top;
+    perspective-origin: right 0;
+    perspective-origin: left top;
+
+    /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+    perspective-origin: 2cm 1cm;
+
+    perspective-origin: 20% 40%;
+    perspective-origin: 30%;
+    perspective-origin: -20% 40%;
+  }
+
+  /* RTL right mirroring */
+  .rtlRightMirroring@{num} {
+    right: 2px;
+  }
+
+  /* RTL ruby-align mirroring */
+  .rtlRubyAlignMirroring@{num} {
+    ruby-align: left;
+    ruby-align: right;
+    ruby-align: auto;
+  }
+
+}
+.rtlMiscMirroringMixIn(1);
+.rtlMiscMirroringMixIn(2);

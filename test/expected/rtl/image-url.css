@@ -1,0 +1,52 @@
+/* RTL image url mirroring */
+.rtlImageUrlMirroringRelative {
+  background: url(img-RTL/fg/hi.png) /* some comment */;
+  background-image: /* some comment */ url(img-RTL/fg/hi.png);
+  list-style-image: url(img-RTL/fg/hi.png);
+}
+.rtlImageUrlMirroringAbsolute {
+  background: url(http://abc.de/img-RTL/fg/hi.png) /* some comment */;
+}
+.rtlImageUrlMirroringQuotes {
+  background: url('http://abc.de/img-RTL/fg/hi.png');
+  background: /* some comment */ url("http://abc.de/img-RTL/fg/hi.png");
+  background: url('img-RTL/column_header.gif') repeat /* some comment */ scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8 /* some comment */;
+}
+.rtlImageUrlMirroringMultiple {
+  background: url(http://abc.de/img-RTL/fg/hi.png), /* some comment */ url(http://abc.de/img-RTL/fg/hi.png);
+}
+.rtlImageUrlMirroringRelative1 {
+  background: url(img-RTL/fg/hi.png) /* some comment */;
+  background-image: /* some comment */ url(img-RTL/fg/hi.png);
+  list-style-image: url(img-RTL/fg/hi.png);
+}
+.rtlImageUrlMirroringAbsolute1 {
+  background: url(http://abc.de/img-RTL/fg/hi.png) /* some comment */;
+}
+.rtlImageUrlMirroringQuotes1 {
+  background: url('http://abc.de/img-RTL/fg/hi.png');
+  background: /* some comment */ url("http://abc.de/img-RTL/fg/hi.png");
+  background: url('img-RTL/column_header.gif') repeat /* some comment */ scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8 /* some comment */;
+}
+.rtlImageUrlMirroringMultiple1 {
+  background: url(http://abc.de/img-RTL/fg/hi.png), /* some comment */ url(http://abc.de/img-RTL/fg/hi.png);
+}
+.rtlImageUrlMirroringRelative2 {
+  background: url(img-RTL/fg/hi.png) /* some comment */;
+  background-image: /* some comment */ url(img-RTL/fg/hi.png);
+  list-style-image: url(img-RTL/fg/hi.png);
+}
+.rtlImageUrlMirroringAbsolute2 {
+  background: url(http://abc.de/img-RTL/fg/hi.png) /* some comment */;
+}
+.rtlImageUrlMirroringQuotes2 {
+  background: url('http://abc.de/img-RTL/fg/hi.png');
+  background: /* some comment */ url("http://abc.de/img-RTL/fg/hi.png");
+  background: url('img-RTL/column_header.gif') repeat /* some comment */ scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8 /* some comment */;
+}
+.rtlImageUrlMirroringMultiple2 {
+  background: url(http://abc.de/img-RTL/fg/hi.png), /* some comment */ url(http://abc.de/img-RTL/fg/hi.png);
+}

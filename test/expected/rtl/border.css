@@ -1,0 +1,381 @@
+/* RTL border-bottom-left-radius mirroring */
+.rtlBorderBottomLeftRadiusMirroring {
+  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px 0.5ex;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomright: 3px /* some comment */ 0.5ex;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px 0.5ex;
+}
+/* RTL border-bottom-right-radius mirroring */
+.rtlBorderBottomRightRadiusMirroring {
+  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px 0.5ex;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomleft: 3px 0.5ex;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px 0.5ex;
+}
+/* RTL border-color mirroring */
+.rtlBorderColorMirroring {
+  border-color: red;
+  border-color: red green;
+  border-color: red green blue;
+  border-color: red yellow blue green;
+  border-color: rgba(255, 255, 255, 0.901961);
+  border-color: rgba(255, 255, 255, 0.901961) /* some comment */ #0000ff #008000 #ff0000;
+}
+/* RTL border-image-outset mirroring */
+.rtlBorderImageOutsetMirroring {
+  border-image-outset: 1px;
+  border-image-outset: 1px 2px;
+  border-image-outset: /* some comment */ 1px 2px 3px;
+  border-image-outset: 1px 4px 3px 2px;
+}
+/* RTL border-image-width mirroring */
+.rtlBorderImageWidthMirroring {
+  border-image-width: 1px;
+  border-image-width: 1px 2px;
+  border-image-width: 1px 2px 3px;
+  border-image-width: 1px 4px 3px 2px;
+}
+/* RTL border-left mirroring */
+.rtlBorderLeftMirroring {
+  border-right: 3px solid red;
+}
+/* RTL border-left-color mirroring */
+.rtlBorderLeftColorMirroring {
+  border-right-color: red;
+}
+/* RTL border-left-style mirroring */
+.rtlBorderLeftStyleMirroring {
+  border-right-style: solid;
+}
+/* RTL border-left-width mirroring */
+.rtlBorderLeftWidthMirroring {
+  border-right-width: 3px;
+}
+/* RTL border-radius mirroring  */
+.rtlBorderRadiusMirroring {
+  border-radius: 1px;
+  border-radius: 2px 1px;
+  border-radius: 2px 1px 4px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 1px / 2px;
+  border-radius: 2px 1px / 4px 3px;
+  border-radius: 1px / 3px 2px 3px 4px;
+  border-radius: 0px / 2px 1px 4px 3px;
+  -moz-border-radius: /* some comment */ 2px 1px 2px 3px;
+  -moz-border-radius: 2px 1px 4px 3px;
+  -moz-border-radius: 1px / 3px 2px 3px 4px;
+  -moz-border-radius: /* some comment */ 0px / /* some comment */ 2px 1px 4px 3px;
+  -webkit-border-radius: 2px 1px 2px 3px;
+  -webkit-border-radius: 2px 1px 4px 3px;
+  -webkit-border-radius: 1px / 3px /* some comment */ 2px 3px 4px;
+  -webkit-border-radius: 0px / 2px 1px 4px 3px;
+}
+/* RTL border-right mirroring */
+.rtlBorderRightMirroring {
+  border-left: 3px solid red;
+}
+/* RTL border-right-color mirroring */
+.rtlBorderRightColorMirroring {
+  border-left-color: red;
+}
+/* RTL border-right-style mirroring */
+.rtlBorderRightStyleMirroring {
+  border-left-style: solid;
+}
+/* RTL border-right-width mirroring */
+.rtlBorderRightWidthMirroring {
+  border-left-width: 3px;
+}
+/* RTL border-style mirroring */
+.rtlBorderStyleMirroring {
+  border-style: solid;
+  border-style: solid dotted;
+  border-style: solid dotted inset;
+  border-style: solid double inset dotted;
+}
+/* RTL border-top-left-radius mirroring */
+.rtlBorderTopLeftRadiusMirroring {
+  border-top-right-radius: 3px;
+  border-top-right-radius: 3px 0.5ex;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-topright: 3px 0.5ex;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px 0.5ex;
+}
+/* RTL border-top-right-radius mirroring */
+.rtlBorderTopRightRadiusMirroring {
+  border-top-left-radius: 3px;
+  border-top-left-radius: 3px 0.5ex;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topleft: 3px 0.5ex;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px 0.5ex;
+}
+/* RTL border-width mirroring */
+.rtlBorderWidthMirroring {
+  border-width: 1px;
+  border-width: 1px 2px;
+  border-width: 1px 2px 3px;
+  border-width: 1px 4px 3px 2px;
+}
+/* RTL border-bottom-left-radius mirroring */
+.rtlBorderBottomLeftRadiusMirroring1 {
+  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px 0.5ex;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomright: 3px /* some comment */ 0.5ex;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px 0.5ex;
+}
+/* RTL border-bottom-right-radius mirroring */
+.rtlBorderBottomRightRadiusMirroring1 {
+  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px 0.5ex;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomleft: 3px 0.5ex;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px 0.5ex;
+}
+/* RTL border-color mirroring */
+.rtlBorderColorMirroring1 {
+  border-color: red;
+  border-color: red green;
+  border-color: red green blue;
+  border-color: red yellow blue green;
+  border-color: rgba(255, 255, 255, 0.901961);
+  border-color: rgba(255, 255, 255, 0.901961) /* some comment */ #0000ff #008000 #ff0000;
+}
+/* RTL border-image-outset mirroring */
+.rtlBorderImageOutsetMirroring1 {
+  border-image-outset: 1px;
+  border-image-outset: 1px 2px;
+  border-image-outset: /* some comment */ 1px 2px 3px;
+  border-image-outset: 1px 4px 3px 2px;
+}
+/* RTL border-image-width mirroring */
+.rtlBorderImageWidthMirroring1 {
+  border-image-width: 1px;
+  border-image-width: 1px 2px;
+  border-image-width: 1px 2px 3px;
+  border-image-width: 1px 4px 3px 2px;
+}
+/* RTL border-left mirroring */
+.rtlBorderLeftMirroring1 {
+  border-right: 3px solid red;
+}
+/* RTL border-left-color mirroring */
+.rtlBorderLeftColorMirroring1 {
+  border-right-color: red;
+}
+/* RTL border-left-style mirroring */
+.rtlBorderLeftStyleMirroring1 {
+  border-right-style: solid;
+}
+/* RTL border-left-width mirroring */
+.rtlBorderLeftWidthMirroring1 {
+  border-right-width: 3px;
+}
+/* RTL border-radius mirroring  */
+.rtlBorderRadiusMirroring1 {
+  border-radius: 1px;
+  border-radius: 2px 1px;
+  border-radius: 2px 1px 4px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 1px / 2px;
+  border-radius: 2px 1px / 4px 3px;
+  border-radius: 1px / 3px 2px 3px 4px;
+  border-radius: 0px / 2px 1px 4px 3px;
+  -moz-border-radius: /* some comment */ 2px 1px 2px 3px;
+  -moz-border-radius: 2px 1px 4px 3px;
+  -moz-border-radius: 1px / 3px 2px 3px 4px;
+  -moz-border-radius: /* some comment */ 0px / /* some comment */ 2px 1px 4px 3px;
+  -webkit-border-radius: 2px 1px 2px 3px;
+  -webkit-border-radius: 2px 1px 4px 3px;
+  -webkit-border-radius: 1px / 3px /* some comment */ 2px 3px 4px;
+  -webkit-border-radius: 0px / 2px 1px 4px 3px;
+}
+/* RTL border-right mirroring */
+.rtlBorderRightMirroring1 {
+  border-left: 3px solid red;
+}
+/* RTL border-right-color mirroring */
+.rtlBorderRightColorMirroring1 {
+  border-left-color: red;
+}
+/* RTL border-right-style mirroring */
+.rtlBorderRightStyleMirroring1 {
+  border-left-style: solid;
+}
+/* RTL border-right-width mirroring */
+.rtlBorderRightWidthMirroring1 {
+  border-left-width: 3px;
+}
+/* RTL border-style mirroring */
+.rtlBorderStyleMirroring1 {
+  border-style: solid;
+  border-style: solid dotted;
+  border-style: solid dotted inset;
+  border-style: solid double inset dotted;
+}
+/* RTL border-top-left-radius mirroring */
+.rtlBorderTopLeftRadiusMirroring1 {
+  border-top-right-radius: 3px;
+  border-top-right-radius: 3px 0.5ex;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-topright: 3px 0.5ex;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px 0.5ex;
+}
+/* RTL border-top-right-radius mirroring */
+.rtlBorderTopRightRadiusMirroring1 {
+  border-top-left-radius: 3px;
+  border-top-left-radius: 3px 0.5ex;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topleft: 3px 0.5ex;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px 0.5ex;
+}
+/* RTL border-width mirroring */
+.rtlBorderWidthMirroring1 {
+  border-width: 1px;
+  border-width: 1px 2px;
+  border-width: 1px 2px 3px;
+  border-width: 1px 4px 3px 2px;
+}
+/* RTL border-bottom-left-radius mirroring */
+.rtlBorderBottomLeftRadiusMirroring2 {
+  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px 0.5ex;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomright: 3px /* some comment */ 0.5ex;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px 0.5ex;
+}
+/* RTL border-bottom-right-radius mirroring */
+.rtlBorderBottomRightRadiusMirroring2 {
+  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px 0.5ex;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomleft: 3px 0.5ex;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px 0.5ex;
+}
+/* RTL border-color mirroring */
+.rtlBorderColorMirroring2 {
+  border-color: red;
+  border-color: red green;
+  border-color: red green blue;
+  border-color: red yellow blue green;
+  border-color: rgba(255, 255, 255, 0.901961);
+  border-color: rgba(255, 255, 255, 0.901961) /* some comment */ #0000ff #008000 #ff0000;
+}
+/* RTL border-image-outset mirroring */
+.rtlBorderImageOutsetMirroring2 {
+  border-image-outset: 1px;
+  border-image-outset: 1px 2px;
+  border-image-outset: /* some comment */ 1px 2px 3px;
+  border-image-outset: 1px 4px 3px 2px;
+}
+/* RTL border-image-width mirroring */
+.rtlBorderImageWidthMirroring2 {
+  border-image-width: 1px;
+  border-image-width: 1px 2px;
+  border-image-width: 1px 2px 3px;
+  border-image-width: 1px 4px 3px 2px;
+}
+/* RTL border-left mirroring */
+.rtlBorderLeftMirroring2 {
+  border-right: 3px solid red;
+}
+/* RTL border-left-color mirroring */
+.rtlBorderLeftColorMirroring2 {
+  border-right-color: red;
+}
+/* RTL border-left-style mirroring */
+.rtlBorderLeftStyleMirroring2 {
+  border-right-style: solid;
+}
+/* RTL border-left-width mirroring */
+.rtlBorderLeftWidthMirroring2 {
+  border-right-width: 3px;
+}
+/* RTL border-radius mirroring  */
+.rtlBorderRadiusMirroring2 {
+  border-radius: 1px;
+  border-radius: 2px 1px;
+  border-radius: 2px 1px 4px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 2px 1px 2px 3px;
+  border-radius: 1px / 2px;
+  border-radius: 2px 1px / 4px 3px;
+  border-radius: 1px / 3px 2px 3px 4px;
+  border-radius: 0px / 2px 1px 4px 3px;
+  -moz-border-radius: /* some comment */ 2px 1px 2px 3px;
+  -moz-border-radius: 2px 1px 4px 3px;
+  -moz-border-radius: 1px / 3px 2px 3px 4px;
+  -moz-border-radius: /* some comment */ 0px / /* some comment */ 2px 1px 4px 3px;
+  -webkit-border-radius: 2px 1px 2px 3px;
+  -webkit-border-radius: 2px 1px 4px 3px;
+  -webkit-border-radius: 1px / 3px /* some comment */ 2px 3px 4px;
+  -webkit-border-radius: 0px / 2px 1px 4px 3px;
+}
+/* RTL border-right mirroring */
+.rtlBorderRightMirroring2 {
+  border-left: 3px solid red;
+}
+/* RTL border-right-color mirroring */
+.rtlBorderRightColorMirroring2 {
+  border-left-color: red;
+}
+/* RTL border-right-style mirroring */
+.rtlBorderRightStyleMirroring2 {
+  border-left-style: solid;
+}
+/* RTL border-right-width mirroring */
+.rtlBorderRightWidthMirroring2 {
+  border-left-width: 3px;
+}
+/* RTL border-style mirroring */
+.rtlBorderStyleMirroring2 {
+  border-style: solid;
+  border-style: solid dotted;
+  border-style: solid dotted inset;
+  border-style: solid double inset dotted;
+}
+/* RTL border-top-left-radius mirroring */
+.rtlBorderTopLeftRadiusMirroring2 {
+  border-top-right-radius: 3px;
+  border-top-right-radius: 3px 0.5ex;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-topright: 3px 0.5ex;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px 0.5ex;
+}
+/* RTL border-top-right-radius mirroring */
+.rtlBorderTopRightRadiusMirroring2 {
+  border-top-left-radius: 3px;
+  border-top-left-radius: 3px 0.5ex;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topleft: 3px 0.5ex;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px 0.5ex;
+}
+/* RTL border-width mirroring */
+.rtlBorderWidthMirroring2 {
+  border-width: 1px;
+  border-width: 1px 2px;
+  border-width: 1px 2px 3px;
+  border-width: 1px 4px 3px 2px;
+}

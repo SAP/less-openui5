@@ -1,0 +1,42 @@
+/* RTL image url mirroring */
+.rtlImageUrlMirroringRelative {
+  background: url(img/fg/hi.png) /* some comment */;
+  background-image: /* some comment */ url(img/fg/hi.png);
+  list-style-image: url(img/fg/hi.png);
+}
+.rtlImageUrlMirroringAbsolute {
+  background: url(http://abc.de/img/fg/hi.png) /* some comment */;
+}
+.rtlImageUrlMirroringQuotes {
+  background: url('http://abc.de/img/fg/hi.png');
+  background: /* some comment */ url("http://abc.de/img/fg/hi.png");
+
+  background: url('img/column_header.gif') repeat /* some comment */ scroll 0 0 #d2dae8;
+  background: url("img/column_header.gif") repeat scroll 0 0 #d2dae8 /* some comment */;
+}
+.rtlImageUrlMirroringMultiple {
+  background: url(http://abc.de/img/fg/hi.png), /* some comment */ url(http://abc.de/img/fg/hi.png);
+}
+
+.rtlImageUrlMirroringMixIn(@num) {
+  .rtlImageUrlMirroringRelative@{num} {
+    background: url(img/fg/hi.png) /* some comment */;
+    background-image: /* some comment */ url(img/fg/hi.png);
+    list-style-image: url(img/fg/hi.png);
+  }
+  .rtlImageUrlMirroringAbsolute@{num} {
+    background: url(http://abc.de/img/fg/hi.png) /* some comment */;
+  }
+  .rtlImageUrlMirroringQuotes@{num} {
+    background: url('http://abc.de/img/fg/hi.png');
+    background: /* some comment */ url("http://abc.de/img/fg/hi.png");
+
+    background: url('img/column_header.gif') repeat /* some comment */ scroll 0 0 #d2dae8;
+    background: url("img/column_header.gif") repeat scroll 0 0 #d2dae8 /* some comment */;
+  }
+  .rtlImageUrlMirroringMultiple@{num} {
+    background: url(http://abc.de/img/fg/hi.png), /* some comment */ url(http://abc.de/img/fg/hi.png);
+  }
+}
+.rtlImageUrlMirroringMixIn(1);
+.rtlImageUrlMirroringMixIn(2);

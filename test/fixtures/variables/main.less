@@ -1,0 +1,20 @@
+@myVar: #ffffff;
+
+.myMixIn(@color) {
+  @myVar: darken(@color, 50%);
+  @myPrivateVar: darken(@color, 20%);
+
+  .myNestedMixIn() {
+    @myPrivateVar: @myVar;
+    color: @myPrivateVar;
+  }
+
+  .myNestedMixIn;
+  background-color: @myPrivateVar;
+}
+
+@myOtherPublicVar: 'test';
+
+.myRule {
+  .myMixIn(@myVar);
+}

@@ -1,0 +1,228 @@
+/* RTL transform mirroring */
+.rtlTransformMirroring {
+  transform: none;
+  transform: translate(-2px);
+  transform: translate(10%);
+  transform: /* some comment */ translate(-2px, 3px);
+  transform: translate(2.5cm, 3.8%);
+  transform: translate(0, 0);
+  transform: translate3d(-2px, 3px, 4px) /* some comment */;
+  transform: scale(2);
+  transform: scale(2, 5);
+  transform: scale(2.3, 5);
+  transform: scaleX(6.1);
+  transform: scaleY(6);
+  transform: scale3d(1, 2, 3);
+  transform: rotate(-20deg);
+  transform: rotate(-3rad);
+  transform: rotate(200grad);
+  transform: rotate(-0.5turn);
+  transform: rotatex(-200grad);
+  transform: rotateX(-200grad);
+  transform: rotatey(200grad);
+  transform: rotateY(200grad);
+  transform: rotatez(200grad);
+  transform: rotateZ(200grad);
+  transform: rotate3d(1, -2.5, 3, 45deg);
+  transform: skewX(-44deg);
+  transform: skewY(8grad);
+  transform: skewx(-44deg);
+  transform: skewy(8grad);
+  transform: skew(-10deg);
+  transform: skew(50deg, 3rad);
+  transform: skew(0, -1deg);
+  -moz-transform: skew(50deg, 3rad);
+  -ms-transform: skew(50deg, 3rad);
+  -webkit-transform: skew(50deg, 3rad);
+}
+/* RTL transform mirroring inside keyframes */
+@-webkit-keyframes rtlTransformMirroringInsideWebkitKeyframes {
+  from {
+    -webkit-transform: rotate(0deg) translateZ(0);
+    /* some comment */
+  }
+  to {
+    -webkit-transform: /* some comment */ rotate(-360deg) translateZ(0);
+  }
+}
+@keyframes rtlTransformMirroringInsideKeyframes {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+/* RTL transform-origin mirroring */
+.rtlTransformOriginMirroring {
+  transform-origin: top;
+  transform-origin: left 0;
+  transform-origin: right top 0;
+  /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  transform-origin: 2cm 1cm 3cm;
+  transform-origin: 80% /* some comment */ 40% 1px;
+  transform-origin: 70%;
+  transform-origin: 120% 40% 1px;
+  transform-origin: 100% 0;
+  transform-origin: 0% 0;
+  transform-origin: 0 100%;
+  transform-origin: 0% 100%;
+  -moz-transform-origin: 120% 40% 1px;
+  -ms-transform-origin: 120% 40% 1px;
+  -webkit-transform-origin: 120% 40% 1px;
+  -moz-transform-origin: right 40% 1px;
+  -ms-transform-origin: right 40% 1px;
+  -webkit-transform-origin: right 40% 1px /* some comment */;
+}
+/* RTL transform mirroring */
+.rtlTransformMirroring1 {
+  transform: none;
+  transform: translate(-2px);
+  transform: translate(10%);
+  transform: /* some comment */ translate(-2px, 3px);
+  transform: translate(2.5cm, 3.8%);
+  transform: translate(0, 0);
+  transform: translate3d(-2px, 3px, 4px) /* some comment */;
+  transform: scale(2);
+  transform: scale(2, 5);
+  transform: scale(2.3, 5);
+  transform: scaleX(6.1);
+  transform: scaleY(6);
+  transform: scale3d(1, 2, 3);
+  transform: rotate(-20deg);
+  transform: rotate(-3rad);
+  transform: rotate(200grad);
+  transform: rotate(-0.5turn);
+  transform: rotatex(-200grad);
+  transform: rotateX(-200grad);
+  transform: rotatey(200grad);
+  transform: rotateY(200grad);
+  transform: rotatez(200grad);
+  transform: rotateZ(200grad);
+  transform: rotate3d(1, -2.5, 3, 45deg);
+  transform: skewX(-44deg);
+  transform: skewY(8grad);
+  transform: skewx(-44deg);
+  transform: skewy(8grad);
+  transform: skew(-10deg);
+  transform: skew(50deg, 3rad);
+  transform: skew(0, -1deg);
+  -moz-transform: skew(50deg, 3rad);
+  -ms-transform: skew(50deg, 3rad);
+  -webkit-transform: skew(50deg, 3rad);
+}
+/* RTL transform mirroring inside keyframes */
+@-webkit-keyframes rtlTransformMirroringInsideWebkitKeyframes {
+  from {
+    -webkit-transform: rotate(0deg) translateZ(0);
+    /* some comment */
+  }
+  to {
+    -webkit-transform: /* some comment */ rotate(-360deg) translateZ(0);
+  }
+}
+@keyframes rtlTransformMirroringInsideKeyframes {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+/* RTL transform-origin mirroring */
+.rtlTransformOriginMirroring1 {
+  transform-origin: top;
+  transform-origin: left 0;
+  transform-origin: right top 0;
+  /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  transform-origin: 2cm 1cm 3cm;
+  transform-origin: 80% /* some comment */ 40% 1px;
+  transform-origin: 70%;
+  transform-origin: 120% 40% 1px;
+  transform-origin: 100% 0;
+  transform-origin: 0% 0;
+  transform-origin: 0 100%;
+  transform-origin: 0% 100%;
+  -moz-transform-origin: 120% 40% 1px;
+  -ms-transform-origin: 120% 40% 1px;
+  -webkit-transform-origin: 120% 40% 1px;
+  -moz-transform-origin: right 40% 1px;
+  -ms-transform-origin: right 40% 1px;
+  -webkit-transform-origin: right 40% 1px /* some comment */;
+}
+/* RTL transform mirroring */
+.rtlTransformMirroring2 {
+  transform: none;
+  transform: translate(-2px);
+  transform: translate(10%);
+  transform: /* some comment */ translate(-2px, 3px);
+  transform: translate(2.5cm, 3.8%);
+  transform: translate(0, 0);
+  transform: translate3d(-2px, 3px, 4px) /* some comment */;
+  transform: scale(2);
+  transform: scale(2, 5);
+  transform: scale(2.3, 5);
+  transform: scaleX(6.1);
+  transform: scaleY(6);
+  transform: scale3d(1, 2, 3);
+  transform: rotate(-20deg);
+  transform: rotate(-3rad);
+  transform: rotate(200grad);
+  transform: rotate(-0.5turn);
+  transform: rotatex(-200grad);
+  transform: rotateX(-200grad);
+  transform: rotatey(200grad);
+  transform: rotateY(200grad);
+  transform: rotatez(200grad);
+  transform: rotateZ(200grad);
+  transform: rotate3d(1, -2.5, 3, 45deg);
+  transform: skewX(-44deg);
+  transform: skewY(8grad);
+  transform: skewx(-44deg);
+  transform: skewy(8grad);
+  transform: skew(-10deg);
+  transform: skew(50deg, 3rad);
+  transform: skew(0, -1deg);
+  -moz-transform: skew(50deg, 3rad);
+  -ms-transform: skew(50deg, 3rad);
+  -webkit-transform: skew(50deg, 3rad);
+}
+/* RTL transform mirroring inside keyframes */
+@-webkit-keyframes rtlTransformMirroringInsideWebkitKeyframes {
+  from {
+    -webkit-transform: rotate(0deg) translateZ(0);
+    /* some comment */
+  }
+  to {
+    -webkit-transform: /* some comment */ rotate(-360deg) translateZ(0);
+  }
+}
+@keyframes rtlTransformMirroringInsideKeyframes {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+/* RTL transform-origin mirroring */
+.rtlTransformOriginMirroring2 {
+  transform-origin: top;
+  transform-origin: left 0;
+  transform-origin: right top 0;
+  /* no mirroring of absolute sizes because they cannot be set from the right border in CSS2.1 */
+  transform-origin: 2cm 1cm 3cm;
+  transform-origin: 80% /* some comment */ 40% 1px;
+  transform-origin: 70%;
+  transform-origin: 120% 40% 1px;
+  transform-origin: 100% 0;
+  transform-origin: 0% 0;
+  transform-origin: 0 100%;
+  transform-origin: 0% 100%;
+  -moz-transform-origin: 120% 40% 1px;
+  -ms-transform-origin: 120% 40% 1px;
+  -webkit-transform-origin: 120% 40% 1px;
+  -moz-transform-origin: right 40% 1px;
+  -ms-transform-origin: right 40% 1px;
+  -webkit-transform-origin: right 40% 1px /* some comment */;
+}

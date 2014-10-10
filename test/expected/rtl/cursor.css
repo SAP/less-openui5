@@ -1,0 +1,127 @@
+/* RTL cursor mirroring */
+.rtlCursorMirroring-auto {
+  cursor: auto;
+}
+.rtlCursorMirroring-default {
+  cursor: default;
+}
+.rtlCursorMirroring-pointer {
+  cursor: pointer;
+}
+.rtlCursorMirroring-e-resize {
+  cursor: /* some comment */ w-resize;
+}
+.rtlCursorMirroring-w-resize {
+  cursor: e-resize;
+}
+.rtlCursorMirroring-ne-resize {
+  cursor: nw-resize /* some comment */;
+}
+.rtlCursorMirroring-nw-resize {
+  cursor: ne-resize;
+}
+.rtlCursorMirroring-se-resize {
+  cursor: sw-resize;
+}
+.rtlCursorMirroring-sw-resize {
+  cursor: se-resize;
+}
+.rtlCursorMirroring-nesw-resize {
+  cursor: nwse-resize;
+}
+.rtlCursorMirroring-nwse-resize {
+  cursor: nesw-resize;
+}
+.rtlCursorMirroring-url-auto {
+  cursor: url(something), auto;
+}
+.rtlCursorMirroring-url-e-resize {
+  cursor: /* some comment */ url(something), w-resize;
+}
+.rtlCursorMirroring-url-url-w-resize {
+  cursor: url(something), /* some comment */ url(something2), e-resize;
+}
+.rtlCursorMirroring-auto1 {
+  cursor: auto;
+}
+.rtlCursorMirroring-default1 {
+  cursor: default;
+}
+.rtlCursorMirroring-pointer1 {
+  cursor: pointer;
+}
+.rtlCursorMirroring-e-resize1 {
+  cursor: /* some comment */ w-resize;
+}
+.rtlCursorMirroring-w-resize1 {
+  cursor: e-resize;
+}
+.rtlCursorMirroring-ne-resize1 {
+  cursor: nw-resize /* some comment */;
+}
+.rtlCursorMirroring-nw-resize1 {
+  cursor: ne-resize;
+}
+.rtlCursorMirroring-se-resize1 {
+  cursor: sw-resize;
+}
+.rtlCursorMirroring-sw-resize1 {
+  cursor: se-resize;
+}
+.rtlCursorMirroring-nesw-resize1 {
+  cursor: nwse-resize;
+}
+.rtlCursorMirroring-nwse-resize1 {
+  cursor: nesw-resize;
+}
+.rtlCursorMirroring-url-auto1 {
+  cursor: url(something), auto;
+}
+.rtlCursorMirroring-url-e-resize1 {
+  cursor: /* some comment */ url(something), w-resize;
+}
+.rtlCursorMirroring-url-url-w-resize1 {
+  cursor: url(something), /* some comment */ url(something2), e-resize;
+}
+.rtlCursorMirroring-auto2 {
+  cursor: auto;
+}
+.rtlCursorMirroring-default2 {
+  cursor: default;
+}
+.rtlCursorMirroring-pointer2 {
+  cursor: pointer;
+}
+.rtlCursorMirroring-e-resize2 {
+  cursor: /* some comment */ w-resize;
+}
+.rtlCursorMirroring-w-resize2 {
+  cursor: e-resize;
+}
+.rtlCursorMirroring-ne-resize2 {
+  cursor: nw-resize /* some comment */;
+}
+.rtlCursorMirroring-nw-resize2 {
+  cursor: ne-resize;
+}
+.rtlCursorMirroring-se-resize2 {
+  cursor: sw-resize;
+}
+.rtlCursorMirroring-sw-resize2 {
+  cursor: se-resize;
+}
+.rtlCursorMirroring-nesw-resize2 {
+  cursor: nwse-resize;
+}
+.rtlCursorMirroring-nwse-resize2 {
+  cursor: nesw-resize;
+}
+.rtlCursorMirroring-url-auto2 {
+  cursor: url(something), auto;
+}
+.rtlCursorMirroring-url-e-resize2 {
+  cursor: /* some comment */ url(something), w-resize;
+}
+.rtlCursorMirroring-url-url-w-resize2 {
+  cursor: url(something), /* some comment */ url(something2), e-resize;
+}

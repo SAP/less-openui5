@@ -1,0 +1,71 @@
+/* RTL background mirroring */
+.rtlBackgroundMirroring {
+    background: red;
+    background: url("chess.png") 40% e("/") 10em #808080 round fixed border-box /* some comment */;
+    background: url("img/column_header.gif") repeat scroll 0 0 #d2dae8;
+    background: url("img/column_header.gif") repeat scroll 10% 0 #d2dae8;
+    background: url("img/column_header.gif") repeat scroll 0 10% #d2dae8;
+    background: url("chess.png") left top / 10% #808080 round fixed border-box;
+    background: url("chess.png") left 10% e("/") 10% #808080 round fixed border-box;
+    background: url("chess.png") -10% -10% e("/") 10% #808080 round fixed border-box;
+    background: -10% -10% e("/") 10% url("chess.png") #808080 round fixed border-box;
+    background: url('img/drop-down_ico.png') no-repeat bottom right, url('img/hover_column_header.gif');
+}
+
+.rtlBackgroundMixIn(@class) {
+  .@{class} {
+    background: red;
+    background: url("chess.png") 40% e("/") 10em #808080 round fixed border-box /* some comment */;
+    background: url("img/column_header.gif") repeat scroll 0 0 #d2dae8;
+    background: url("img/column_header.gif") repeat scroll 10% 0 #d2dae8;
+    background: url("img/column_header.gif") repeat scroll 0 10% #d2dae8;
+    background: url("chess.png") left top / 10% #808080 round fixed border-box;
+    background: url("chess.png") left 10% e("/") 10% #808080 round fixed border-box;
+    background: url("chess.png") -10% -10% e("/") 10% #808080 round fixed border-box;
+    background: -10% -10% e("/") 10% url("chess.png") #808080 round fixed border-box;
+    background: url('img/drop-down_ico.png') no-repeat bottom right, url('img/hover_column_header.gif');
+  }
+}
+.rtlBackgroundMixIn(rtlBackgroundMirroringWithMixIn1);
+.rtlBackgroundMixIn(rtlBackgroundMirroringWithMixIn2);
+
+/* RTL background-image mirroring */
+.rtlBackgroundImageMirroring {
+
+  // relative
+  background-image: url(img/column_header.gif);
+  background-image: url('img/column_header.gif');
+  background-image: url("img/column_header.gif") /* some comment */;
+
+  // absolute
+  background-image: url(http://www.x.de/img/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img/column_header.gif');
+  background-image: url("http://www.x.de/img/column_header.gif");
+
+  // multiple
+  background-image: url(img/column_header.gif), /* some comment */ url(img/column_header2.gif);
+  background-image: url("http://www.x.de/img/column_header.gif"), url(img/column_header2.gif);
+  background-image: url(img/column_header.gif), url(img/column_header2.gif), url(img/column_header3.gif);
+
+}
+
+.rtlBackgroundImageMixIn(@class) {
+  .@{class} {
+    // relative
+    background-image: url(img/column_header.gif);
+    background-image: url('img/column_header.gif');
+    background-image: url("img/column_header.gif") /* some comment */;
+
+    // absolute
+    background-image: url(http://www.x.de/img/column_header.gif);
+    background-image: /* some comment */ url('http://www.x.de/img/column_header.gif');
+    background-image: url("http://www.x.de/img/column_header.gif");
+
+    // multiple
+    background-image: url(img/column_header.gif), /* some comment */ url(img/column_header2.gif);
+    background-image: url("http://www.x.de/img/column_header.gif"), url(img/column_header2.gif);
+    background-image: url(img/column_header.gif), url(img/column_header2.gif), url(img/column_header3.gif);
+  }
+}
+.rtlBackgroundImageMixIn(rtlBackgroundImageMirroringWithMixIn1);
+.rtlBackgroundImageMixIn(rtlBackgroundImageMirroringWithMixIn2);

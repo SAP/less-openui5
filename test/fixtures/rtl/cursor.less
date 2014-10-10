@@ -1,0 +1,90 @@
+/* RTL cursor mirroring */
+.rtlCursorMirroring-auto {
+  cursor: auto;
+}
+.rtlCursorMirroring-default {
+  cursor: default;
+}
+.rtlCursorMirroring-pointer {
+  cursor: pointer;
+}
+.rtlCursorMirroring-e-resize {
+  cursor: /* some comment */ e-resize;
+}
+.rtlCursorMirroring-w-resize {
+  cursor: w-resize;
+}
+.rtlCursorMirroring-ne-resize {
+  cursor: ne-resize /* some comment */;
+}
+.rtlCursorMirroring-nw-resize {
+  cursor: nw-resize;
+}
+.rtlCursorMirroring-se-resize {
+  cursor: se-resize;
+}
+.rtlCursorMirroring-sw-resize {
+  cursor: sw-resize;
+}
+.rtlCursorMirroring-nesw-resize {
+  cursor: nesw-resize;
+}
+.rtlCursorMirroring-nwse-resize {
+  cursor: nwse-resize;
+}
+.rtlCursorMirroring-url-auto {
+  cursor: url(something), auto;
+}
+.rtlCursorMirroring-url-e-resize {
+  cursor: /* some comment */ url(something), e-resize;
+}
+.rtlCursorMirroring-url-url-w-resize {
+  cursor: url(something), /* some comment */ url(something2), w-resize;
+}
+
+.rtlCursorMirroringMixIn(@num) {
+  .rtlCursorMirroring-auto@{num} {
+    cursor: auto;
+  }
+  .rtlCursorMirroring-default@{num} {
+    cursor: default;
+  }
+  .rtlCursorMirroring-pointer@{num} {
+    cursor: pointer;
+  }
+  .rtlCursorMirroring-e-resize@{num} {
+    cursor: /* some comment */ e-resize;
+  }
+  .rtlCursorMirroring-w-resize@{num} {
+    cursor: w-resize;
+  }
+  .rtlCursorMirroring-ne-resize@{num} {
+    cursor: ne-resize /* some comment */;
+  }
+  .rtlCursorMirroring-nw-resize@{num} {
+    cursor: nw-resize;
+  }
+  .rtlCursorMirroring-se-resize@{num} {
+    cursor: se-resize;
+  }
+  .rtlCursorMirroring-sw-resize@{num} {
+    cursor: sw-resize;
+  }
+  .rtlCursorMirroring-nesw-resize@{num} {
+    cursor: nesw-resize;
+  }
+  .rtlCursorMirroring-nwse-resize@{num} {
+    cursor: nwse-resize;
+  }
+  .rtlCursorMirroring-url-auto@{num} {
+    cursor: url(something), auto;
+  }
+  .rtlCursorMirroring-url-e-resize@{num} {
+    cursor: /* some comment */ url(something), e-resize;
+  }
+  .rtlCursorMirroring-url-url-w-resize@{num} {
+    cursor: url(something), /* some comment */ url(something2), w-resize;
+  }
+}
+.rtlCursorMirroringMixIn(1);
+.rtlCursorMirroringMixIn(2);

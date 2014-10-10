@@ -1,0 +1,71 @@
+/* RTL background mirroring */
+.rtlBackgroundMirroring {
+  background: red;
+  background: url("chess.png") 60% / 10em #808080 round fixed border-box /* some comment */;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 90% 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 10% #d2dae8;
+  background: url("chess.png") right top / 10% #808080 round fixed border-box;
+  background: url("chess.png") right 10% / 10% #808080 round fixed border-box;
+  background: url("chess.png") 110% -10% / 10% #808080 round fixed border-box;
+  background: 110% -10% / 10% url("chess.png") #808080 round fixed border-box;
+  background: url('img-RTL/drop-down_ico.png') no-repeat bottom left, url('img-RTL/hover_column_header.gif');
+}
+.rtlBackgroundMirroringWithMixIn1 {
+  background: red;
+  background: url("chess.png") 60% / 10em #808080 round fixed border-box /* some comment */;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 90% 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 10% #d2dae8;
+  background: url("chess.png") right top / 10% #808080 round fixed border-box;
+  background: url("chess.png") right 10% / 10% #808080 round fixed border-box;
+  background: url("chess.png") 110% -10% / 10% #808080 round fixed border-box;
+  background: 110% -10% / 10% url("chess.png") #808080 round fixed border-box;
+  background: url('img-RTL/drop-down_ico.png') no-repeat bottom left, url('img-RTL/hover_column_header.gif');
+}
+.rtlBackgroundMirroringWithMixIn2 {
+  background: red;
+  background: url("chess.png") 60% / 10em #808080 round fixed border-box /* some comment */;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 90% 0 #d2dae8;
+  background: url("img-RTL/column_header.gif") repeat scroll 0 10% #d2dae8;
+  background: url("chess.png") right top / 10% #808080 round fixed border-box;
+  background: url("chess.png") right 10% / 10% #808080 round fixed border-box;
+  background: url("chess.png") 110% -10% / 10% #808080 round fixed border-box;
+  background: 110% -10% / 10% url("chess.png") #808080 round fixed border-box;
+  background: url('img-RTL/drop-down_ico.png') no-repeat bottom left, url('img-RTL/hover_column_header.gif');
+}
+/* RTL background-image mirroring */
+.rtlBackgroundImageMirroring {
+  background-image: url(img-RTL/column_header.gif);
+  background-image: url('img-RTL/column_header.gif');
+  background-image: url("img-RTL/column_header.gif") /* some comment */;
+  background-image: url(http://www.x.de/img-RTL/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
+  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
+}
+.rtlBackgroundImageMirroringWithMixIn1 {
+  background-image: url(img-RTL/column_header.gif);
+  background-image: url('img-RTL/column_header.gif');
+  background-image: url("img-RTL/column_header.gif") /* some comment */;
+  background-image: url(http://www.x.de/img-RTL/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
+  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
+}
+.rtlBackgroundImageMirroringWithMixIn2 {
+  background-image: url(img-RTL/column_header.gif);
+  background-image: url('img-RTL/column_header.gif');
+  background-image: url("img-RTL/column_header.gif") /* some comment */;
+  background-image: url(http://www.x.de/img-RTL/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
+  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
+}
