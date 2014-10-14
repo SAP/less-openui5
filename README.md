@@ -1,5 +1,8 @@
 ![OpenUI5](http://openui5.org/images/OpenUI5_new_big_side.png)
 
+[![Build Status](http://img.shields.io/travis/SAP/less-openui5.svg?style=flat)](https://travis-ci.org/SAP/less-openui5)
+[![NPM Version](http://img.shields.io/npm/v/less-openui5.svg?style=flat)](https://www.npmjs.org/package/less-openui5)
+
 # less-openui5
 
 > Build OpenUI5 themes with [Less.js](http://lesscss.org).
@@ -145,7 +148,7 @@ Type: `array`
 Paths to files imported via import directives.
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Lisense
 
