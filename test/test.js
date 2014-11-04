@@ -19,9 +19,18 @@ var assert = require('assert');
 var path = require('path');
 var fs = require('fs');
 
+var crlfPattern = /\r\n/g;
+var lastLfPattern = /\n$/;
+var noLastLfPattern = /([^\n])$/;
+
 // file util
-function readFile(filename) {
-  return fs.readFileSync(filename, { encoding: 'utf-8' });
+function readFile(filename, lastLf) {
+  var content = fs.readFileSync(filename, { encoding: 'utf-8' }).replace(crlfPattern, '\n');
+  if (lastLf === false) {
+    return content.replace(lastLfPattern, ''); // needed when using compress option
+  } else {
+    return content.replace(noLastLfPattern, '$1\n'); // adds last LF
+  }
 }
 
 // tested module
@@ -75,8 +84,8 @@ describe('options', function() {
       assert.ifError(err);
 
       // remove the last LF to be able to compare the content correctly
-      assert.equal(result.css, readFile('test/expected/simple/test.min.css').replace(/\n$/, ''), 'css should be correctly generated.');
-      assert.equal(result.cssRtl, readFile('test/expected/simple/test-RTL.min.css').replace(/\n$/, ''), 'rtl css should be correctly generated.');
+      assert.equal(result.css, readFile('test/expected/simple/test.min.css', false), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/simple/test-RTL.min.css', false), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/simple/test-variables.min.json')), 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [], 'import list should be empty.');
 
@@ -111,6 +120,19 @@ describe('options', function() {
 
       done();
 
+    });
+
+  });
+
+});
+
+describe('error handling', function() {
+
+  it('should have correct error in case of undefined variable usage', function(done) {
+
+    lessOpenUI5.build(readFile('test/fixtures/error/undefined-var.less'), function(err, result) {
+      assert.ok(err);
+      done();
     });
 
   });
