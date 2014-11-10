@@ -236,12 +236,13 @@ describe('imports', function() {
 
       assert.ifError(err);
 
-      assert.equal(result.css, '', 'css should be empty.');
+      assert.equal(result.css, readFile('test/expected/imports/main.css'), 'css should be correctly generated.');
       assert.deepEqual(result.variables, {}, 'variables should be empty.');
       assert.deepEqual(result.imports, [
         path.join('test', 'fixtures', 'imports', 'dir1', 'foo.less'),
-        path.join('test', 'fixtures', 'imports', 'dir2', 'bar.less')
-      ], 'import list should not correctly filled.');
+        path.join('test', 'fixtures', 'imports', 'dir2', 'bar.less'),
+        path.join('test', 'fixtures', 'imports', 'dir3', 'inline.css')
+      ], 'import list should be correctly filled.');
 
       done();
 
