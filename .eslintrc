@@ -5,7 +5,7 @@
 	"rules": {
 		"block-scoped-var": 1,
 		"brace-style": [2, "1tbs", { "allowSingleLine": true }],
-		"consistent-this": 2,
+		"consistent-this": [2 , "that"],
 		"strict": [ 2, "global"],
 		"no-div-regex": 2,
 		"no-floating-decimal": 2,
