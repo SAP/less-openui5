@@ -251,3 +251,45 @@ describe('imports', function() {
   });
 
 });
+
+describe('inline theming parameters', function() {
+
+  it('should not include inline parameters when no library name is given', function(done) {
+
+    lessOpenUI5.build(readFile('test/fixtures/simple/test.less'), function(err, result) {
+
+      assert.ifError(err);
+
+      assert.ok(!/#sap-ui-theme-/.test(result.css), 'inline parameter rule should not be present.');
+      assert.ok(!/data:text\/plain/.test(result.css), 'data-uri should not be present.');
+
+      assert.equal(result.css, readFile('test/expected/simple/test.css'), 'css should be correctly generated.');
+
+      done();
+
+    });
+
+  });
+
+  it('should include inline parameters when library name is given', function(done) {
+
+    lessOpenUI5.build(readFile('test/fixtures/simple/test.less'), {
+      library: {
+        name: 'foo.bar'
+      }
+    }, function(err, result) {
+
+      assert.ifError(err);
+
+      assert.ok(/#sap-ui-theme-foo\\.bar/.test(result.css), 'inline parameter rule for library should be present.');
+      assert.ok(/data:text\/plain/.test(result.css), 'data-uri should be present.');
+
+      assert.equal(result.css, readFile('test/expected/simple/test-inline-parameters.css'), 'css should be correctly generated.');
+
+      done();
+
+    });
+
+  });
+
+});
