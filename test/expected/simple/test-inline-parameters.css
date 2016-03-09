@@ -1,0 +1,7 @@
+.myRule {
+  float: left;
+  color: #ff0000;
+}
+
+/* Inline theming parameters */
+#sap-ui-theme-foo\.bar { background-image: url('data:text/plain;utf-8,%7B%22myColor%22:%22#ff0000%22%7D'); }

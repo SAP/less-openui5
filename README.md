@@ -118,6 +118,13 @@ Type `object`
 
 Options for the [less](http://lesscss.org) compiler (`tree.toCss`).
 
+##### library.name
+
+Type `string`
+
+Dot-separated name of the corresponding library.  
+It will be used to inline the `variables` JSON as data-uri which can be retrieved at runtime.
+
 #### callback(error, result)
 
 *Required*  
