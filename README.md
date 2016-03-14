@@ -110,7 +110,8 @@ lib2
 
 Type: `object`
 
-Options for the [less](http://lesscss.org) parser (`less.Parser`).
+Options for the [less](http://lesscss.org) parser (`less.Parser`).  
+**Note:** Default of `relativeUrls` option is changed from `false` to `true`.
 
 ##### compiler
 
