@@ -250,6 +250,45 @@ describe('imports', function() {
 
   });
 
+  it('should use "relativeUrls" parser option by default', function(done) {
+
+    lessOpenUI5.build(readFile('test/fixtures/imports/main.less'), {
+      parser: {
+        filename: 'main.less',
+        paths: [ 'test/fixtures/imports' ]
+      }
+    }, function(err, result) {
+
+      assert.ifError(err);
+
+      assert.equal(result.css, readFile('test/expected/imports/main.css'), 'css should be correctly generated.');
+
+      done();
+
+    });
+
+  });
+
+  it('should not rewrite urls when "relativeUrls" parser option is set to "false"', function(done) {
+
+    lessOpenUI5.build(readFile('test/fixtures/imports/main.less'), {
+      parser: {
+        filename: 'main.less',
+        paths: [ 'test/fixtures/imports' ],
+        relativeUrls: false
+      }
+    }, function(err, result) {
+
+      assert.ifError(err);
+
+      assert.equal(result.css, readFile('test/expected/imports/main-no-relativeUrls.css'), 'css should be correctly generated.');
+
+      done();
+
+    });
+
+  });
+
 });
 
 describe('inline theming parameters', function() {

@@ -3,9 +3,9 @@
 
 /* dir1/foo.less */
 .foo {
-  background: url("dir1/foo.png");
+  background: url("foo.png");
 }
 /* dir2/bar.less */
 .bar {
-  background: url("dir2/bar.png");
+  background: url("bar.png");
 }
