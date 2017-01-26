@@ -41,7 +41,7 @@ describe('options', function() {
   it('should return css, cssRtl, variables and imports with default options', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/simple/test.less')
+      lessInput: readFile('test/fixtures/simple/test.less')
     }, function(err, result) {
 
       assert.ifError(err);
@@ -60,7 +60,7 @@ describe('options', function() {
   it('should not return cssRtl with option rtl set to false', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/simple/test.less'),
+      lessInput: readFile('test/fixtures/simple/test.less'),
       rtl: false
     }, function(err, result) {
 
@@ -79,7 +79,7 @@ describe('options', function() {
   it('should return minified css and cssRtl with lessOption compress set to true', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/simple/test.less'),
+      lessInput: readFile('test/fixtures/simple/test.less'),
       compiler: {
         compress: true
       }
@@ -102,7 +102,7 @@ describe('options', function() {
   it('should resolve import directives with rootPaths option', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/rootPaths/lib2/my/themes/bar/bar.less'),
+      lessInput: readFile('test/fixtures/rootPaths/lib2/my/themes/bar/bar.less'),
       rootPaths: [
         'test/fixtures/rootPaths/lib1',
         'test/fixtures/rootPaths/lib2'
@@ -136,7 +136,7 @@ describe('error handling', function() {
   it('should have correct error in case of undefined variable usage', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/error/undefined-var.less')
+      lessInput: readFile('test/fixtures/error/undefined-var.less')
     }, function(err, result) {
       assert.ok(err);
       done();
@@ -151,7 +151,7 @@ function assertLessToRtlCssEqual(filename, done) {
     var cssFilename = 'test/expected/rtl/' + filename + '.css';
 
     lessOpenUI5.build({
-      less: readFile(lessFilename),
+      lessInput: readFile(lessFilename),
       parser: {
         filename: filename + '.less',
         paths: 'test/fixtures/rtl'
@@ -216,7 +216,7 @@ describe('variables', function() {
   it('should return only globally defined variables', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/variables/main.less')
+      lessInput: readFile('test/fixtures/variables/main.less')
     }, function(err, result) {
 
       assert.ifError(err);
@@ -238,7 +238,7 @@ describe('imports', function() {
   it('should return imported file paths', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/imports/main.less'),
+      lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ]
@@ -264,7 +264,7 @@ describe('imports', function() {
   it('should use "relativeUrls" parser option by default', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/imports/main.less'),
+      lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ]
@@ -284,7 +284,7 @@ describe('imports', function() {
   it('should not rewrite urls when "relativeUrls" parser option is set to "false"', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/imports/main.less'),
+      lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ],
@@ -309,7 +309,7 @@ describe('inline theming parameters', function() {
   it('should not include inline parameters when no library name is given', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/simple/test.less')
+      lessInput: readFile('test/fixtures/simple/test.less')
     }, function(err, result) {
 
       assert.ifError(err);
@@ -328,7 +328,7 @@ describe('inline theming parameters', function() {
   it('should include inline parameters when library name is given', function(done) {
 
     lessOpenUI5.build({
-      less: readFile('test/fixtures/simple/test.less'),
+      lessInput: readFile('test/fixtures/simple/test.less'),
       library: {
         name: 'foo.bar'
       }

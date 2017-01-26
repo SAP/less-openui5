@@ -57,7 +57,7 @@ lessOpenUI5.build({
 
 #### options
 
-##### less
+##### lessInput
 
 *Required*  
 Type: `string`
