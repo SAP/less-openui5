@@ -19,7 +19,7 @@ npm install less-openui5
 var lessOpenUI5 = require('less-openui5');
 
 lessOpenUI5.build({
-  less: '@var: #ffffff; .class { color: @var; float: left }'
+  lessInput: '@var: #ffffff; .class { color: @var; float: left }'
 }, function(err, result) {
 
   console.log(result.css); // => regular css
@@ -57,7 +57,7 @@ lessOpenUI5.build({
 
 #### options
 
-##### less
+##### lessInput
 
 *Required*  
 Type: `string`
