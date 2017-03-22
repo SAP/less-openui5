@@ -1,0 +1,13 @@
+.myUiLibRule1 {
+  color: #ffffff;
+}
+.myUiLibRule2 {
+  padding: 1px 4px 3px 2px;
+}
+.barContrast.myUiLibRule1,
+.barContrast .myUiLibRule1 {
+  color: #000000;
+}
+
+/* Inline theming parameters */
+#sap-ui-theme-my\.ui\.lib { background-image: url('data:text/plain;utf-8,%7B%22default%22:%7B%22color1%22:%22#ffffff%22%7D,%22scopes%22:%7B%22barContrast%22:%7B%22color1%22:%22#000000%22%7D%7D%7D'); }

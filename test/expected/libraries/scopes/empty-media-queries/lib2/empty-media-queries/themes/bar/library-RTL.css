@@ -1,0 +1,12 @@
+.myRule1 {
+  color: #000000;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .myRule1 {
+    width: 100px;
+  }
+}
+.barContrast.myRule1,
+.barContrast .myRule1 {
+  color: #ffffff;
+}

@@ -1,0 +1,34 @@
+@media screen and (min-width: 600px) {
+  body {
+    background: #000000;
+    font-size: 21px;
+  }
+  html.myRule1 td {
+    color: #000000;
+  }
+}
+@media screen and (min-width: 600px) {
+  body.barContrast,
+  body .barContrast {
+    background: #ffffff;
+    font-size: 20px;
+  }
+
+  html.myRule1 .barContrast td {
+    color: #ffffff;
+  }
+}
+.myRule2 {
+  background: #ffffff;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background: #ffffff;
+    font-size: 20px;
+  }
+
+  .myRule2 {
+    background: #ffffff;
+  }
+}

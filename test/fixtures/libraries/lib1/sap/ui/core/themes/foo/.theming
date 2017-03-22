@@ -1,0 +1,14 @@
+{
+  "mCssScopes": {
+    "library": {
+      "sBaseFile": "library",
+      "aScopes": [
+        {
+          "sSelector": "fooContrast",
+          "sEmbeddedFile": "bar.library",
+          "sEmbeddedCompareFile": "library"
+        }
+      ]
+    }
+  }
+}

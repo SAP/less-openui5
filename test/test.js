@@ -19,6 +19,8 @@ var assert = require('assert');
 var path = require('path');
 var fs = require('fs');
 
+var clone = require('clone');
+
 var crlfPattern = /\r\n/g;
 var lastLfPattern = /\n$/;
 var noLastLfPattern = /([^\n])$/;
@@ -34,58 +36,63 @@ function readFile(filename, lastLf) {
 }
 
 // tested module
-var lessOpenUI5 = require('../lib');
+var Builder = require('../').Builder;
 
 describe('options', function() {
 
-  it('should return css, cssRtl, variables and imports with default options', function(done) {
+  it('should return css, cssRtl, variables and imports with default options (lessInput)', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/simple/test.less')
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/simple/test.css'), 'css should be correctly generated.');
       assert.equal(result.cssRtl, readFile('test/expected/simple/test-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/simple/test-variables.json')), 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [], 'import list should be empty.');
 
-      done();
+    });
+
+  });
+
+  it('should return css, cssRtl, variables and imports with default options (lessInputPath)', function() {
+
+    return new Builder().build({
+      lessInputPath: 'test/fixtures/simple/test.less'
+    }).then(function(result) {
+
+      assert.equal(result.css, readFile('test/expected/simple/test.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/simple/test-RTL.css'), 'rtl css should be correctly generated.');
+      assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/simple/test-variables.json')), 'variables should be correctly collected.');
+      assert.deepEqual(result.imports, ['test/fixtures/simple/test.less'], 'import list should be empty.');
 
     });
 
   });
 
-  it('should not return cssRtl with option rtl set to false', function(done) {
+  it('should not return cssRtl with option rtl set to false', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/simple/test.less'),
       rtl: false
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/simple/test.css'), 'css should be correctly generated.');
       assert.strictEqual(result.cssRtl, undefined, 'rtl css should not be generated.');
       assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/simple/test-variables.json')), 'variables should be correctly collected.');
 
-      done();
-
     });
 
   });
 
-  it('should return minified css and cssRtl with lessOption compress set to true', function(done) {
+  it('should return minified css and cssRtl with lessOption compress set to true', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/simple/test.less'),
       compiler: {
         compress: true
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       // remove the last LF to be able to compare the content correctly
       assert.equal(result.css, readFile('test/expected/simple/test.min.css', false), 'css should be correctly generated.');
@@ -93,26 +100,22 @@ describe('options', function() {
       assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/simple/test-variables.min.json')), 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [], 'import list should be empty.');
 
-      done();
-
     });
 
   });
 
-  it('should resolve import directives with rootPaths option', function(done) {
+  it('should resolve import directives with rootPaths option', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/rootPaths/lib2/my/themes/bar/bar.less'),
       rootPaths: [
         'test/fixtures/rootPaths/lib1',
         'test/fixtures/rootPaths/lib2'
       ],
       parser: {
-        filename: 'test/fixtures/rootPaths/lib2/my/themes/bar/bar.less'
+        filename: 'my/themes/bar/bar.less'
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, '', 'css should be empty.');
       assert.deepEqual(result.variables, {}, 'variables should be empty.');
@@ -123,7 +126,136 @@ describe('options', function() {
         )
       ], 'import list should not correctly filled.');
 
-      done();
+    });
+
+  });
+
+  it('should read input file with rootPaths option', function() {
+
+    return new Builder().build({
+      lessInputPath: 'my/themes/bar/bar.less',
+      rootPaths: [
+        'test/fixtures/rootPaths/lib1',
+        'test/fixtures/rootPaths/lib2'
+      ]
+    }).then(function(result) {
+
+      assert.equal(result.css, '', 'css should be empty.');
+      assert.deepEqual(result.variables, {}, 'variables should be empty.');
+      assert.deepEqual(result.imports, [
+        path.join(
+          'test', 'fixtures', 'rootPaths',
+          'lib2', 'my', 'themes', 'bar', 'bar.less'
+        ),
+        path.join(
+          'test', 'fixtures', 'rootPaths',
+          'lib1', 'my', 'themes', 'foo', 'foo.less'
+        )
+      ], 'import list should not correctly filled.');
+
+    });
+
+  });
+
+});
+
+describe('libraries', function() {
+
+  it('should create base theme', function() {
+
+    return new Builder().build({
+      lessInputPath: 'my/ui/lib/themes/base/library.source.less',
+      rootPaths: [
+        'test/fixtures/libraries/lib1'
+      ],
+      library: {
+        name: "my.ui.lib"
+      }
+    }).then(function(result) {
+
+      assert.equal(result.css, readFile('test/expected/libraries/lib1/my/ui/lib/themes/base/library.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib1/my/ui/lib/themes/base/library-RTL.css'), 'rtl css should be correctly generated.');
+      assert.deepEqual(result.variables, { color1: '#fefefe' }, 'variables should be correctly collected.');
+      assert.deepEqual(result.imports, [
+        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less"
+      ], 'import list should be correct.');
+
+    });
+
+  });
+
+  it('should create foo theme with scope as defined in .theming file', function() {
+
+    return new Builder().build({
+      lessInputPath: 'my/ui/lib/themes/foo/library.source.less',
+      rootPaths: [
+        'test/fixtures/libraries/lib1',
+        'test/fixtures/libraries/lib2'
+      ],
+      library: {
+        name: "my.ui.lib"
+      }
+    }).then(function(result) {
+
+      var oVariablesExpected = {
+        "default" : {
+          "color1": "#ffffff",
+
+        },
+        "scopes": {
+          "fooContrast": {
+            "color1": "#000000"
+          }
+        }
+      }
+
+      assert.equal(result.css, readFile('test/expected/libraries/lib1/my/ui/lib/themes/foo/library.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib1/my/ui/lib/themes/foo/library-RTL.css'), 'rtl css should be correctly generated.');
+      assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
+      assert.deepEqual(result.imports, [
+        "test/fixtures/libraries/lib1/my/ui/lib/themes/foo/library.source.less",
+        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less",
+        "test/fixtures/libraries/lib2/my/ui/lib/themes/bar/library.source.less",
+        "test/fixtures/libraries/lib1/sap/ui/core/themes/foo/.theming"
+      ], 'import list should be correct.');
+
+    });
+
+  });
+
+  it('should create bar theme with scope as defined in .theming file', function() {
+
+    return new Builder().build({
+      lessInputPath: 'my/ui/lib/themes/bar/library.source.less',
+      rootPaths: [
+        'test/fixtures/libraries/lib1',
+        'test/fixtures/libraries/lib2'
+      ],
+      library: {
+        name: "my.ui.lib"
+      }
+    }).then(function(result) {
+
+      var oVariablesExpected = {
+        "default" : {
+          "color1": "#ffffff",
+        },
+        "scopes": {
+          "barContrast": {
+            "color1": "#000000"
+          }
+        }
+      }
+
+      assert.equal(result.css, readFile('test/expected/libraries/lib2/my/ui/lib/themes/bar/library.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib2/my/ui/lib/themes/bar/library-RTL.css'), 'rtl css should be correctly generated.');
+      assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
+      assert.deepEqual(result.imports, [
+        "test/fixtures/libraries/lib2/my/ui/lib/themes/bar/library.source.less",
+        "test/fixtures/libraries/lib1/my/ui/lib/themes/foo/library.source.less",
+        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less",
+        "test/fixtures/libraries/lib2/sap/ui/core/themes/bar/.theming"
+      ], 'import list should be correct.');
 
     });
 
@@ -133,99 +265,94 @@ describe('options', function() {
 
 describe('error handling', function() {
 
-  it('should have correct error in case of undefined variable usage', function(done) {
+  it('should have correct error in case of undefined variable usage', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/error/undefined-var.less')
-    }, function(err, result) {
+    }).then(function(result) {
+      // no resolve
+      assert.ok(false);
+
+    }, function(err) {
+
       assert.ok(err);
-      done();
+
     });
 
   });
 
 });
 
-function assertLessToRtlCssEqual(filename, done) {
-    var lessFilename = 'test/fixtures/rtl/' + filename + '.less';
-    var cssFilename = 'test/expected/rtl/' + filename + '.css';
+function assertLessToRtlCssEqual(filename) {
+  var lessFilename = 'test/fixtures/rtl/' + filename + '.less';
+  var cssFilename = 'test/expected/rtl/' + filename + '.css';
 
-    lessOpenUI5.build({
-      lessInput: readFile(lessFilename),
-      parser: {
-        filename: filename + '.less',
-        paths: 'test/fixtures/rtl'
-      }
-    }, function(err, result) {
-
-      assert.ifError(err);
-      assert.equal(result.cssRtl, readFile(cssFilename), 'rtl css should not be generated.');
-
-      done();
-
-    });
-
+  return new Builder().build({
+    lessInput: readFile(lessFilename),
+    parser: {
+      filename: filename + '.less',
+      paths: 'test/fixtures/rtl'
+    }
+  }).then(function(result) {
+    assert.equal(result.cssRtl, readFile(cssFilename), 'rtl css should not be generated.');
+  });
 }
 
 describe('rtl', function() {
 
-  it('background-position', function(done) {
-      assertLessToRtlCssEqual('background-position', done);
+  it('background-position', function() {
+      return assertLessToRtlCssEqual('background-position');
   });
 
-  it('background', function(done) {
-      assertLessToRtlCssEqual('background', done);
+  it('background', function() {
+      return assertLessToRtlCssEqual('background');
   });
 
-  it('border', function(done) {
-      assertLessToRtlCssEqual('border', done);
+  it('border', function() {
+      return assertLessToRtlCssEqual('border');
   });
 
-  it('cursor', function(done) {
-      assertLessToRtlCssEqual('cursor', done);
+  it('cursor', function() {
+      return assertLessToRtlCssEqual('cursor');
   });
 
-  it('gradient', function(done) {
-      assertLessToRtlCssEqual('gradient', done);
+  it('gradient', function() {
+      return assertLessToRtlCssEqual('gradient');
   });
 
-  it('image-url', function(done) {
-      assertLessToRtlCssEqual('image-url', done);
+  it('image-url', function() {
+      return assertLessToRtlCssEqual('image-url');
   });
 
-  it('misc', function(done) {
-      assertLessToRtlCssEqual('misc', done);
+  it('misc', function() {
+      return assertLessToRtlCssEqual('misc');
   });
 
-  it('shadow', function(done) {
-      assertLessToRtlCssEqual('shadow', done);
+  it('shadow', function() {
+      return assertLessToRtlCssEqual('shadow');
   });
 
-  it('transform', function(done) {
-      assertLessToRtlCssEqual('transform', done);
+  it('transform', function() {
+      return assertLessToRtlCssEqual('transform');
   });
 
-  it('variables', function(done) {
-      assertLessToRtlCssEqual('variables', done);
+  it('variables', function() {
+      return assertLessToRtlCssEqual('variables');
   });
 
 });
 
 describe('variables', function() {
 
-  it('should return only globally defined variables', function(done) {
+  it('should return only globally defined variables', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/variables/main.less')
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/variables/main.css'), 'css should be correctly generated.');
       assert.deepEqual(result.variables, JSON.parse(readFile('test/expected/variables/variables.json')), 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [], 'import list should be empty.');
-
-      done();
 
     });
 
@@ -235,17 +362,15 @@ describe('variables', function() {
 
 describe('imports', function() {
 
-  it('should return imported file paths', function(done) {
+  it('should return imported file paths', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ]
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/imports/main.css'), 'css should be correctly generated.');
       assert.deepEqual(result.variables, {}, 'variables should be empty.');
@@ -255,48 +380,38 @@ describe('imports', function() {
         path.join('test', 'fixtures', 'imports', 'dir3', 'inline.css')
       ], 'import list should be correctly filled.');
 
-      done();
-
     });
 
   });
 
-  it('should use "relativeUrls" parser option by default', function(done) {
+  it('should use "relativeUrls" parser option by default', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ]
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/imports/main.css'), 'css should be correctly generated.');
-
-      done();
 
     });
 
   });
 
-  it('should not rewrite urls when "relativeUrls" parser option is set to "false"', function(done) {
+  it('should not rewrite urls when "relativeUrls" parser option is set to "false"', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/imports/main.less'),
       parser: {
         filename: 'main.less',
         paths: [ 'test/fixtures/imports' ],
         relativeUrls: false
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.equal(result.css, readFile('test/expected/imports/main-no-relativeUrls.css'), 'css should be correctly generated.');
-
-      done();
 
     });
 
@@ -306,45 +421,456 @@ describe('imports', function() {
 
 describe('inline theming parameters', function() {
 
-  it('should not include inline parameters when no library name is given', function(done) {
+  it('should not include inline parameters when no library name is given', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/simple/test.less')
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.ok(!/#sap-ui-theme-/.test(result.css), 'inline parameter rule should not be present.');
       assert.ok(!/data:text\/plain/.test(result.css), 'data-uri should not be present.');
 
       assert.equal(result.css, readFile('test/expected/simple/test.css'), 'css should be correctly generated.');
 
-      done();
-
     });
 
   });
 
-  it('should include inline parameters when library name is given', function(done) {
+  it('should include inline parameters when library name is given', function() {
 
-    lessOpenUI5.build({
+    return new Builder().build({
       lessInput: readFile('test/fixtures/simple/test.less'),
       library: {
         name: 'foo.bar'
       }
-    }, function(err, result) {
-
-      assert.ifError(err);
+    }).then(function(result) {
 
       assert.ok(/#sap-ui-theme-foo\\.bar/.test(result.css), 'inline parameter rule for library should be present.');
       assert.ok(/data:text\/plain/.test(result.css), 'data-uri should be present.');
 
       assert.equal(result.css, readFile('test/expected/simple/test-inline-parameters.css'), 'css should be correctly generated.');
 
-      done();
+    });
+
+  });
+
+});
+
+describe('theme caching', function() {
+
+    it('should cache the theme', function() {
+
+      var lessOptions = {
+        lessInputPath: 'my/ui/lib/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ],
+        library: {
+          name: "my.ui.lib"
+        }
+      };
+
+      var builder = new Builder();
+
+      return builder.build(lessOptions).then(function(res) {
+
+        var cacheFirstRun = clone(builder.themeCacheMapping);
+
+        assert.notDeepEqual(cacheFirstRun, {}, 'themeCache should not be empty.');
+
+        // second run
+        return builder.build(lessOptions).then(function(result) {
+
+          var cacheSecondRun = clone(builder.themeCacheMapping);
+
+          assert.deepEqual(res, result, "callback result should be the same");
+
+          assert.notDeepEqual(cacheSecondRun, {}, 'themeCache should not be empty.');
+
+          assert.deepEqual(cacheFirstRun, cacheSecondRun, 'cache should be equal after second build run.')
+
+        });
+
+      });
+
+    });
+
+    it('should recompile the theme after clearing the cache', function() {
+
+      var lessOptions = {
+        lessInputPath: 'my/ui/lib/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ],
+        library: {
+          name: "my.ui.lib"
+        }
+      };
+
+      var builder = new Builder();
+
+      return builder.build(lessOptions).then(function(res) {
+
+        var cacheFirstRun = clone(builder.themeCacheMapping);
+
+        assert.notDeepEqual(cacheFirstRun, {}, 'themeCache should not be empty.');
+
+        builder.clearCache();
+
+        assert.deepEqual(builder.themeCacheMapping, {}, 'themeCache should be empty.');
+
+        // second run
+        return builder.build(lessOptions).then(function(result) {
+
+          var cacheSecondRun = clone(builder.themeCacheMapping);
+
+          assert.equal(JSON.stringify(res, null, 4), JSON.stringify(result, null, 4), "callback result should be the same");
+
+          assert.notDeepEqual(cacheSecondRun, {}, 'themeCache should not be empty.');
+
+        });
+
+      });
+
+    });
+});
+
+describe('CSS Scoping of', function() {
+
+  describe('comments', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'comments/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/comments/lib1',
+          'test/fixtures/libraries/scopes/comments/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/comments/lib1/comments/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/comments/lib1/comments/themes/foo/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'comments/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/comments/lib1',
+          'test/fixtures/libraries/scopes/comments/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/comments/lib2/comments/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/comments/lib2/comments/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
 
     });
 
   });
 
+  describe('css-scope-root', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'css-scope-root/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/css-scope-root/lib1',
+          'test/fixtures/libraries/scopes/css-scope-root/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'css-scope-root/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/css-scope-root/lib1',
+          'test/fixtures/libraries/scopes/css-scope-root/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/css-scope-root/lib2/css-scope-root/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/css-scope-root/lib2/css-scope-root/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('default', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'default/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/default/lib1',
+          'test/fixtures/libraries/scopes/default/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/default/lib1/default/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/default/lib1/default/themes/foo/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'default/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/default/lib1',
+          'test/fixtures/libraries/scopes/default/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/default/lib2/default/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/default/lib2/default/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+
+  describe('dom', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'dom/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/dom/lib1',
+          'test/fixtures/libraries/scopes/dom/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'dom/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/dom/lib1',
+          'test/fixtures/libraries/scopes/dom/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('empty media queries', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'empty-media-queries/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/empty-media-queries/lib1',
+          'test/fixtures/libraries/scopes/empty-media-queries/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'empty-media-queries/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/empty-media-queries/lib1',
+          'test/fixtures/libraries/scopes/empty-media-queries/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('HTML', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'html/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/html/lib1',
+          'test/fixtures/libraries/scopes/html/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'html/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/html/lib1',
+          'test/fixtures/libraries/scopes/html/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/html/lib2/html/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+
+  describe('media-queries', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'media-queries/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/media-queries/lib1',
+          'test/fixtures/libraries/scopes/media-queries/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'media-queries/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/media-queries/lib1',
+          'test/fixtures/libraries/scopes/media-queries/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('mixins', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'mixins/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/mixins/lib1',
+          'test/fixtures/libraries/scopes/mixins/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'mixins/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/mixins/lib1',
+          'test/fixtures/libraries/scopes/mixins/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('multiple imports', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        lessInputPath: 'multiple-imports/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/multiple-imports/lib1',
+          'test/fixtures/libraries/scopes/multiple-imports/lib2',
+          'test/fixtures/libraries/lib1'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        lessInputPath: 'multiple-imports/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/multiple-imports/lib1',
+          'test/fixtures/libraries/scopes/multiple-imports/lib2',
+          'test/fixtures/libraries/lib1',
+          'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
 });

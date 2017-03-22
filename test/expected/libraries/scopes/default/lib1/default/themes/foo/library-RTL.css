@@ -1,0 +1,40 @@
+.myRule1 {
+  color: #000000;
+}
+.myRule2 {
+  color: #ffffff;
+  float: right;
+}
+.myRule3 {
+  display: -webkit-flex;
+  display: flex;
+}
+.myRule4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.myRule5,
+.myRule6,
+.myRule7 {
+  color: #000000;
+}
+.fooContrast.myRule1,
+.fooContrast .myRule1 {
+  color: #ffffff;
+}
+
+.fooContrast.myRule2,
+.fooContrast .myRule2 {
+  color: #ffffff;
+}
+
+.fooContrast.myRule5,
+.fooContrast .myRule5,
+.fooContrast.myRule6,
+.fooContrast .myRule6,
+.fooContrast.myRule7,
+.fooContrast .myRule7 {
+  color: #ffffff;
+}

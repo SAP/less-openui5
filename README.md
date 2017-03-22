@@ -18,9 +18,14 @@ npm install less-openui5
 ```js
 var lessOpenUI5 = require('less-openui5');
 
-lessOpenUI5.build({
+// Create a builder instance
+var builder = new lessOpenUI5.Builder();
+
+// Build a theme
+builder.build({
   lessInput: '@var: #ffffff; .class { color: @var; float: left }'
-}, function(err, result) {
+})
+.then(function(result) {
 
   console.log(result.css); // => regular css
   /*
@@ -48,21 +53,40 @@ lessOpenUI5.build({
   []
   */
 
+  // Clear builder cache when finished to cleanup memory
+  builder.clearCache();
+
 });
 ```
 
 ## API
 
-### build(options, callback)
+### new Builder()
+
+Creates a new `Builder` instance.
+
+It caches build results to only rebuild a theme when related files have been changed.  
+This is mainly relevant when building themes as part of a server middleware like [`connect-openui5`](https://github.com/SAP/connect-openui5).
+
+### .build(options)
+Returns a Promise resolving with a [`result`](#result) object.
 
 #### options
 
 ##### lessInput
 
-*Required*  
+*Required (either `lessInput` or `lessInputPath`, not both)*  
 Type: `string`
 
 Input less content.
+
+##### lessInputPath
+
+*Required (either `lessInput` or `lessInputPath`, not both)*  
+Type: `string`
+
+Path to input less file.  
+When `rootPaths` is given this must be a relative path inside one of the provided `rootPaths`, otherwise just a regular filesystem path.
 
 ##### rtl
 
@@ -79,9 +103,6 @@ Root paths to use for import directives.
 
 This option differs from the less `compiler.paths` option.  
 It is useful if less files are located in separate folders but referenced as they would all be in one.  
-If `rootPaths` are provided and a file can not be found, the `compiler.paths` option will be used instead.
-
-*Note:* `parser.filename` has to be set to the path of the `input` file in order to get this working.
 
 ###### Example
 
@@ -128,34 +149,35 @@ Type `string`
 Dot-separated name of the corresponding library.  
 It will be used to inline the `variables` JSON as data-uri which can be retrieved at runtime.
 
-#### callback(error, result)
+#### result
 
-*Required*  
-Type: `function`
-
-##### result.css
+##### css
 
 Type: `string`
 
 Regular css output.
 
-##### result.cssRtl
+##### cssRtl
 
 Type: `string`
 
 Mirrored css for right-to-left support (if rtl option was enabled).
 
-##### result.variables
+##### variables
 
 Type: `object`
 
 Key-value map of all global less variables (without @ prefix).
 
-##### result.imports
+##### imports
 
 Type: `array`
 
 Paths to files imported via import directives.
+
+### .clearCache()
+Clears all cached build results.  
+Use this method to prevent high memory consumption when building many themes within the same process.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).

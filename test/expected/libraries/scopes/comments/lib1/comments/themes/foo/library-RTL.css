@@ -1,0 +1,13 @@
+/**
+ * This is a sample comment!
+ */
+.myRule1 {
+  /**
+	* This is a sample comment inside a rule!
+	*/
+  color: #000000;
+}
+.fooContrast.myRule1,
+.fooContrast .myRule1 {
+  color: #ffffff;
+}
