@@ -1,3 +1,19 @@
+# 0.3.0 (2017-03-23)
+
+### Breaking changes
+- Drop support for Node.js v0.10 [#5](https://github.com/SAP/less-openui5/pull/5)
+- Replace static `build` function with `Builder` class to enable caching of build results [#10](https://github.com/SAP/less-openui5/pull/10)
+- Refactor options to also include input LESS string [#6](https://github.com/SAP/less-openui5/pull/6)
+
+### Features
+- Added "lessInputPath" option to provide a path relative to the "rootPaths" [#10](https://github.com/SAP/less-openui5/pull/10)
+- Added diffing and scoping to support Belize contrast areas [#10](https://github.com/SAP/less-openui5/pull/10)
+- Analyze .theming files as theme scope indicators [#10](https://github.com/SAP/less-openui5/pull/10)
+
+### All changes
+[`0.2.0...0.3.0`](https://github.com/SAP/less-openui5/compare/0.2.0...0.3.0)
+
+
 # 0.2.0 (2016-03-15)
 
 ### Breaking changes
