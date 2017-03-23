@@ -1,0 +1,21 @@
+.myRule1 {
+  color: #ffffff;
+}
+.myRule2 {
+  display: block;
+}
+.myRule5 {
+  color: #ffffff;
+}
+.myRule6 {
+  display: block;
+}
+.fooContrast.myRule1,
+.fooContrast .myRule1 {
+  color: #ffffff;
+}
+
+.fooContrast.myRule5,
+.fooContrast .myRule5 {
+  color: #ffffff;
+}

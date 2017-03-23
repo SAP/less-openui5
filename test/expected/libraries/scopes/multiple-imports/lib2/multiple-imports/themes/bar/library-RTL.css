@@ -1,0 +1,32 @@
+.myRule1 {
+  color: #ffffff;
+}
+.myRule2 {
+  display: block;
+}
+.myRule5 {
+  color: #ffffff;
+}
+.myRule6 {
+  display: block;
+}
+.barContrast.myRule1,
+.barContrast .myRule1 {
+  color: #ffffff;
+}
+
+.barContrast.myRule5,
+.barContrast .myRule5 {
+  color: #ffffff;
+}
+.myRule3 {
+  color: red;
+}
+
+.myRule4 {
+  background-color: transparent !important;
+}
+
+.myRule7 {
+  color: red;
+}

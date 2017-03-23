@@ -1,0 +1,19 @@
+.myRule1 {
+  color: #000000;
+}
+.myRule2 {
+  color: #c3c3c3;
+}
+.fooContrast {
+  color: #aaaaaa;
+}
+
+.fooContrast.myRule1,
+.fooContrast .myRule1 {
+  color: #ffffff;
+}
+
+.fooContrast.myRule2,
+.fooContrast .myRule2 {
+  color: #444444;
+}

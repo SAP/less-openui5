@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint lib test",
     "unit": "mocha test/*.js",
+    "unit-debug": "mocha --inspect --debug-brk test/*.js",
     "test": "npm run lint && npm run unit"
   },
   "main": "lib/index.js",
@@ -24,10 +25,13 @@
     "node": ">= 0.12.0"
   },
   "dependencies": {
+    "clone": "^2.1.0",
+    "css": "^2.2.1",
     "less": "1.6.3",
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
+    "clean-css": "^3.4.23",
     "eslint": "^1.10.3",
     "mocha": "^3.2.0"
   }

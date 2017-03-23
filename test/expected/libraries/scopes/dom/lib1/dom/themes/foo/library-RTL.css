@@ -1,0 +1,13 @@
+div.myRule1 {
+  color: #000000;
+}
+div.myRule1 > .myRule2 {
+  color: #000000;
+}
+.fooContrast div.myRule1 {
+  color: #ffffff;
+}
+
+.fooContrast div.myRule1 > .myRule2 {
+  color: #ffffff;
+}

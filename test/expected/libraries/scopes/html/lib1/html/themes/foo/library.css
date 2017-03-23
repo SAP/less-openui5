@@ -1,0 +1,37 @@
+html[dir=rtl][data-sap-ui-browser^=ie] .sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie] .sapUiGrid td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .sapUiGrid td > .sapUiFormTitle {
+  color: #000000;
+}
+html[dir=rtl][data-sap-ui-browser^=ie].sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie].sapUiGrid td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed].sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed].sapUiGrid td > .sapUiFormTitle {
+  color: #000000;
+}
+html[dir=rtl][data-sap-ui-browser^=ie].sap-desktop-sapUiClass .testClass {
+  color: #000000;
+}
+html[dir=rtl][data-sap-ui-browser^=ie] .fooContrast .sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie] .fooContrast.sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie] .fooContrast .sapUiGrid td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie] .fooContrast.sapUiGrid td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .fooContrast .sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .fooContrast.sapUiGrid th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .fooContrast .sapUiGrid td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed] .fooContrast.sapUiGrid td > .sapUiFormTitle {
+  color: #ffffff;
+}
+
+html[dir=rtl][data-sap-ui-browser^=ie].sapUiGrid .fooContrast th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ie].sapUiGrid .fooContrast td > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed].sapUiGrid .fooContrast th > .sapUiFormTitle,
+html[dir=rtl][data-sap-ui-browser^=ed].sapUiGrid .fooContrast td > .sapUiFormTitle {
+  color: #ffffff;
+}
+
+html[dir=rtl][data-sap-ui-browser^=ie].sap-desktop-sapUiClass .fooContrast .testClass,
+html[dir=rtl][data-sap-ui-browser^=ie].sap-desktop-sapUiClass .fooContrast.testClass {
+  color: #ffffff;
+}
