@@ -17,23 +17,8 @@
 
 var assert = require('assert');
 var path = require('path');
-var fs = require('fs');
-
 var clone = require('clone');
-
-var crlfPattern = /\r\n/g;
-var lastLfPattern = /\n$/;
-var noLastLfPattern = /([^\n])$/;
-
-// file util
-function readFile(filename, lastLf) {
-  var content = fs.readFileSync(filename, { encoding: 'utf-8' }).replace(crlfPattern, '\n');
-  if (lastLf === false) {
-    return content.replace(lastLfPattern, ''); // needed when using compress option
-  } else {
-    return content.replace(noLastLfPattern, '$1\n'); // adds last LF
-  }
-}
+var readFile = require('./common/helper').readFile;
 
 // tested module
 var Builder = require('../').Builder;
