@@ -1,6 +1,6 @@
 {
   "name": "less-openui5",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Build OpenUI5 themes with Less.js",
   "scripts": {
     "lint": "eslint lib test",

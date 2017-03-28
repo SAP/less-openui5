@@ -1,3 +1,12 @@
+# 0.3.1 (2017-03-28)
+
+### Fixes
+- Performance workaround: Handle properties directly added to String proto [#12](https://github.com/SAP/less-openui5/pull/12)
+
+### All changes
+[`0.3.0...0.3.1`](https://github.com/SAP/less-openui5/compare/0.3.0...0.3.1)
+
+
 # 0.3.0 (2017-03-23)
 
 ### Breaking changes
