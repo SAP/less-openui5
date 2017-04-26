@@ -162,7 +162,7 @@ describe('libraries', function() {
       assert.equal(result.cssRtl, readFile('test/expected/libraries/lib1/my/ui/lib/themes/base/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, { color1: '#fefefe' }, 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [
-        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less"
+        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less")
       ], 'import list should be correct.');
 
     });
@@ -198,10 +198,10 @@ describe('libraries', function() {
       assert.equal(result.cssRtl, readFile('test/expected/libraries/lib1/my/ui/lib/themes/foo/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [
-        "test/fixtures/libraries/lib1/my/ui/lib/themes/foo/library.source.less",
-        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less",
-        "test/fixtures/libraries/lib2/my/ui/lib/themes/bar/library.source.less",
-        "test/fixtures/libraries/lib1/sap/ui/core/themes/foo/.theming"
+        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib1", "sap", "ui", "core", "themes", "foo", ".theming")
       ], 'import list should be correct.');
 
     });
@@ -236,10 +236,10 @@ describe('libraries', function() {
       assert.equal(result.cssRtl, readFile('test/expected/libraries/lib2/my/ui/lib/themes/bar/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [
-        "test/fixtures/libraries/lib2/my/ui/lib/themes/bar/library.source.less",
-        "test/fixtures/libraries/lib1/my/ui/lib/themes/foo/library.source.less",
-        "test/fixtures/libraries/lib1/my/ui/lib/themes/base/library.source.less",
-        "test/fixtures/libraries/lib2/sap/ui/core/themes/bar/.theming"
+        path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
+        path.join("test", "fixtures", "libraries", "lib2", "sap", "ui", "core", "themes", "bar", ".theming")
       ], 'import list should be correct.');
 
     });
