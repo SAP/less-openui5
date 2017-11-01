@@ -65,7 +65,7 @@ builder.build({
 
 Creates a new `Builder` instance.
 
-It caches build results to only rebuild a theme when related files have been changed.  
+It caches build results to only rebuild a theme when related files have been changed.
 This is mainly relevant when building themes as part of a server middleware like [`connect-openui5`](https://github.com/SAP/connect-openui5).
 
 ### .build(options)
@@ -75,22 +75,22 @@ Returns a Promise resolving with a [`result`](#result) object.
 
 ##### lessInput
 
-*Required (either `lessInput` or `lessInputPath`, not both)*  
+*Required (either `lessInput` or `lessInputPath`, not both)*
 Type: `string`
 
 Input less content.
 
 ##### lessInputPath
 
-*Required (either `lessInput` or `lessInputPath`, not both)*  
+*Required (either `lessInput` or `lessInputPath`, not both)*
 Type: `string`
 
-Path to input less file.  
+Path to input less file.
 When `rootPaths` is given this must be a relative path inside one of the provided `rootPaths`, otherwise just a regular filesystem path.
 
 ##### rtl
 
-Type: `boolean`  
+Type: `boolean`
 Default: `true`
 
 Create mirrored css for right-to-left support.
@@ -101,8 +101,8 @@ Type: `array` of `string`
 
 Root paths to use for import directives.
 
-This option differs from the less `compiler.paths` option.  
-It is useful if less files are located in separate folders but referenced as they would all be in one.  
+This option differs from the less `compiler.paths` option.
+It is useful if less files are located in separate folders but referenced as they would all be in one.
 
 ###### Example
 
@@ -133,7 +133,7 @@ lib2
 
 Type: `object`
 
-Options for the [less](http://lesscss.org) parser (`less.Parser`).  
+Options for the [less](http://lesscss.org) parser (`less.Parser`).
 **Note:** Default of `relativeUrls` option is changed from `false` to `true`.
 
 ##### compiler
@@ -146,8 +146,30 @@ Options for the [less](http://lesscss.org) compiler (`tree.toCss`).
 
 Type `string`
 
-Dot-separated name of the corresponding library.  
+Dot-separated name of the corresponding library.
 It will be used to inline the `variables` JSON as data-uri which can be retrieved at runtime.
+
+##### scope
+
+Type `object`
+
+Scope options to be set when not using a .theming file. The available settings are:
+* `selector`
+* `embeddedFilePath`
+* `embeddedCompareFilePath`
+* `baseFile`
+
+Those settings correspond to the aScopes property of the .theming file. When using this options all four settings have to be set.
+
+Example:
+```js
+scope: {
+  selector: "scopeSelector",
+  embeddedFilePath: "src/themes/theme_to_be_embedded.less",
+  embeddedCompareFilePath: "src/themes/basetheme_to_compare_embedded_theme_to.less",
+  baseFile: "library"
+}
+```
 
 #### result
 
@@ -176,7 +198,7 @@ Type: `array`
 Paths to files imported via import directives.
 
 ### .clearCache()
-Clears all cached build results.  
+Clears all cached build results.
 Use this method to prevent high memory consumption when building many themes within the same process.
 
 ## Contributing
