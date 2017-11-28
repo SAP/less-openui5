@@ -522,7 +522,7 @@ describe('theme caching', function() {
     });
 });
 
-describe('CSS Scoping of', function() {
+describe('CSS Scoping (via .theming file) of', function() {
 
   describe('comments', function() {
 
@@ -849,6 +849,425 @@ describe('CSS Scoping of', function() {
           'test/fixtures/libraries/scopes/multiple-imports/lib2',
           'test/fixtures/libraries/lib1',
           'test/fixtures/libraries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+});
+
+describe('CSS Scoping (via option) of', function() {
+
+  describe('comments', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'comments/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'comments/themes/foo/library.source.less',
+          baseFile: 'comments/themes/foo/library.source.less'
+        },
+        lessInputPath: 'comments/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/comments/lib1',
+          'test/fixtures/libraries/scopes/comments/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/comments/lib1/comments/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/comments/lib1/comments/themes/foo/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'comments/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'comments/themes/foo/library.source.less',
+          baseFile: 'comments/themes/foo/library.source.less'
+        },
+        lessInputPath: 'comments/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/comments/lib1',
+          'test/fixtures/libraries/scopes/comments/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/comments/lib2/comments/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/comments/lib2/comments/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('css-scope-root', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'css-scope-root/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'css-scope-root/themes/foo/library.source.less',
+          baseFile: 'css-scope-root/themes/foo/library.source.less'
+        },
+        lessInputPath: 'css-scope-root/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/css-scope-root/lib1',
+          'test/fixtures/libraries/scopes/css-scope-root/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'css-scope-root/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'css-scope-root/themes/foo/library.source.less',
+          baseFile: 'css-scope-root/themes/foo/library.source.less'
+        },
+        lessInputPath: 'css-scope-root/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/css-scope-root/lib1',
+          'test/fixtures/libraries/scopes/css-scope-root/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/css-scope-root/lib2/css-scope-root/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/css-scope-root/lib2/css-scope-root/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('default', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'default/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'default/themes/foo/library.source.less',
+          baseFile: 'default/themes/foo/library.source.less'
+        },
+        lessInputPath: 'default/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/default/lib1',
+          'test/fixtures/libraries/scopes/default/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/default/lib1/default/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/default/lib1/default/themes/foo/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'default/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'default/themes/foo/library.source.less',
+          baseFile: 'default/themes/foo/library.source.less'
+        },
+        lessInputPath: 'default/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/default/lib1',
+          'test/fixtures/libraries/scopes/default/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/default/lib2/default/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/default/lib2/default/themes/bar/library-RTL.css'), 'Rtl CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+
+  describe('dom', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'dom/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'dom/themes/foo/library.source.less',
+          baseFile: 'dom/themes/foo/library.source.less'
+        },
+        lessInputPath: 'dom/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/dom/lib1',
+          'test/fixtures/libraries/scopes/dom/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'dom/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'dom/themes/foo/library.source.less',
+          baseFile: 'dom/themes/foo/library.source.less'
+        },
+        lessInputPath: 'dom/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/dom/lib1',
+          'test/fixtures/libraries/scopes/dom/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('empty media queries', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'empty-media-queries/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'empty-media-queries/themes/foo/library.source.less',
+          baseFile: 'empty-media-queries/themes/foo/library.source.less'
+        },
+        lessInputPath: 'empty-media-queries/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/empty-media-queries/lib1',
+          'test/fixtures/libraries/scopes/empty-media-queries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'empty-media-queries/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'empty-media-queries/themes/foo/library.source.less',
+          baseFile: 'empty-media-queries/themes/foo/library.source.less'
+        },
+        lessInputPath: 'empty-media-queries/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/empty-media-queries/lib1',
+          'test/fixtures/libraries/scopes/empty-media-queries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('HTML', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'html/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'html/themes/foo/library.source.less',
+          baseFile: 'html/themes/foo/library.source.less'
+        },
+        lessInputPath: 'html/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/html/lib1',
+          'test/fixtures/libraries/scopes/html/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'html/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'html/themes/foo/library.source.less',
+          baseFile: 'html/themes/foo/library.source.less'
+        },
+        lessInputPath: 'html/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/html/lib1',
+          'test/fixtures/libraries/scopes/html/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/html/lib2/html/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+
+  describe('media-queries', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'media-queries/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'media-queries/themes/foo/library.source.less',
+          baseFile: 'media-queries/themes/foo/library.source.less'
+        },
+        lessInputPath: 'media-queries/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/media-queries/lib1',
+          'test/fixtures/libraries/scopes/media-queries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'media-queries/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'media-queries/themes/foo/library.source.less',
+          baseFile: 'media-queries/themes/foo/library.source.less'
+        },
+        lessInputPath: 'media-queries/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/media-queries/lib1',
+          'test/fixtures/libraries/scopes/media-queries/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('mixins', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'mixins/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'mixins/themes/foo/library.source.less',
+          baseFile: 'mixins/themes/foo/library.source.less'
+        },
+        lessInputPath: 'mixins/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/mixins/lib1',
+          'test/fixtures/libraries/scopes/mixins/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'mixins/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'mixins/themes/foo/library.source.less',
+          baseFile: 'mixins/themes/foo/library.source.less'
+        },
+        lessInputPath: 'mixins/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/mixins/lib1',
+          'test/fixtures/libraries/scopes/mixins/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+  });
+
+  describe('multiple imports', function() {
+
+    it('should return same CSS for foo', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'fooContrast',
+          embeddedFilePath: 'multiple-imports/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'multiple-imports/themes/foo/library.source.less',
+          baseFile: 'multiple-imports/themes/foo/library.source.less'
+        },
+        lessInputPath: 'multiple-imports/themes/foo/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/multiple-imports/lib1',
+          'test/fixtures/libraries/scopes/multiple-imports/lib2'
+        ]
+      }).then(function(result) {
+        assert.equal(result.css, readFile('test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library.css'), 'CSS scoping should be correctly generated');
+        assert.equal(result.cssRtl, readFile('test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css'), 'CSS scoping should be correctly generated');
+      });
+
+    });
+
+    it('should return same CSS for bar', function() {
+
+      return new Builder().build({
+        scope: {
+          selector: 'barContrast',
+          embeddedFilePath: 'multiple-imports/themes/bar/library.source.less',
+          embeddedCompareFilePath: 'multiple-imports/themes/foo/library.source.less',
+          baseFile: 'multiple-imports/themes/foo/library.source.less'
+        },
+        lessInputPath: 'multiple-imports/themes/bar/library.source.less',
+        rootPaths: [
+          'test/fixtures/libraries/scopes/multiple-imports/lib1',
+          'test/fixtures/libraries/scopes/multiple-imports/lib2'
         ]
       }).then(function(result) {
         assert.equal(result.css, readFile('test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library.css'), 'CSS scoping should be correctly generated');
