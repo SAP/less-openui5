@@ -73,7 +73,7 @@ This is mainly relevant when building themes as part of a server middleware like
 ##### fs
 Type: [Node.js `fs` interface](https://nodejs.org/api/fs.html)
 
-By default, all file system accees is done via the standard Node.js file system ("fs"). With this option an alternative file system can be passed and will be used for all file system operations.
+By default, all file system access is done via the standard Node.js file system ("fs"). With this option an alternative file system can be passed and will be used for all file system operations.
 
 ### .build(options)
 Returns a Promise resolving with a [`result`](#result) object.
