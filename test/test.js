@@ -871,7 +871,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'comments/themes/bar/library.source.less',
           embeddedCompareFilePath: 'comments/themes/foo/library.source.less',
-          baseFile: 'comments/themes/foo/library.source.less'
+          baseFilePath: 'comments/themes/foo/library.source.less'
         },
         lessInputPath: 'comments/themes/foo/library.source.less',
         rootPaths: [
@@ -892,7 +892,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'comments/themes/bar/library.source.less',
           embeddedCompareFilePath: 'comments/themes/foo/library.source.less',
-          baseFile: 'comments/themes/foo/library.source.less'
+          baseFilePath: 'comments/themes/foo/library.source.less'
         },
         lessInputPath: 'comments/themes/bar/library.source.less',
         rootPaths: [
@@ -917,7 +917,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'css-scope-root/themes/bar/library.source.less',
           embeddedCompareFilePath: 'css-scope-root/themes/foo/library.source.less',
-          baseFile: 'css-scope-root/themes/foo/library.source.less'
+          baseFilePath: 'css-scope-root/themes/foo/library.source.less'
         },
         lessInputPath: 'css-scope-root/themes/foo/library.source.less',
         rootPaths: [
@@ -938,7 +938,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'css-scope-root/themes/bar/library.source.less',
           embeddedCompareFilePath: 'css-scope-root/themes/foo/library.source.less',
-          baseFile: 'css-scope-root/themes/foo/library.source.less'
+          baseFilePath: 'css-scope-root/themes/foo/library.source.less'
         },
         lessInputPath: 'css-scope-root/themes/bar/library.source.less',
         rootPaths: [
@@ -963,7 +963,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'default/themes/bar/library.source.less',
           embeddedCompareFilePath: 'default/themes/foo/library.source.less',
-          baseFile: 'default/themes/foo/library.source.less'
+          baseFilePath: 'default/themes/foo/library.source.less'
         },
         lessInputPath: 'default/themes/foo/library.source.less',
         rootPaths: [
@@ -984,7 +984,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'default/themes/bar/library.source.less',
           embeddedCompareFilePath: 'default/themes/foo/library.source.less',
-          baseFile: 'default/themes/foo/library.source.less'
+          baseFilePath: 'default/themes/foo/library.source.less'
         },
         lessInputPath: 'default/themes/bar/library.source.less',
         rootPaths: [
@@ -1010,7 +1010,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'dom/themes/bar/library.source.less',
           embeddedCompareFilePath: 'dom/themes/foo/library.source.less',
-          baseFile: 'dom/themes/foo/library.source.less'
+          baseFilePath: 'dom/themes/foo/library.source.less'
         },
         lessInputPath: 'dom/themes/foo/library.source.less',
         rootPaths: [
@@ -1031,7 +1031,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'dom/themes/bar/library.source.less',
           embeddedCompareFilePath: 'dom/themes/foo/library.source.less',
-          baseFile: 'dom/themes/foo/library.source.less'
+          baseFilePath: 'dom/themes/foo/library.source.less'
         },
         lessInputPath: 'dom/themes/bar/library.source.less',
         rootPaths: [
@@ -1056,7 +1056,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'empty-media-queries/themes/bar/library.source.less',
           embeddedCompareFilePath: 'empty-media-queries/themes/foo/library.source.less',
-          baseFile: 'empty-media-queries/themes/foo/library.source.less'
+          baseFilePath: 'empty-media-queries/themes/foo/library.source.less'
         },
         lessInputPath: 'empty-media-queries/themes/foo/library.source.less',
         rootPaths: [
@@ -1077,7 +1077,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'empty-media-queries/themes/bar/library.source.less',
           embeddedCompareFilePath: 'empty-media-queries/themes/foo/library.source.less',
-          baseFile: 'empty-media-queries/themes/foo/library.source.less'
+          baseFilePath: 'empty-media-queries/themes/foo/library.source.less'
         },
         lessInputPath: 'empty-media-queries/themes/bar/library.source.less',
         rootPaths: [
@@ -1102,7 +1102,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'html/themes/bar/library.source.less',
           embeddedCompareFilePath: 'html/themes/foo/library.source.less',
-          baseFile: 'html/themes/foo/library.source.less'
+          baseFilePath: 'html/themes/foo/library.source.less'
         },
         lessInputPath: 'html/themes/foo/library.source.less',
         rootPaths: [
@@ -1123,7 +1123,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'html/themes/bar/library.source.less',
           embeddedCompareFilePath: 'html/themes/foo/library.source.less',
-          baseFile: 'html/themes/foo/library.source.less'
+          baseFilePath: 'html/themes/foo/library.source.less'
         },
         lessInputPath: 'html/themes/bar/library.source.less',
         rootPaths: [
@@ -1149,7 +1149,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'media-queries/themes/bar/library.source.less',
           embeddedCompareFilePath: 'media-queries/themes/foo/library.source.less',
-          baseFile: 'media-queries/themes/foo/library.source.less'
+          baseFilePath: 'media-queries/themes/foo/library.source.less'
         },
         lessInputPath: 'media-queries/themes/foo/library.source.less',
         rootPaths: [
@@ -1170,7 +1170,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'media-queries/themes/bar/library.source.less',
           embeddedCompareFilePath: 'media-queries/themes/foo/library.source.less',
-          baseFile: 'media-queries/themes/foo/library.source.less'
+          baseFilePath: 'media-queries/themes/foo/library.source.less'
         },
         lessInputPath: 'media-queries/themes/bar/library.source.less',
         rootPaths: [
@@ -1195,7 +1195,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'mixins/themes/bar/library.source.less',
           embeddedCompareFilePath: 'mixins/themes/foo/library.source.less',
-          baseFile: 'mixins/themes/foo/library.source.less'
+          baseFilePath: 'mixins/themes/foo/library.source.less'
         },
         lessInputPath: 'mixins/themes/foo/library.source.less',
         rootPaths: [
@@ -1216,7 +1216,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'mixins/themes/bar/library.source.less',
           embeddedCompareFilePath: 'mixins/themes/foo/library.source.less',
-          baseFile: 'mixins/themes/foo/library.source.less'
+          baseFilePath: 'mixins/themes/foo/library.source.less'
         },
         lessInputPath: 'mixins/themes/bar/library.source.less',
         rootPaths: [
@@ -1241,7 +1241,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'fooContrast',
           embeddedFilePath: 'multiple-imports/themes/bar/library.source.less',
           embeddedCompareFilePath: 'multiple-imports/themes/foo/library.source.less',
-          baseFile: 'multiple-imports/themes/foo/library.source.less'
+          baseFilePath: 'multiple-imports/themes/foo/library.source.less'
         },
         lessInputPath: 'multiple-imports/themes/foo/library.source.less',
         rootPaths: [
@@ -1262,7 +1262,7 @@ describe('CSS Scoping (via option) of', function() {
           selector: 'barContrast',
           embeddedFilePath: 'multiple-imports/themes/bar/library.source.less',
           embeddedCompareFilePath: 'multiple-imports/themes/foo/library.source.less',
-          baseFile: 'multiple-imports/themes/foo/library.source.less'
+          baseFilePath: 'multiple-imports/themes/foo/library.source.less'
         },
         lessInputPath: 'multiple-imports/themes/bar/library.source.less',
         rootPaths: [

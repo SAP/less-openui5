@@ -157,7 +157,7 @@ Scope options to be set when not using a .theming file. The available settings a
 * `selector`
 * `embeddedFilePath`
 * `embeddedCompareFilePath`
-* `baseFile`
+* `baseFilePath`
 
 Those settings correspond to the aScopes property of the .theming file. When using this options all four settings have to be set.
 
@@ -167,7 +167,7 @@ scope: {
   selector: "scopeSelector",
   embeddedFilePath: "src/themes/theme_to_be_embedded.less",
   embeddedCompareFilePath: "src/themes/basetheme_to_compare_embedded_theme_to.less",
-  baseFile: "library"
+  baseFilePath: "src/themes/basetheme_to_compare_embedded_theme_to.less"
 }
 ```
 
