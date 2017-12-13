@@ -61,7 +61,7 @@ builder.build({
 
 ## API
 
-### new Builder(options)
+### new Builder([options])
 
 Creates a new `Builder` instance.
 
