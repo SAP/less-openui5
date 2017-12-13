@@ -149,6 +149,28 @@ Type `string`
 Dot-separated name of the corresponding library.  
 It will be used to inline the `variables` JSON as data-uri which can be retrieved at runtime.
 
+##### scope
+
+Type `object`
+
+Scope options to be set when not using a .theming file. The available settings are:
+* `selector`
+* `embeddedFilePath`
+* `embeddedCompareFilePath`
+* `baseFilePath`
+
+Those settings correspond to the aScopes property of the .theming file. When using this options all four settings have to be set.
+
+Example:
+```js
+scope: {
+  selector: "scopeSelector",
+  embeddedFilePath: "src/themes/theme_to_be_embedded.less",
+  embeddedCompareFilePath: "src/themes/basetheme_to_compare_embedded_theme_to.less",
+  baseFilePath: "src/themes/basetheme_to_compare_embedded_theme_to.less"
+}
+```
+
 #### result
 
 ##### css
