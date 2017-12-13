@@ -1,3 +1,13 @@
+# 0.4.0 (2017-12-13)
+
+### Features
+- Add scope option [#16](https://github.com/SAP/less-openui5/pull/16)
+- Add custom fs option [#17](https://github.com/SAP/less-openui5/pull/17)
+
+### All changes
+[`0.3.1...0.4.0`](https://github.com/SAP/less-openui5/compare/0.3.1...0.4.0)
+
+
 # 0.3.1 (2017-03-28)
 
 ### Fixes
