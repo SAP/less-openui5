@@ -196,6 +196,12 @@ Mirrored css for right-to-left support (if rtl option was enabled).
 
 Type: `object`
 
+Key-value map of global less variables (without @ prefix) defined by files within the same folder as the input file. This excludes variables imported from a different path, as those are usually shared across multiple themes.
+
+##### allVariables
+
+Type: `object`
+
 Key-value map of all global less variables (without @ prefix).
 
 ##### imports

@@ -1,4 +1,5 @@
 @myVar: #ffffff;
+@myVar2: darken(@myVar, 50%);
 
 .myMixIn(@color) {
   @myVar: darken(@color, 50%);
@@ -17,4 +18,9 @@
 
 .myRule {
   .myMixIn(@myVar);
+}
+
+.myRule2 {
+  background-color: @myVar;
+  color: @myVar2;
 }
