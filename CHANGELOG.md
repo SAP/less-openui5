@@ -1,3 +1,12 @@
+# 0.5.0 (2018-02-09)
+
+### Features
+- Reduce collected variables to only add relevant ones [#18](https://github.com/SAP/less-openui5/pull/18)
+
+### All changes
+[`0.4.0...0.5.0`](https://github.com/SAP/less-openui5/compare/0.4.0...0.5.0)
+
+
 # 0.4.0 (2017-12-13)
 
 ### Features
