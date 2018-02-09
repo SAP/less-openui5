@@ -1,0 +1,9 @@
+.myOtherUiLibRule1 {
+  color: #fefefe;
+}
+.myOtherUiLibRule2 {
+  padding: 1px 4px 3px 2px;
+}
+
+/* Inline theming parameters */
+#sap-ui-theme-my\.other\.ui\.lib { background-image: url('data:text/plain;utf-8,%7B%22_my_other_ui_lib_MyControl_color1%22:%22#fefefe%22%7D'); }

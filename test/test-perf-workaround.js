@@ -64,8 +64,11 @@ describe('performance workaround', function() {
       assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
       assert.deepEqual(result.imports, [
         path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "library.source.less"),
-        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
+				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
+				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
+				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "global.less"),
         path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "library.source.less"),
+				path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "global.less"),
         path.join("test", "fixtures", "libraries", "lib1", "sap", "ui", "core", "themes", "foo", ".theming")
       ], 'import list should be correct.');
 
