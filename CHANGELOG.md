@@ -1,3 +1,12 @@
+# 0.5.1 (2018-03-12)
+
+### Fixes
+- Changed paths in variable collector to posix variant [#19](https://github.com/SAP/less-openui5/pull/19)
+
+### All changes
+[`0.5.0...0.5.1`](https://github.com/SAP/less-openui5/compare/0.5.0...0.5.1)
+
+
 # 0.5.0 (2018-02-09)
 
 ### Features
