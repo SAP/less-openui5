@@ -310,7 +310,9 @@ describe('libraries (my/other/ui/lib)', function() {
           "_my_other_ui_lib_MyControl_color2": "#008000"
         },
         "scopes": {
-          "fooContrast": {}
+          "fooContrast": {
+            "_my_other_ui_lib_MyControl_color1": "#000000"
+          }
         }
       };
       var oAllVariablesExpected = {
@@ -327,10 +329,10 @@ describe('libraries (my/other/ui/lib)', function() {
         }
       };
 
-      assert.equal(result.css, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/foo/library.css'), 'css should be correctly generated.');
-      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/foo/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
       assert.deepEqual(result.allVariables, oAllVariablesExpected, 'allVariables should be correctly collected.');
+      assert.equal(result.css, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/foo/library.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/foo/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.imports, [
         path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "foo", "library.source.less"),
         path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
@@ -367,7 +369,9 @@ describe('libraries (my/other/ui/lib)', function() {
           "_my_other_ui_lib_MyControl_color2": "#008000"
         },
         "scopes": {
-          "barContrast": {}
+          "barContrast": {
+            "_my_other_ui_lib_MyControl_color1": "#000000"
+          }
         }
       };
       var oAllVariablesExpected = {
@@ -384,10 +388,10 @@ describe('libraries (my/other/ui/lib)', function() {
         }
       };
 
-      assert.equal(result.css, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/bar/library.css'), 'css should be correctly generated.');
-      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/bar/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
       assert.deepEqual(result.allVariables, oAllVariablesExpected, 'allVariables should be correctly collected.');
+      assert.equal(result.css, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/bar/library.css'), 'css should be correctly generated.');
+      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib3/my/other/ui/lib/themes/bar/library-RTL.css'), 'rtl css should be correctly generated.');
       assert.deepEqual(result.imports, [
         path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "bar", "library.source.less"),
         path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "foo", "library.source.less"),
