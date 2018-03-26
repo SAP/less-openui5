@@ -1,3 +1,12 @@
+# 0.5.2 (2018-03-26)
+
+### Fixes
+- Fix reduced set of variables [#20](https://github.com/SAP/less-openui5/pull/20)
+
+### All changes
+[`0.5.1...0.5.2`](https://github.com/SAP/less-openui5/compare/0.5.1...0.5.2)
+
+
 # 0.5.1 (2018-03-12)
 
 ### Fixes
