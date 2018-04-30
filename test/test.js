@@ -412,10 +412,27 @@ describe('libraries (my/other/ui/lib)', function() {
 
 describe('error handling', function() {
 
-  it('should have correct error in case of undefined variable usage', function() {
+  it('should have correct error in case of undefined variable usage (lessInput)', function() {
 
     return new Builder().build({
       lessInput: readFile('test/fixtures/error/undefined-var.less')
+    }).then(function(result) {
+      // no resolve
+      assert.ok(false);
+
+    }, function(err) {
+
+      assert.ok(err);
+
+    });
+
+  });
+
+  it('should have correct error in case of undefined variable usage (lessInputPath)', function() {
+
+    return new Builder().build({
+      lessInputPath: 'main.less',
+      rootPaths: ['test/fixtures/error']
     }).then(function(result) {
       // no resolve
       assert.ok(false);
