@@ -1,3 +1,13 @@
+# 0.5.3 (2018-05-18)
+
+### Fixes
+- Fix less error propagation [#22](https://github.com/SAP/less-openui5/pull/22)
+- Fix inline theme parameters encoding for '#' [#23](https://github.com/SAP/less-openui5/pull/23)
+
+### All changes
+[`0.5.2...0.5.3`](https://github.com/SAP/less-openui5/compare/0.5.2...0.5.3)
+
+
 # 0.5.2 (2018-03-26)
 
 ### Fixes
