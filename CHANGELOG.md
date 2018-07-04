@@ -1,3 +1,12 @@
+# 0.5.4 (2018-07-04)
+
+### Fixes
+- Revert "Fix inline theme parameters encoding for '#'" [#26](https://github.com/SAP/less-openui5/pull/26)
+
+### All changes
+[`0.5.3...0.5.4`](https://github.com/SAP/less-openui5/compare/0.5.3...0.5.4)
+
+
 # 0.5.3 (2018-05-18)
 
 ### Fixes
