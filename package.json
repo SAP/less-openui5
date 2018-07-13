@@ -27,7 +27,7 @@
   "dependencies": {
     "clone": "^2.1.0",
     "css": "^2.2.1",
-    "less": "1.6.3",
+    "less": "2.7.3",
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
