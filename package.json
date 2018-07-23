@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "clean-css": "^3.4.23",
-    "eslint": "^1.10.3",
+    "eslint": "^5.2.0",
     "graceful-fs": "^4.1.11",
     "mocha": "^3.2.0"
   }
