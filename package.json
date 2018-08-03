@@ -35,7 +35,7 @@
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
-    "clean-css": "^3.4.23",
+    "clean-css": "^4.2.0",
     "eslint": "^1.10.3",
     "graceful-fs": "^4.1.11",
     "mocha": "^3.2.0"
