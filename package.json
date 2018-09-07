@@ -26,7 +26,7 @@
   "author": "SAP SE",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 6"
   },
   "dependencies": {
     "clone": "^2.1.0",
