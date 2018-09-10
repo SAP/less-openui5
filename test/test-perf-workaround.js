@@ -12,71 +12,66 @@
 // either express or implied. See the License for the specific
 // language governing permissions and limitations under the License.
 
-/*eslint-env mocha */
-'use strict';
+/* eslint-env mocha */
+"use strict";
 
-var assert = require('assert');
-var path = require('path');
-var readFile = require('./common/helper').readFile;
+let assert = require("assert");
+let path = require("path");
+let readFile = require("./common/helper").readFile;
 
 // tested module
-var Builder = require('../').Builder;
+let Builder = require("../").Builder;
 
-describe('performance workaround', function() {
+describe("performance workaround", function() {
+	it("should run with patched String prototype", function() {
+		function customGetter() {
+			return "customGetter";
+		}
+		String.prototype.__defineGetter__("customGetter", customGetter);
 
-  it('should run with patched String prototype', function() {
+		function customProp() {
+			return "customProp";
+		}
+		// eslint-disable-next-line no-extend-native
+		String.prototype.customProp = customProp;
 
-    function customGetter() {
-        return "customGetter";
-    }
-    String.prototype.__defineGetter__("customGetter", customGetter);
+		return new Builder().build({
+			lessInputPath: "my/ui/lib/themes/foo/library.source.less",
+			rootPaths: [
+				"test/fixtures/libraries/lib1",
+				"test/fixtures/libraries/lib2"
+			],
+			library: {
+				name: "my.ui.lib"
+			}
+		}).then(function(result) {
+			let oVariablesExpected = {
+				"default": {
+					"color1": "#ffffff",
 
-    function customProp() {
-        return "customProp";
-    }
-    String.prototype.customProp = customProp;
+				},
+				"scopes": {
+					"fooContrast": {
+						"color1": "#000000"
+					}
+				}
+			};
 
-    return new Builder().build({
-      lessInputPath: 'my/ui/lib/themes/foo/library.source.less',
-      rootPaths: [
-        'test/fixtures/libraries/lib1',
-        'test/fixtures/libraries/lib2'
-      ],
-      library: {
-        name: "my.ui.lib"
-      }
-    }).then(function(result) {
-
-      var oVariablesExpected = {
-        "default" : {
-          "color1": "#ffffff",
-
-        },
-        "scopes": {
-          "fooContrast": {
-            "color1": "#000000"
-          }
-        }
-      }
-
-      assert.equal(result.css, readFile('test/expected/libraries/lib1/my/ui/lib/themes/foo/library.css'), 'css should be correctly generated.');
-      assert.equal(result.cssRtl, readFile('test/expected/libraries/lib1/my/ui/lib/themes/foo/library-RTL.css'), 'rtl css should be correctly generated.');
-      assert.deepEqual(result.variables, oVariablesExpected, 'variables should be correctly collected.');
-      assert.deepEqual(result.imports, [
-        path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "library.source.less"),
+			assert.equal(result.css, readFile("test/expected/libraries/lib1/my/ui/lib/themes/foo/library.css"), "css should be correctly generated.");
+			assert.equal(result.cssRtl, readFile("test/expected/libraries/lib1/my/ui/lib/themes/foo/library-RTL.css"), "rtl css should be correctly generated.");
+			assert.deepEqual(result.variables, oVariablesExpected, "variables should be correctly collected.");
+			assert.deepEqual(result.imports, [
+				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "global.less"),
-        path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "library.source.less"),
+				path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "global.less"),
-        path.join("test", "fixtures", "libraries", "lib1", "sap", "ui", "core", "themes", "foo", ".theming")
-      ], 'import list should be correct.');
+				path.join("test", "fixtures", "libraries", "lib1", "sap", "ui", "core", "themes", "foo", ".theming")
+			], "import list should be correct.");
 
-      assert.strictEqual(String.prototype.__lookupGetter__("customGetter"), customGetter, "Custom getter should again be set on String prototype.");
-      assert.strictEqual(String.prototype.customProp, customProp, "Custom property should again be set on String prototype.");
-
-    });
-
-  });
-
+			assert.strictEqual(String.prototype.__lookupGetter__("customGetter"), customGetter, "Custom getter should again be set on String prototype.");
+			assert.strictEqual(String.prototype.customProp, customProp, "Custom property should again be set on String prototype.");
+		});
+	});
 });

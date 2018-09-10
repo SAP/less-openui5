@@ -12,22 +12,22 @@
 // either express or implied. See the License for the specific
 // language governing permissions and limitations under the License.
 
-'use strict';
+"use strict";
 
-var fs = require('fs');
+let fs = require("fs");
 
-var crlfPattern = /\r\n/g;
-var lastLfPattern = /\n$/;
-var noLastLfPattern = /([^\n])$/;
+let crlfPattern = /\r\n/g;
+let lastLfPattern = /\n$/;
+let noLastLfPattern = /([^\n])$/;
 
 // file util
 function readFile(filename, lastLf) {
-  var content = fs.readFileSync(filename, { encoding: 'utf-8' }).replace(crlfPattern, '\n');
-  if (lastLf === false) {
-    return content.replace(lastLfPattern, ''); // needed when using compress option
-  } else {
-    return content.replace(noLastLfPattern, '$1\n'); // adds last LF
-  }
+	let content = fs.readFileSync(filename, {encoding: "utf-8"}).replace(crlfPattern, "\n");
+	if (lastLf === false) {
+		return content.replace(lastLfPattern, ""); // needed when using compress option
+	} else {
+		return content.replace(noLastLfPattern, "$1\n"); // adds last LF
+	}
 }
 
 module.exports.readFile = readFile;
