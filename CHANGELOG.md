@@ -1,3 +1,15 @@
+# 0.6.0 (2018-09-10)
+
+### Breaking changes
+- Drop unsupported Node.js versions. Now requires >= 6 [#45](https://github.com/SAP/less-openui5/pull/45)
+
+### Fixes
+- Again, fix inline theme parameters encoding for '#' [#48](https://github.com/SAP/less-openui5/pull/48)
+
+### All changes
+[`0.5.4...0.6.0`](https://github.com/SAP/less-openui5/compare/0.5.4...0.6.0)
+
+
 # 0.5.4 (2018-07-04)
 
 ### Fixes
