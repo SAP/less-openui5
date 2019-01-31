@@ -37,7 +37,7 @@
   "devDependencies": {
     "eslint": "^5.12.1",
     "eslint-config-google": "^0.10.0",
-    "graceful-fs": "^4.1.11",
+    "graceful-fs": "^4.1.15",
     "mocha": "^5.2.0"
   }
 }
