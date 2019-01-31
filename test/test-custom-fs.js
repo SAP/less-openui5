@@ -15,12 +15,12 @@
 /* eslint-env mocha */
 "use strict";
 
-let assert = require("assert");
-let readFile = require("./common/helper").readFile;
-let fs = require("fs");
+const assert = require("assert");
+const readFile = require("./common/helper").readFile;
+const fs = require("fs");
 
 // tested module
-let Builder = require("../").Builder;
+const Builder = require("../").Builder;
 
 describe("(custom fs) CSS Scoping of", function() {
 	describe("comments", function() {
