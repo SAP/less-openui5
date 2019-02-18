@@ -35,7 +35,7 @@
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
+    "eslint": "^5.14.0",
     "eslint-config-google": "^0.10.0",
     "graceful-fs": "^4.1.15",
     "mocha": "^5.2.0"
