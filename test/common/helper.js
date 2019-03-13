@@ -14,15 +14,15 @@
 
 "use strict";
 
-let fs = require("fs");
+const fs = require("fs");
 
-let crlfPattern = /\r\n/g;
-let lastLfPattern = /\n$/;
-let noLastLfPattern = /([^\n])$/;
+const crlfPattern = /\r\n/g;
+const lastLfPattern = /\n$/;
+const noLastLfPattern = /([^\n])$/;
 
 // file util
 function readFile(filename, lastLf) {
-	let content = fs.readFileSync(filename, {encoding: "utf-8"}).replace(crlfPattern, "\n");
+	const content = fs.readFileSync(filename, {encoding: "utf-8"}).replace(crlfPattern, "\n");
 	if (lastLf === false) {
 		return content.replace(lastLfPattern, ""); // needed when using compress option
 	} else {

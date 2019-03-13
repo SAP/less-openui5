@@ -15,12 +15,12 @@
 /* eslint-env mocha */
 "use strict";
 
-let assert = require("assert");
-let path = require("path");
-let readFile = require("./common/helper").readFile;
+const assert = require("assert");
+const path = require("path");
+const readFile = require("./common/helper").readFile;
 
 // tested module
-let Builder = require("../").Builder;
+const Builder = require("../").Builder;
 
 describe("performance workaround", function() {
 	it("should run with patched String prototype", function() {
@@ -45,7 +45,7 @@ describe("performance workaround", function() {
 				name: "my.ui.lib"
 			}
 		}).then(function(result) {
-			let oVariablesExpected = {
+			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
 

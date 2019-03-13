@@ -15,13 +15,13 @@
 /* eslint-env mocha */
 "use strict";
 
-let assert = require("assert");
-let path = require("path");
-let clone = require("clone");
-let readFile = require("./common/helper").readFile;
+const assert = require("assert");
+const path = require("path");
+const clone = require("clone");
+const readFile = require("./common/helper").readFile;
 
 // tested module
-let Builder = require("../").Builder;
+const Builder = require("../").Builder;
 
 describe("options", function() {
 	it("should return css, cssRtl, variables and imports with default options (lessInput)", function() {
@@ -151,7 +151,7 @@ describe("libraries (my/ui/lib)", function() {
 				name: "my.ui.lib"
 			}
 		}).then(function(result) {
-			let oVariablesExpected = {
+			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
 
@@ -190,7 +190,7 @@ describe("libraries (my/ui/lib)", function() {
 				name: "my.ui.lib"
 			}
 		}).then(function(result) {
-			let oVariablesExpected = {
+			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
 				},
@@ -257,7 +257,7 @@ describe("libraries (my/other/ui/lib)", function() {
 				name: "my.other.ui.lib"
 			}
 		}).then(function(result) {
-			let oVariablesExpected = {
+			const oVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000"
@@ -268,7 +268,7 @@ describe("libraries (my/other/ui/lib)", function() {
 					}
 				}
 			};
-			let oAllVariablesExpected = {
+			const oAllVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
@@ -312,7 +312,7 @@ describe("libraries (my/other/ui/lib)", function() {
 				name: "my.other.ui.lib"
 			}
 		}).then(function(result) {
-			let oVariablesExpected = {
+			const oVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000"
@@ -323,7 +323,7 @@ describe("libraries (my/other/ui/lib)", function() {
 					}
 				}
 			};
-			let oAllVariablesExpected = {
+			const oAllVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
@@ -382,8 +382,8 @@ describe("error handling", function() {
 });
 
 function assertLessToRtlCssEqual(filename) {
-	let lessFilename = "test/fixtures/rtl/" + filename + ".less";
-	let cssFilename = "test/expected/rtl/" + filename + ".css";
+	const lessFilename = "test/fixtures/rtl/" + filename + ".less";
+	const cssFilename = "test/expected/rtl/" + filename + ".css";
 
 	return new Builder().build({
 		lessInput: readFile(lessFilename),
@@ -524,7 +524,7 @@ describe("inline theming parameters", function() {
 
 describe("theme caching", function() {
 	it("should cache the theme", function() {
-		let lessOptions = {
+		const lessOptions = {
 			lessInputPath: "my/ui/lib/themes/bar/library.source.less",
 			rootPaths: [
 				"test/fixtures/libraries/lib1",
@@ -535,16 +535,16 @@ describe("theme caching", function() {
 			}
 		};
 
-		let builder = new Builder();
+		const builder = new Builder();
 
 		return builder.build(lessOptions).then(function(res) {
-			let cacheFirstRun = clone(builder.themeCacheMapping);
+			const cacheFirstRun = clone(builder.themeCacheMapping);
 
 			assert.notDeepEqual(cacheFirstRun, {}, "themeCache should not be empty.");
 
 			// second run
 			return builder.build(lessOptions).then(function(result) {
-				let cacheSecondRun = clone(builder.themeCacheMapping);
+				const cacheSecondRun = clone(builder.themeCacheMapping);
 
 				assert.deepEqual(res, result, "callback result should be the same");
 
@@ -556,7 +556,7 @@ describe("theme caching", function() {
 	});
 
 	it("should recompile the theme after clearing the cache", function() {
-		let lessOptions = {
+		const lessOptions = {
 			lessInputPath: "my/ui/lib/themes/bar/library.source.less",
 			rootPaths: [
 				"test/fixtures/libraries/lib1",
@@ -567,10 +567,10 @@ describe("theme caching", function() {
 			}
 		};
 
-		let builder = new Builder();
+		const builder = new Builder();
 
 		return builder.build(lessOptions).then(function(res) {
-			let cacheFirstRun = clone(builder.themeCacheMapping);
+			const cacheFirstRun = clone(builder.themeCacheMapping);
 
 			assert.notDeepEqual(cacheFirstRun, {}, "themeCache should not be empty.");
 
@@ -580,7 +580,7 @@ describe("theme caching", function() {
 
 			// second run
 			return builder.build(lessOptions).then(function(result) {
-				let cacheSecondRun = clone(builder.themeCacheMapping);
+				const cacheSecondRun = clone(builder.themeCacheMapping);
 
 				assert.equal(JSON.stringify(res, null, 4), JSON.stringify(result, null, 4), "callback result should be the same");
 
