@@ -41,3 +41,15 @@
 .myRule8 {
   display: block;
 }
+
+.sapContrast .sapMNLI {
+  background: #000000;
+}
+
+.sapContrast .sapMNLG-GroupHeader {
+  background: #000000;
+}
+
+.sapContrast .sapMNLG-Body .sapMNLI {
+  background: #000000;
+}
