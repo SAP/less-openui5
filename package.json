@@ -38,6 +38,6 @@
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.14.0",
     "graceful-fs": "^4.2.2",
-    "mocha": "^6.2.1"
+    "mocha": "^6.2.2"
   }
 }
