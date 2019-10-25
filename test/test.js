@@ -216,6 +216,28 @@ describe("libraries (my/ui/lib)", function() {
 			], "import list should be correct.");
 		});
 	});
+
+	it("should create correct files on empty less input", function() {
+		return new Builder().build({
+			lessInputPath: "empty.less",
+			rootPaths: [
+				"test/fixtures/libraries/empty"
+			],
+			library: {
+				name: "my.empty.lib"
+			}
+		}).then(function(result) {
+			const oVariablesExpected = {};
+
+			assert.equal(result.css, readFile("test/expected/libraries/empty/library.css"), "css should be correctly generated.");
+			assert.equal(result.cssRtl, readFile("test/expected/libraries/empty/library-RTL.css"), "rtl css should be correctly generated.");
+			assert.deepEqual(result.variables, oVariablesExpected, "variables should be correctly collected.");
+			assert.deepEqual(result.allVariables, oVariablesExpected, "allVariables should be correctly collected.");
+			assert.deepEqual(result.imports, [
+				path.join("test", "fixtures", "libraries", "empty", "empty.less"),
+			], "import list should be correct.");
+		});
+	});
 });
 
 describe("libraries (my/other/ui/lib)", function() {
