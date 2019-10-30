@@ -1,3 +1,16 @@
+# 0.7.0 (2019-10-30)
+
+### Breaking changes
+- Drop unsupported Node.js versions. Now requires >= 8.5 [#94](https://github.com/SAP/less-openui5/pull/94)
+
+### Fixes
+- Scope rule handling [#92](https://github.com/SAP/less-openui5/pull/92)
+- Add inline parameters on empty CSS [#96](https://github.com/SAP/less-openui5/pull/96)
+
+### All changes
+[`0.6.0...0.7.0`](https://github.com/SAP/less-openui5/compare/0.6.0...0.7.0)
+
+
 # 0.6.0 (2018-09-10)
 
 ### Breaking changes
