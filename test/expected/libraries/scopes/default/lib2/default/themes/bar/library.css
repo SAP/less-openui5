@@ -20,6 +20,18 @@
 .myRule7 {
   color: #000000;
 }
+.myRule8 {
+  display: block;
+}
+.sapContrast .sapMNLI {
+  background: #ffffff;
+}
+.sapContrast .sapMNLG-GroupHeader {
+  background: #000000;
+}
+.sapContrast .sapMNLG-Body .sapMNLI {
+  background: #f2f2f2;
+}
 .barContrast.myRule1,
 .barContrast .myRule1 {
   color: #ffffff;
@@ -37,9 +49,6 @@
 .barContrast.myRule7,
 .barContrast .myRule7 {
   color: #ffffff;
-}
-.myRule8 {
-  display: block;
 }
 
 .sapContrast .sapMNLI {
