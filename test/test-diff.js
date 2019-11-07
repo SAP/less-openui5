@@ -43,14 +43,6 @@ describe("Diff algorithm", function() {
 		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
 			{
 				"type": "comment",
-				"value": "\n * multiline\n "
-			},
-			{
-				"type": "comment",
-				"value": " one "
-			},
-			{
-				"type": "comment",
 				"value": " two "
 			},
 			{
@@ -81,10 +73,6 @@ describe("Diff algorithm", function() {
 		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
 			{
 				"type": "comment",
-				"value": "\n * multiline\n "
-			},
-			{
-				"type": "comment",
 				"value": " one "
 			},
 			{
@@ -94,10 +82,6 @@ describe("Diff algorithm", function() {
 			{
 				"type": "comment",
 				"value": " three "
-			},
-			{
-				"type": "comment",
-				"value": " single "
 			},
 			{
 				"type": "rule",
