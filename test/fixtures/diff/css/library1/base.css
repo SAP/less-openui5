@@ -1,0 +1,16 @@
+/*
+ * multiline
+ */
+a {
+  color: blue;
+}
+/* one */
+/* two */
+/* three */
+b {
+  color: green;
+}
+/* single */
+b.test {
+  color: yellow;
+}
