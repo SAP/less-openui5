@@ -86,18 +86,6 @@ describe("Diff algorithm", function() {
 			{
 				"type": "rule",
 				"value": "b.test"
-			},
-			{
-				"type": "rule",
-				"value": "html"
-			},
-			{
-				"type": "comment",
-				"value": " single "
-			},
-			{
-				"type": "rule",
-				"value": "b.test"
 			}]);
 	});
 });
