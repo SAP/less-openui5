@@ -1288,5 +1288,26 @@ describe("CSS Scoping (via option) of", function() {
 				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
 			});
 		});
+
+		// unit test for https://github.com/less/less.js/issues/1898
+		it("should create the same css content independent from nesting consistently 50x", function() {
+			const aPromises = [];
+			const oBuilder = new Builder();
+			const expectedLibraryCssContent = readFile("test/expected/libraries/lib4/my/ui/lib/themes/cascading/library.css");
+			const expectedLibraryCssRtlContent = readFile("test/expected/libraries/lib4/my/ui/lib/themes/cascading/library-RTL.css");
+			for (let i = 0; i < 50; i++) {
+				const oPromise = oBuilder.build({
+					lessInputPath: "my/ui/lib/themes/cascading/library.source.less",
+					rootPaths: [
+						"test/fixtures/libraries/lib4"
+					]
+				}).then(function(result) {
+					assert.equal(result.css, expectedLibraryCssContent, "CSS scoping should be correctly generated");
+					assert.equal(result.cssRtl, expectedLibraryCssRtlContent, "CSS scoping should be correctly generated");
+				});
+				aPromises.push(oPromise);
+			}
+			return Promise.all(aPromises);
+		});
 	});
 });
