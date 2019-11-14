@@ -401,6 +401,38 @@ describe("error handling", function() {
 			assert.ok(err);
 		});
 	});
+
+	it("should throw error when using 'cleancss' option (not supported)", function() {
+		return new Builder().build({
+			lessInputPath: "main.less",
+			rootPaths: ["test/fixtures/error"],
+			compiler: {
+				cleancss: true
+			}
+		}).then(function() {
+			// no resolve
+			assert.ok(false);
+		}, function(err) {
+			assert.equal(err.message, "compiler.cleancss option is not supported! Please use 'clean-css' directly.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using 'sourceMap' option (not supported)", function() {
+		return new Builder().build({
+			lessInputPath: "main.less",
+			rootPaths: ["test/fixtures/error"],
+			compiler: {
+				sourceMap: true
+			}
+		}).then(function() {
+			// no resolve
+			assert.ok(false);
+		}, function(err) {
+			assert.equal(err.message, "compiler.sourceMap option is not supported!");
+			assert.ok(err);
+		});
+	});
 });
 
 function assertLessToRtlCssEqual(filename) {
