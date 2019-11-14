@@ -31,8 +31,9 @@
   "dependencies": {
     "clone": "^2.1.0",
     "css": "^2.2.1",
-    "less": "1.6.3",
-    "object-assign": "^4.0.1"
+    "mime": "^1.6.0",
+    "object-assign": "^4.0.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
