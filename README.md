@@ -149,6 +149,8 @@ Type `object`
 
 Options for the [less](http://lesscss.org) compiler (`tree.toCss`).
 
+**Note:** The options `sourceMap` and `cleancss` are not supported. An exception will be thrown when used.
+
 ##### library.name
 
 Type `string`
