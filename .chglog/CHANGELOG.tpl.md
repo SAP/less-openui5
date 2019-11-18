@@ -2,19 +2,45 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/0.7.0...HEAD).
+{{ if .Versions -}}
+A list of unreleased changes can be found [here]({{ .Info.RepositoryURL }}/compare/{{ $latest := index .Versions 0 }}{{ $latest.Tag.Name }}...HEAD).
+{{ end -}}
 
-<a name="0.7.0"></a>
-## [0.7.0] - 2019-10-30
-### Breaking Changes
-- Drop support for Node.js < 8.5 [`810962c`](https://github.com/SAP/less-openui5/commit/810962cf7bb4604641160d547593568f70b72f98)
+{{ range .Versions }}
+<a name="{{ .Tag.Name }}"></a>
+## {{ if .Tag.Previous }}[{{ .Tag.Name }}]{{ else }}{{ .Tag.Name }}{{ end }} - {{ datetime "2006-01-02" .Tag.Date }}
+{{ range .CommitGroups -}}
+### {{ .Title }}
+{{ range .Commits -}}
+- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }} [`{{ .Hash.Short }}`]({{ $.Info.RepositoryURL }}/commit/{{ .Hash.Long }})
+{{ end }}
+{{ end -}}
 
-### Bug Fixes
-- Add inline parameters on empty CSS [`bc59d58`](https://github.com/SAP/less-openui5/commit/bc59d58486e972057675c5b8abe83229f116bc07)
-- Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
+{{- if .RevertCommits -}}
+### Reverts
+{{ range .RevertCommits -}}
+- {{ .Revert.Header }}
+{{ end }}
+{{ end -}}
 
+{{- if .NoteGroups -}}
+{{ range .NoteGroups -}}
+### {{ .Title }}
+{{ range .Notes }}
+{{ .Body }}
+{{ end }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
 
-[0.7.0]: https://github.com/SAP/less-openui5/compare/0.6.0...0.7.0
+{{- if .Versions }}
+{{ range .Versions -}}
+{{ if .Tag.Previous -}}
+[{{ .Tag.Name }}]: {{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+
 ## 0.6.0 - 2018-09-10
 
 ### Breaking changes

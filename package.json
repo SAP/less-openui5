@@ -6,7 +6,11 @@
     "lint": "eslint lib test",
     "unit": "mocha test/*.js",
     "unit-debug": "mocha --inspect --debug-brk test/*.js",
-    "test": "npm run lint && npm run unit"
+    "test": "npm run lint && npm run unit",
+    "preversion": "npm test",
+    "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md 0.7.0.. && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "release-note": "git-chglog -c .chglog/release-config.yml v$npm_package_version"
   },
   "main": "lib/index.js",
   "repository": {
