@@ -2,7 +2,16 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/0.7.0...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.0...HEAD).
+
+<a name="v0.8.0"></a>
+## [v0.8.0] - 2019-11-18
+### Breaking Changes
+- Remove support for 'sourceMap' / 'cleancss' options [`3f234c8`](https://github.com/SAP/less-openui5/commit/3f234c88c4442035c0fe2683197c044ec6a93fab)
+
+### Bug Fixes
+- Apply less.js fix for import race condition [`694f6c4`](https://github.com/SAP/less-openui5/commit/694f6c41ad788eded034df6835cf5fbd8f6feaf3)
+
 
 <a name="0.7.0"></a>
 ## [0.7.0] - 2019-10-30
@@ -14,6 +23,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.8.0]: https://github.com/SAP/less-openui5/compare/0.7.0...v0.8.0
 [0.7.0]: https://github.com/SAP/less-openui5/compare/0.6.0...0.7.0
 ## 0.6.0 - 2018-09-10
 
