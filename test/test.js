@@ -1309,5 +1309,25 @@ describe("CSS Scoping (via option) of", function() {
 			}
 			return Promise.all(aPromises);
 		});
+
+		it("diff testing with comments in between", function() {
+			const expectedLibraryCssContent = readFile("test/expected/libraries/lib5/my/ui/lib/themes/cascading/library.css");
+			const expectedLibraryCssRtlContent = readFile("test/expected/libraries/lib5/my/ui/lib/themes/cascading/library-RTL.css");
+			return new Builder().build({
+				lessInputPath: "my/ui/lib/themes/cascading/library.source.less",
+				rootPaths: [
+					"test/fixtures/libraries/lib5"
+				],
+				scope: {
+					selector: "sapContrastPlus",
+					embeddedFilePath: "my/ui/lib/themes/cascading/plus/library.source.less",
+					embeddedCompareFilePath: "my/ui/lib/themes/cascading/base/library.source.less",
+					baseFilePath: "."
+				}
+			}).then(function(result) {
+				assert.equal(result.css, expectedLibraryCssContent, "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, expectedLibraryCssRtlContent, "RTL CSS scoping should be correctly generated");
+			});
+		});
 	});
 });
