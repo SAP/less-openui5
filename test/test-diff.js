@@ -42,51 +42,18 @@ describe("Diff algorithm", function() {
 
 		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
 			{
-				"type": "comment",
-				"value": " two "
-			},
-			{
-				"type": "comment",
-				"value": " three "
-			},
-			{
 				"type": "rule",
 				"value": "html"
+			},
+			{
+				"type": "comment",
+				"value": " mine2 "
 			},
 			{
 				"type": "comment",
 				"value": " single "
 			}
 		]);
-	});
-
-	it("should create a diff with moved comment block in compare and additional rule in base", function() {
-		const compareCSS = fs.readFileSync(path.join(cssPath, "library2/compare.css"), options);
-		const baseCSS = fs.readFileSync(path.join(cssPath, "library2/base.css"), options);
-
-		// Create diff object between embeddedCompare and embedded
-		const oBase = css.parse(baseCSS);
-		const oEmbedded = css.parse(compareCSS);
-
-		const oResult = diff(oBase, oEmbedded);
-
-		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
-			{
-				"type": "comment",
-				"value": " one "
-			},
-			{
-				"type": "comment",
-				"value": " two "
-			},
-			{
-				"type": "comment",
-				"value": " three "
-			},
-			{
-				"type": "rule",
-				"value": "b.test"
-			}]);
 	});
 });
 
