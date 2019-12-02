@@ -1,0 +1,21 @@
+/*
+ * multiline
+ */
+a {
+  color: black;
+}
+/* one */
+/* two */
+/* three */
+b {
+  color: black;
+}
+/* mine */
+html {
+  background-color: black;
+}
+/* mine2 */
+/* single */
+b.test {
+  color: black;
+}
