@@ -75,7 +75,7 @@ describe("(custom fs) CSS Scoping of", function() {
 		});
 
 
-		it("should return same CSS for bar with absolte import paths", function() {
+		it("should return same CSS for bar with absolute import paths", function() {
 			const readFileCalls = [];
 
 
@@ -84,7 +84,6 @@ describe("(custom fs) CSS Scoping of", function() {
 			return new Builder({
 				fs: {
 					readFile: function(...args) {
-						console.log(args[0]);
 						readFileCalls.push(args[0]);
 						return fs.readFile(...args);
 					},
@@ -103,8 +102,12 @@ describe("(custom fs) CSS Scoping of", function() {
 				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/comments/lib3/comments/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 
 				const basePath = path.join("test/fixtures/libraries/scopes/comments/lib3/comments", "themes");
-				assert.deepEqual(readFileCalls, [path.join(basePath, "bar/library.source.less"),
-					path.join(basePath, "bar/sub/my.less"), path.join(basePath, "bar/my2.less"), path.join(basePath, "my3.less")], "fs.readFile should have been called with import paths");
+				assert.deepEqual(readFileCalls, [
+					path.join(basePath, "bar/library.source.less"),
+					path.join(basePath, "other/sub/my.less"),
+					path.join(basePath, "bar/my2.less"),
+					path.join(basePath, "my3.less")
+				], "fs.readFile should have been called with import paths");
 				assert.equal(statCalls, 10, "fs.stat should have been called 19 times");
 			});
 		});
