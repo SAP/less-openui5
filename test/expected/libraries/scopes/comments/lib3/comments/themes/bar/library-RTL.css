@@ -1,0 +1,19 @@
+/**
+ * This is a sample comment!
+ */
+.myRule1 {
+  /**
+	* This is a sample comment inside a rule
+	* with a different color value!
+	*/
+  color: #ffffff;
+}
+b {
+  color: green;
+}
+a {
+  color: green;
+}
+html {
+  color: green;
+}
