@@ -2,10 +2,16 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.1...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.2...HEAD).
+
+<a name="v0.8.2"></a>
+## [v0.8.2] - 2019-12-16
+### Bug Fixes
+- Support absolute import paths in less files ([#107](https://github.com/SAP/less-openui5/issues/107)) [`266b06d`](https://github.com/SAP/less-openui5/commit/266b06d9b091d34e6f279fbdf567702bcb9dbaed)
+
 
 <a name="v0.8.1"></a>
-## [v0.8.1] - 2019-12-02
+## [v0.8.1] - 2019-12-03
 ### Bug Fixes
 - Improve rule diffing algorithm ([#104](https://github.com/SAP/less-openui5/issues/104)) [`2527189`](https://github.com/SAP/less-openui5/commit/252718912861d2edde2041729a106fb3e0a6316b)
 
@@ -29,6 +35,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.8.2]: https://github.com/SAP/less-openui5/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/SAP/less-openui5/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/SAP/less-openui5/compare/0.7.0...v0.8.0
 [0.7.0]: https://github.com/SAP/less-openui5/compare/0.6.0...0.7.0
