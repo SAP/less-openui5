@@ -2,7 +2,13 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.2...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.3...HEAD).
+
+<a name="v0.8.3"></a>
+## [v0.8.3] - 2020-01-07
+### Bug Fixes
+- Diff algorithm exception ([#110](https://github.com/SAP/less-openui5/issues/110)) [`9628a6c`](https://github.com/SAP/less-openui5/commit/9628a6c6386b671e37a3c9680ca3b5fbd6175146)
+
 
 <a name="v0.8.2"></a>
 ## [v0.8.2] - 2019-12-16
@@ -35,6 +41,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.8.3]: https://github.com/SAP/less-openui5/compare/v0.8.2...v0.8.3
 [v0.8.2]: https://github.com/SAP/less-openui5/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/SAP/less-openui5/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/SAP/less-openui5/compare/0.7.0...v0.8.0
