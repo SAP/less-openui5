@@ -1,0 +1,11 @@
+a {
+  color: blue;
+}
+/* one */
+b {
+  color: green;
+}
+b.test {
+  color: yellow;
+}
+/* two */
