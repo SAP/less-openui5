@@ -25,14 +25,12 @@ describe("css vars", function() {
 	it("should generate the correct css variables in a simple scenario", function() {
 		return new Builder().build({
 			lessInput: readFile("test/fixtures/simple/test.less"),
-			compiler: {
-				cssVars: true
-			}
+			cssVars: true
 		}).then(function(result) {
 			assert.equal(result.css, readFile("test/expected/simple/test.css"), "css should be correctly generated.");
 			assert.equal(result.cssVars.css, readFile("test/expected/simple/test-cssvars-skeleton.css"),
 				"css should be correctly generated.");
-			assert.equal(result.cssVars.vars, readFile("test/expected/simple/test-cssvars-variables.css"),
+			assert.equal(result.cssVars.cssVariables, readFile("test/expected/simple/test-cssvars-variables.css"),
 				"css variables should be correctly generated.");
 		});
 	});
@@ -40,14 +38,12 @@ describe("css vars", function() {
 	it("should generate the correct css variables in a complex scenario", function() {
 		return new Builder().build({
 			lessInput: readFile("test/fixtures/complex/test.less"),
-			compiler: {
-				cssVars: true
-			}
+			cssVars: true
 		}).then(function(result) {
 			assert.equal(result.css, readFile("test/expected/complex/test.css"), "css should be correctly generated.");
 			assert.equal(result.cssVars.css, readFile("test/expected/complex/test-cssvars-skeleton.css"),
 				"css should be correctly generated.");
-			assert.equal(result.cssVars.vars, readFile("test/expected/complex/test-cssvars-variables.css"),
+			assert.equal(result.cssVars.cssVariables, readFile("test/expected/complex/test-cssvars-variables.css"),
 				"css variables should be correctly generated.");
 		});
 	});
