@@ -102,6 +102,13 @@ Default: `true`
 
 Create mirrored css for right-to-left support.
 
+##### cssVars
+
+Type `boolean`
+Default: `true`
+
+Whether or not to enable css variables output.
+
 ##### rootPaths
 
 Type: `array` of `string`
@@ -150,12 +157,6 @@ Type `object`
 Options for the [less](http://lesscss.org) compiler (`tree.toCss`).
 
 **Note:** The options `sourceMap` and `cleancss` are not supported. An exception will be thrown when used.
-
-###### cssVars
-
-Type `boolean`
-
-Whether or not to enable css variables output.
 
 ##### library.name
 
@@ -217,6 +218,36 @@ Key-value map of all global less variables (without @ prefix).
 Type: `array`
 
 Paths to files imported via import directives.
+
+##### cssVars
+
+Type: `object`
+
+Object containing information about css variables related build output.
+
+###### css
+
+Type: `string`
+
+Regular css skeleton output.
+
+###### cssRtl
+
+Type: `string`
+
+Mirrored css skeleton for right-to-left support (if rtl option was enabled).
+
+###### lessVariables
+
+Type: `string`
+
+The less and css variables output for generation of custom css variables file.
+
+###### cssVariables
+
+Type: `string`
+
+The css variables output.
 
 ### .clearCache()
 Clears all cached build results.  
