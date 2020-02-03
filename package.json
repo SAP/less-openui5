@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint lib test",
     "unit": "mocha test/*.js",
-    "unit-debug": "mocha --inspect --debug-brk test/*.js",
+    "unit-debug": "mocha --inspect --inspect-brk test/*.js",
     "test": "npm run lint && npm run unit",
     "preversion": "npm test",
     "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md 0.7.0.. && git add CHANGELOG.md",
@@ -43,6 +43,6 @@
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "graceful-fs": "^4.2.3",
-    "mocha": "^6.2.2"
+    "mocha": "^7.0.1"
   }
 }
