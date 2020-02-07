@@ -102,7 +102,7 @@ Default: `true`
 
 Create mirrored css for right-to-left support.
 
-##### cssVars
+##### cssVariables
 
 Type `boolean`
 Default: `true`
@@ -219,31 +219,25 @@ Type: `array`
 
 Paths to files imported via import directives.
 
-##### cssVars
-
-Type: `object`
-
-Object containing information about css variables related build output.
-
-###### css
+##### cssSkeleton
 
 Type: `string`
 
 Regular css skeleton output.
 
-###### cssRtl
+##### cssSkeletonRtl
 
 Type: `string`
 
 Mirrored css skeleton for right-to-left support (if rtl option was enabled).
 
-###### lessVariables
+##### cssVariablesSource
 
 Type: `string`
 
 The less and css variables output for generation of custom css variables file.
 
-###### cssVariables
+##### cssVariables
 
 Type: `string`
 
