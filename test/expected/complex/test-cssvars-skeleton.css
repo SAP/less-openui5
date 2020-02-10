@@ -1,0 +1,14 @@
+a,
+.link {
+  color: var(--link-color);
+}
+a:hover {
+  color: var(--link-color-hover);
+}
+.widget {
+  color: #fff;
+  background: var(--link-color);
+}
+.lazy-eval {
+  width: var(--var);
+}
