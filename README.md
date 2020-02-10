@@ -104,10 +104,10 @@ Create mirrored css for right-to-left support.
 
 ##### cssVariables
 
-Type `boolean`
-Default: `true`
+Type `boolean`  
+Default: `false`
 
-Whether or not to enable css variables output.
+Create files for experimental CSS Variables support ([`cssSkeleton`](#cssSkeleton), [`cssSkeletonRtl`](#cssSkeletonRtl), [`cssVariablesSource`](#cssVariablesSource), [`cssVariables`](#cssVariables-1)).
 
 ##### rootPaths
 
@@ -221,27 +221,31 @@ Paths to files imported via import directives.
 
 ##### cssSkeleton
 
-Type: `string`
+Type: `string`  
+Only available when [`options.cssVariables`](#cssVariables) is set to `true`
 
-Regular css skeleton output.
+CSS with references to CSS Variables.
 
 ##### cssSkeletonRtl
 
-Type: `string`
+Type: `string`  
+Only available when [`options.cssVariables`](#cssVariables) and [`options.rtl`](#rtl) are set to `true`
 
-Mirrored css skeleton for right-to-left support (if rtl option was enabled).
+Mirrored (right-to-left) CSS with references to CSS Variables (if `rtl` option was enabled).
 
 ##### cssVariablesSource
 
-Type: `string`
+Type: `string`  
+Only available when [`options.cssVariables`](#cssVariables) is set to `true`
 
-The less and css variables output for generation of custom css variables file.
+Source file used to compile the `cssVariables` output.
 
 ##### cssVariables
 
-Type: `string`
+Type: `string`  
+Only available when [`options.cssVariables`](#cssVariables) is set to `true`
 
-The css variables output.
+Definition of CSS Variables based on LESS variables.
 
 ### .clearCache()
 Clears all cached build results.  
