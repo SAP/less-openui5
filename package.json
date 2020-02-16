@@ -37,7 +37,7 @@
     "css": "^2.2.1",
     "mime": "^1.6.0",
     "object-assign": "^4.0.1",
-    "request": "^2.88.0"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
