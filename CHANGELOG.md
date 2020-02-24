@@ -2,7 +2,13 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.5...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.6...HEAD).
+
+<a name="v0.8.6"></a>
+## [v0.8.6] - 2020-02-24
+### Bug Fixes
+- CSS var assignment only for less to less vars ([#116](https://github.com/SAP/less-openui5/issues/116)) [`2e9560d`](https://github.com/SAP/less-openui5/commit/2e9560dd2b89f7b1f3e09fcc3d0bfe867496a3fc)
+
 
 <a name="v0.8.5"></a>
 ## [v0.8.5] - 2020-02-21
@@ -53,6 +59,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.8.6]: https://github.com/SAP/less-openui5/compare/v0.8.5...v0.8.6
 [v0.8.5]: https://github.com/SAP/less-openui5/compare/v0.8.4...v0.8.5
 [v0.8.4]: https://github.com/SAP/less-openui5/compare/v0.8.3...v0.8.4
 [v0.8.3]: https://github.com/SAP/less-openui5/compare/v0.8.2...v0.8.3
