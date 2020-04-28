@@ -35,7 +35,7 @@
   "dependencies": {
     "clone": "^2.1.0",
     "css": "^2.2.1",
-    "mime": "^1.6.0",
+    "mime": "^2.4.4",
     "object-assign": "^4.0.1",
     "request": "^2.88.2"
   },
