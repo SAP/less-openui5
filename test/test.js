@@ -1330,4 +1330,45 @@ describe("CSS Scoping (via option) of", function() {
 			});
 		});
 	});
+
+	describe("Error handling", function() {
+		it("should throw error when embeddedFile is missing", function() {
+			return new Builder().build({
+				scope: {
+					selector: "fooContrast",
+					embeddedFilePath: "comments/themes/bar/library.source.less",
+					embeddedCompareFilePath: "comments/themes/foo/library.source.less",
+					baseFilePath: "comments/themes/foo/library.source.less"
+				},
+				lessInputPath: "comments/themes/foo/library.source.less",
+				rootPaths: [
+					"test/fixtures/libraries/scopes/comments/lib1"
+				]
+			}).then(function() {
+				assert.fail("Build should not succeed");
+			}, function(err) {
+				assert.ok(err instanceof Error, "err should be instance of Error");
+				assert.equal(err.message, "Could not find embeddedFile at path 'comments/themes/bar/library.source.less'");
+			});
+		});
+		it("should throw error when embeddedCompareFile is missing", function() {
+			return new Builder().build({
+				scope: {
+					selector: "fooContrast",
+					embeddedFilePath: "comments/themes/bar/library.source.less",
+					embeddedCompareFilePath: "comments/themes/foo/library.source.less",
+					baseFilePath: "comments/themes/foo/library.source.less"
+				},
+				lessInputPath: "comments/themes/bar/library.source.less",
+				rootPaths: [
+					"test/fixtures/libraries/scopes/comments/lib2"
+				]
+			}).then(function() {
+				assert.fail("Build should not succeed");
+			}, function(err) {
+				assert.ok(err instanceof Error, "err should be instance of Error");
+				assert.equal(err.message, "Could not find embeddedCompareFile at path 'comments/themes/foo/library.source.less'");
+			});
+		});
+	});
 });
