@@ -2,7 +2,13 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.6...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.7...HEAD).
+
+<a name="v0.8.7"></a>
+## [v0.8.7] - 2020-06-09
+### Bug Fixes
+- Error handling for missing scoping files [`c7513a1`](https://github.com/SAP/less-openui5/commit/c7513a101a2f01e9114ff86f5be598a29bc51be0)
+
 
 <a name="v0.8.6"></a>
 ## [v0.8.6] - 2020-02-24
@@ -59,6 +65,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.8.7]: https://github.com/SAP/less-openui5/compare/v0.8.6...v0.8.7
 [v0.8.6]: https://github.com/SAP/less-openui5/compare/v0.8.5...v0.8.6
 [v0.8.5]: https://github.com/SAP/less-openui5/compare/v0.8.4...v0.8.5
 [v0.8.4]: https://github.com/SAP/less-openui5/compare/v0.8.3...v0.8.4
