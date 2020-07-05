@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "clone": "^2.1.0",
-    "css": "^2.2.1",
+    "css": "^3.0.0",
     "mime": "^1.6.0",
     "object-assign": "^4.0.1",
     "request": "^2.88.2"
