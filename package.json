@@ -19,7 +19,9 @@
   },
   "files": [
     "CONTRIBUTING.md",
-    "lib/**"
+    "lib/**",
+    "LICENSES/**",
+    ".reuse/**"
   ],
   "keywords": [
     "less",
