@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: sunday
+    time: "10:00"
+    timezone: Etc/UCT
+  reviewers:
+  - matz3
+  - tobiasso85
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: less
+    versions:
+    - "> 1.6.3"
+    - "< 2"
+  - dependency-name: less
+    versions:
+    - "< 1.7.6"
+    - ">= 1.7.5.a"
+  - dependency-name: less
+    versions:
+    - "< 3"
+    - ">= 2.a"
+  - dependency-name: less
+    versions:
+    - "< 4"
+    - ">= 3.a"
