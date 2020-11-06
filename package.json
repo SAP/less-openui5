@@ -40,7 +40,7 @@
     "mime": "^1.6.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
     "graceful-fs": "^4.2.4",
     "mocha": "^7.2.0"
