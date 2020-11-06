@@ -2,10 +2,26 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.8.7...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.9.0...HEAD).
+
+<a name="v0.9.0"></a>
+## [v0.9.0] - 2020-11-06
+### Breaking Changes
+- Remove support for import over http(s) [`e4a1c86`](https://github.com/SAP/less-openui5/commit/e4a1c86b994430fa3e640dc7b09a6c09a1b2845b)
+- Require Node.js >= 10 [`47f244e`](https://github.com/SAP/less-openui5/commit/47f244ec37ab5ff51c88cd2dd96c4110f2779694)
+
+### BREAKING CHANGE
+
+Import over http(s) is not supported anymore.
+Use the Builder 'fs' option to provide an interface that also handles
+http(s) resources.
+
+Support for older Node.js releases has been dropped.
+Only Node.js v10 or higher is supported.
+
 
 <a name="v0.8.7"></a>
-## [v0.8.7] - 2020-06-09
+## [v0.8.7] - 2020-06-26
 ### Bug Fixes
 - Error handling for missing scoping files [`c7513a1`](https://github.com/SAP/less-openui5/commit/c7513a101a2f01e9114ff86f5be598a29bc51be0)
 
@@ -65,6 +81,7 @@ A list of unreleased changes can be found [here](https://github.com/SAP/less-ope
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.9.0]: https://github.com/SAP/less-openui5/compare/v0.8.7...v0.9.0
 [v0.8.7]: https://github.com/SAP/less-openui5/compare/v0.8.6...v0.8.7
 [v0.8.6]: https://github.com/SAP/less-openui5/compare/v0.8.5...v0.8.6
 [v0.8.5]: https://github.com/SAP/less-openui5/compare/v0.8.4...v0.8.5
