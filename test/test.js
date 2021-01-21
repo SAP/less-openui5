@@ -241,15 +241,20 @@ describe("libraries (my/other/ui/lib)", function() {
 		}).then(function(result) {
 			assert.equal(result.css, readFile("test/expected/libraries/lib3/my/other/ui/lib/themes/base/library.css"), "css should be correctly generated.");
 			assert.equal(result.cssRtl, readFile("test/expected/libraries/lib3/my/other/ui/lib/themes/base/library-RTL.css"), "rtl css should be correctly generated.");
-			assert.deepEqual(result.variables, {"_my_other_ui_lib_MyControl_color1": "#fefefe"}, "variables should be correctly collected.");
+			assert.deepEqual(result.variables, {
+				"_my_other_ui_lib_MyControl_color1": "#fefefe",
+				"_my_other_ui_lib_MyOtherControl_color1": "#fefefe"
+			}, "variables should be correctly collected.");
 			assert.deepEqual(result.allVariables, {
 				"_my_other_ui_lib_MyControl_color1": "#fefefe",
+				"_my_other_ui_lib_MyOtherControl_color1": "#fefefe",
 				"color1": "#fefefe"
 			}, "allVariables should be correctly collected.");
 			assert.deepEqual(result.imports, [
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
-				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "MyControl.less")
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "MyControl.less"),
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "sub-directory", "MyOtherControl.less")
 			], "import list should be correct.");
 		});
 	});
@@ -269,11 +274,13 @@ describe("libraries (my/other/ui/lib)", function() {
 			const oVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
-					"_my_other_ui_lib_MyControl_color2": "#008000"
+					"_my_other_ui_lib_MyControl_color2": "#008000",
+					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff"
 				},
 				"scopes": {
 					"fooContrast": {
-						"_my_other_ui_lib_MyControl_color1": "#000000"
+						"_my_other_ui_lib_MyControl_color1": "#000000",
+						"_my_other_ui_lib_MyOtherControl_color1": "#ffffff"
 					}
 				}
 			};
@@ -281,11 +288,13 @@ describe("libraries (my/other/ui/lib)", function() {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
+					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff",
 					"color1": "#ffffff"
 				},
 				"scopes": {
 					"fooContrast": {
 						"_my_other_ui_lib_MyControl_color1": "#000000",
+						"_my_other_ui_lib_MyOtherControl_color1": "#000000",
 						"color1": "#000000"
 					}
 				}
@@ -300,6 +309,7 @@ describe("libraries (my/other/ui/lib)", function() {
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "MyControl.less"),
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "sub-directory", "MyOtherControl.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "global.less"),
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "foo", "MyControl.less"),
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "bar", "library.source.less"),
@@ -324,11 +334,13 @@ describe("libraries (my/other/ui/lib)", function() {
 			const oVariablesExpected = {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
-					"_my_other_ui_lib_MyControl_color2": "#008000"
+					"_my_other_ui_lib_MyControl_color2": "#008000",
+					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff"
 				},
 				"scopes": {
 					"barContrast": {
-						"_my_other_ui_lib_MyControl_color1": "#000000"
+						"_my_other_ui_lib_MyControl_color1": "#000000",
+						"_my_other_ui_lib_MyOtherControl_color1": "#000000"
 					}
 				}
 			};
@@ -336,11 +348,13 @@ describe("libraries (my/other/ui/lib)", function() {
 				"default": {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
+					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff",
 					"color1": "#ffffff"
 				},
 				"scopes": {
 					"barContrast": {
 						"_my_other_ui_lib_MyControl_color1": "#000000",
+						"_my_other_ui_lib_MyOtherControl_color1": "#000000",
 						"color1": "#000000"
 					}
 				}
@@ -356,6 +370,7 @@ describe("libraries (my/other/ui/lib)", function() {
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "MyControl.less"),
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "sub-directory", "MyOtherControl.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "foo", "global.less"),
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "foo", "MyControl.less"),
 				path.join("test", "fixtures", "libraries", "lib2", "my", "ui", "lib", "themes", "bar", "global.less"),
