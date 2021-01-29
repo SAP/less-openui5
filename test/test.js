@@ -419,6 +419,114 @@ describe("error handling", function() {
 			assert.ok(err);
 		});
 	});
+
+	it("should throw error when using inline JavaScript", function() {
+		const lessInput = `.rule {
+	@var: \`(function(){ return "Cat"; })()\`;
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using quoted inline JavaScript", function() {
+		const lessInput = `.rule {
+	@var: "\`(function(){ return 'Cat'; })()\`";
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using inline JavaScript with parser option javascriptEnabled: true", function() {
+		const lessInput = `.rule {
+	@var: \`(function(){ return "Cat"; })()\`;
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput,
+			parser: {
+				javascriptEnabled: true
+			}
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using quoted inline JavaScript with parser option javascriptEnabled: true", function() {
+		const lessInput = `.rule {
+	@var: "\`(function(){ return 'Cat'; })()\`";
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput,
+			parser: {
+				javascriptEnabled: true
+			}
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using inline JavaScript with parser option javascriptEnabled: false", function() {
+		const lessInput = `.rule {
+	@var: \`(function(){ return "Cat"; })()\`;
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput,
+			parser: {
+				javascriptEnabled: false
+			}
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
+
+	it("should throw error when using quoted inline JavaScript with parser option javascriptEnabled: false", function() {
+		const lessInput = `.rule {
+	@var: "\`(function(){ return 'Cat'; })()\`";
+	color: @var;
+}`;
+		return new Builder().build({
+			lessInput,
+			parser: {
+				javascriptEnabled: false
+			}
+		}).then(function(res) {
+			// no resolve
+			assert.ok(false, `Expected build to fail but finished with content:\n${res.css}`);
+		}, function(err) {
+			assert.equal(err.message, "You are using JavaScript, which has been disabled.");
+			assert.ok(err);
+		});
+	});
 });
 
 function assertLessToRtlCssEqual(filename) {

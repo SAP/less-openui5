@@ -149,7 +149,10 @@ lib2
 Type: `object`
 
 Options for the [less](http://lesscss.org) parser (`less.Parser`).  
-**Note:** Default of `relativeUrls` option is changed from `false` to `true`.
+
+**Note**
+- Default of `relativeUrls` option is changed from `false` to `true`.
+- Option `javascriptEnabled` has been removed. JavaScript is always disabled and cannot be enabled.
 
 ##### compiler
 
