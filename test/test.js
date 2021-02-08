@@ -280,7 +280,7 @@ describe("libraries (my/other/ui/lib)", function() {
 				"scopes": {
 					"fooContrast": {
 						"_my_other_ui_lib_MyControl_color1": "#000000",
-						"_my_other_ui_lib_MyOtherControl_color1": "#ffffff"
+						"_my_other_ui_lib_MyOtherControl_color1": "#000000"
 					}
 				}
 			};

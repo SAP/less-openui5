@@ -49,4 +49,23 @@ describe("VariableCollector", function() {
 			"_my_other_ui_lib_MyControl_color2": "#008000"
 		}, "relevant variables should be returned");
 	});
+	it("should return variables when calling 'getVariables' (filename = rootFilename, no imports)", function() {
+		const env = {};
+		const variableCollector = new VariableCollector(env);
+
+		variableCollector.mVariables = {
+			"color1": {
+				"value": "#ffffff",
+				"filename": "something",
+				"rootFilename": "something"
+			}
+		};
+		const aImports = [];
+
+		const variables = variableCollector.getVariables(aImports);
+
+		assert.deepEqual(variables, {
+			"color1": "#ffffff"
+		}, "relevant variables should be returned");
+	});
 });
