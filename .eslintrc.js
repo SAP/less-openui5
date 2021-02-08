@@ -42,13 +42,13 @@ module.exports = {
 		],
 		"comma-dangle": "off",
 		"no-tabs": "off",
-		'valid-jsdoc': [
+		"valid-jsdoc": [
 			2,
 			{
 				requireParamDescription: false,
 				requireReturnDescription: false,
 				requireReturn: false,
-				prefer: {return: 'returns'},
+				prefer: {return: "returns"},
 			}
 		],
 	},
