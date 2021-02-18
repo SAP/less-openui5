@@ -586,6 +586,39 @@ describe("rtl", function() {
 	});
 });
 
+
+describe("img-RTL check", function() {
+	it("check img-RTL files", function() {
+		const filename = "image-url";
+		const lessFilename = "test/fixtures/imgRtl/" + filename + ".less";
+		const cssFilename = "test/expected/imgRtl/" + filename + ".css";
+
+		// stub
+		const builder = new Builder({fs: {}});
+		builder.fileUtils = {
+			findFilesByExtension: function() {
+				return Promise.resolve([
+					"/resources/my/lib/name/themes/base/img-RTL/fg/hibase.png",
+					"/resources/my/lib/name/themes/xx/img-RTL/fg/hi.png",
+					"/resources/my/lib/name/themes/xx/img-RTL/column_header.gif"
+				]);
+			}
+		};
+		return builder.build({
+			lessInput: readFile(lessFilename),
+			parser: {
+				filename: "/resources/my/lib/name/themes/xx/" + filename + ".less",
+				paths: "test/fixtures/imgRtl"
+			},
+			library: {
+				name: "my.lib.name"
+			}
+		}).then(function(result) {
+			assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should not be generated.");
+		});
+	});
+});
+
 describe("variables", function() {
 	it("should return only globally defined variables", function() {
 		return new Builder().build({
