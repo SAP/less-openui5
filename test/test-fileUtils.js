@@ -2,6 +2,7 @@
 "use strict";
 
 const assert = require("assert");
+const path = require("path");
 
 // tested module
 const fileUtils = require("../lib/fileUtils.js");
@@ -48,15 +49,15 @@ describe("fileUtils", function() {
 		const promises = [];
 		promises.push(fileUtilsInstance.findFilesByExtension("root", [".gif"]).then(function(result) {
 			assert.deepEqual(result, [
-				"root/a/b/mygif.gif",
-				"root/a/c/mycgif.gif"
+				path.normalize("root/a/b/mygif.gif"),
+				path.normalize("root/a/c/mycgif.gif")
 			]);
 		}));
 		promises.push(fileUtilsInstance.findFilesByExtension("root", [".gif", ".png"]).then(function(result) {
 			assert.deepEqual(result, [
-				"root/a/b/myimg.png",
-				"root/a/b/mygif.gif",
-				"root/a/c/mycgif.gif"
+				path.normalize("root/a/b/myimg.png"),
+				path.normalize("root/a/b/mygif.gif"),
+				path.normalize("root/a/c/mycgif.gif")
 			]);
 		}));
 		return Promise.all(promises);
