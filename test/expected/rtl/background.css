@@ -40,32 +40,32 @@
   background-image: url(img-RTL/column_header.gif);
   background-image: url('img-RTL/column_header.gif');
   background-image: url("img-RTL/column_header.gif") /* some comment */;
-  background-image: url(http://www.x.de/img-RTL/column_header.gif);
-  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
-  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(http://www.x.de/img/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img/column_header.gif');
+  background-image: url("http://www.x.de/img/column_header.gif");
   background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
-  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img/column_header.gif"), url(img-RTL/column_header2.gif);
   background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
 }
 .rtlBackgroundImageMirroringWithMixIn1 {
   background-image: url(img-RTL/column_header.gif);
   background-image: url('img-RTL/column_header.gif');
   background-image: url("img-RTL/column_header.gif") /* some comment */;
-  background-image: url(http://www.x.de/img-RTL/column_header.gif);
-  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
-  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(http://www.x.de/img/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img/column_header.gif');
+  background-image: url("http://www.x.de/img/column_header.gif");
   background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
-  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img/column_header.gif"), url(img-RTL/column_header2.gif);
   background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
 }
 .rtlBackgroundImageMirroringWithMixIn2 {
   background-image: url(img-RTL/column_header.gif);
   background-image: url('img-RTL/column_header.gif');
   background-image: url("img-RTL/column_header.gif") /* some comment */;
-  background-image: url(http://www.x.de/img-RTL/column_header.gif);
-  background-image: /* some comment */ url('http://www.x.de/img-RTL/column_header.gif');
-  background-image: url("http://www.x.de/img-RTL/column_header.gif");
+  background-image: url(http://www.x.de/img/column_header.gif);
+  background-image: /* some comment */ url('http://www.x.de/img/column_header.gif');
+  background-image: url("http://www.x.de/img/column_header.gif");
   background-image: url(img-RTL/column_header.gif), /* some comment */ url(img-RTL/column_header2.gif);
-  background-image: url("http://www.x.de/img-RTL/column_header.gif"), url(img-RTL/column_header2.gif);
+  background-image: url("http://www.x.de/img/column_header.gif"), url(img-RTL/column_header2.gif);
   background-image: url(img-RTL/column_header.gif), url(img-RTL/column_header2.gif), url(img-RTL/column_header3.gif);
 }

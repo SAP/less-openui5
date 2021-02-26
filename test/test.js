@@ -534,11 +534,7 @@ function assertLessToRtlCssEqual(filename) {
 	const cssFilename = "test/expected/rtl/" + filename + ".css";
 
 	return new Builder().build({
-		lessInput: readFile(lessFilename),
-		parser: {
-			filename: filename + ".less",
-			paths: "test/fixtures/rtl"
-		}
+		lessInputPath: lessFilename
 	}).then(function(result) {
 		assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should not be generated.");
 	});

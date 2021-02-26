@@ -71,7 +71,13 @@ describe("UrlCollectorPlugin", function() {
 			const setExistingImgRtlPathsCall = setExistingImgRtlPathsSpy.getCall(0);
 
 			assert.deepEqual(setExistingImgRtlPathsCall.args, [
-				["test/fixtures/rtl/img-RTL/column_header.gif"]
+				[
+					"test/fixtures/rtl/img-RTL/column_header.gif",
+					"test/fixtures/rtl/img-RTL/drop-down_ico.png",
+					"test/fixtures/rtl/img-RTL/hover_column_header.gif",
+					"test/fixtures/rtl/img-RTL/column_header2.gif",
+					"test/fixtures/rtl/img-RTL/column_header3.gif"
+				]
 			]);
 		});
 	});
