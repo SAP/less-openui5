@@ -587,7 +587,7 @@ describe("rtl", function() {
 });
 
 
-describe("img-RTL check", function() {
+describe.skip("img-RTL check", function() {
 	it("check img-RTL files", function() {
 		const filename = "image-url";
 		const lessFilename = "test/fixtures/imgRtl/" + filename + ".less";
