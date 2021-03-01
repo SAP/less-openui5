@@ -2,6 +2,7 @@
 "use strict";
 
 const assert = require("assert");
+const sinon = require("sinon");
 const path = require("path");
 const clone = require("clone");
 const readFile = require("./common/helper").readFile;
@@ -582,36 +583,67 @@ describe("rtl", function() {
 	});
 });
 
+describe("img-RTL check", function() {
+	it("Rewrite to img-RTL if file exists", async () => {
+		const builder = new Builder();
 
-describe.skip("img-RTL check", function() {
-	it("check img-RTL files", function() {
-		const filename = "image-url";
-		const lessFilename = "test/fixtures/imgRtl/" + filename + ".less";
-		const cssFilename = "test/expected/imgRtl/" + filename + ".css";
+		const findFileStub = sinon.stub(builder.fileUtils, "findFile");
+		findFileStub.rejects(new Error("Unexpected call"))
+			.withArgs("img-RTL/test.png")
+			.resolves({path: "img-RTL/test.png", stat: {}})
+			.withArgs("foo/img-RTL/noRtlVariant.png")
+			.resolves(null)
+			.withArgs("foo/img-RTL/some/image.png")
+			.resolves({path: "foo/img-RTL/some/image.png", stat: {}});
 
-		// stub
-		const builder = new Builder({fs: {}});
-		builder.fileUtils = {
-			findFilesByExtension: function() {
-				return Promise.resolve([
-					"/resources/my/lib/name/themes/base/img-RTL/fg/hibase.png",
-					"/resources/my/lib/name/themes/xx/img-RTL/fg/hi.png",
-					"/resources/my/lib/name/themes/xx/img-RTL/column_header.gif"
-				]);
-			}
-		};
-		return builder.build({
-			lessInput: readFile(lessFilename),
+		const result = await builder.build({
+			lessInput: `
+				.rule {
+					background: url('../img/test.png');
+					list-style-image: url('./img/noRtlVariant.png'); /* img-RTL doesn't exist => no rewrite */
+				}
+				.otherRule {
+					background: url('/absolute/img/test.png');
+					/* server-absolute url => no rewrite */
+				}
+				.urlViaVariable {
+					background: @myUrl;
+					cursor: @myUrl;
+				}
+				@myUrl: url("img/some/image.png");
+			`,
 			parser: {
-				filename: "/resources/my/lib/name/themes/xx/" + filename + ".less",
-				paths: "test/fixtures/imgRtl"
+				filename: "foo/bar.less"
 			},
-			library: {
-				name: "my.lib.name"
-			}
-		}).then(function(result) {
-			assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should not be generated.");
 		});
+		assert.equal(result.css, `.rule {
+  background: url('../img/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: url("img/some/image.png");
+  cursor: url("img/some/image.png");
+}
+`, "css should be generated as expected");
+		assert.equal(result.cssRtl, `.rule {
+  background: url('../img-RTL/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: url("img-RTL/some/image.png");
+  cursor: url("img-RTL/some/image.png");
+}
+`, "rtl css should be generated as expected");
 	});
 });
 
