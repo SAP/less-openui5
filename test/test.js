@@ -537,7 +537,7 @@ function assertLessToRtlCssEqual(filename) {
 	return new Builder().build({
 		lessInputPath: lessFilename
 	}).then(function(result) {
-		assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should not be generated.");
+		assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should be generated as expected");
 	});
 }
 
