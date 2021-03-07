@@ -91,7 +91,7 @@
 		"eslint": "^7.21.0",
 		"eslint-config-google": "^0.14.0",
 		"graceful-fs": "^4.2.6",
-		"mocha": "^8.3.0",
+		"mocha": "^8.3.1",
 		"nyc": "^15.1.0"
 	}
 }
