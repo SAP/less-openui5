@@ -615,6 +615,7 @@ describe("img-RTL check", function() {
 			parser: {
 				filename: "foo/bar.less"
 			},
+			cssVariables: true
 		});
 		assert.equal(result.css, `.rule {
   background: url('../img/test.png');
@@ -644,6 +645,42 @@ describe("img-RTL check", function() {
   cursor: url("img-RTL/some/image.png");
 }
 `, "rtl css should be generated as expected");
+
+		assert.equal(result.cssSkeleton, `.rule {
+  background: url('../img/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: var(--myUrl);
+  cursor: var(--myUrl);
+}
+`, "css skeleton should be generated as expected");
+		assert.equal(result.cssSkeletonRtl, `.rule {
+  background: url('../img-RTL/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: var(--myUrl);
+  cursor: var(--myUrl);
+}
+`, "rtl css skeleton should be generated as expected");
+
+		assert.equal(result.cssVariables, `:root {
+  --myUrl: url("img/some/image.png");
+}
+`, "css variables should be generated as expected");
+
+		// NOTE: cssVariables are currently LTR only. There is no RTL-variant.
 	});
 });
 

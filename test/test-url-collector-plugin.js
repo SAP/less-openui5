@@ -32,7 +32,7 @@ describe("UrlCollectorPlugin", function() {
 		});
 	});
 
-	it("should collect and resolve all urls", function() {
+	it("should collect and resolve all relative urls", function() {
 		return new Builder().build({
 			lessInputPath: "test/fixtures/rtl/background.less",
 		}).then(function(/* result */) {
@@ -78,6 +78,57 @@ describe("UrlCollectorPlugin", function() {
 					"test/fixtures/rtl/img-RTL/column_header2.gif",
 					"test/fixtures/rtl/img-RTL/column_header3.gif"
 				]
+			]);
+		});
+	});
+
+	it("should not collect data-urls", function() {
+		return new Builder().build({
+			lessInput: `
+.rule {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAAN);
+}
+			`,
+		}).then(function(/* result */) {
+			assert.equal(getUrlsSpy.callCount, 1, "UrlCollectorPlugin#getUrls should be called once");
+			const getUrlsCall = getUrlsSpy.getCall(0);
+			const collectedUrls = getUrlsCall.returnValue;
+			assert.deepEqual(collectedUrls, []);
+
+			assert.equal(setExistingImgRtlPathsSpy.callCount, 1,
+				"RtlPlugin#setExistingImgRtlPathsSpy should be called once");
+			const setExistingImgRtlPathsCall = setExistingImgRtlPathsSpy.getCall(0);
+
+			assert.deepEqual(setExistingImgRtlPathsCall.args, [
+				[]
+			]);
+		});
+	});
+
+	it("should not fail on empty url", function() {
+		return new Builder().build({
+			lessInput: `
+.rule {
+	background-image: url();
+}
+			`,
+		}).then(function(/* result */) {
+			assert.equal(getUrlsSpy.callCount, 1, "UrlCollectorPlugin#getUrls should be called once");
+			const getUrlsCall = getUrlsSpy.getCall(0);
+			const collectedUrls = getUrlsCall.returnValue;
+			assert.deepEqual(collectedUrls, [
+				{
+					currentDirectory: "",
+					relativeUrl: ""
+				}
+			]);
+
+			assert.equal(setExistingImgRtlPathsSpy.callCount, 1,
+				"RtlPlugin#setExistingImgRtlPathsSpy should be called once");
+			const setExistingImgRtlPathsCall = setExistingImgRtlPathsSpy.getCall(0);
+
+			assert.deepEqual(setExistingImgRtlPathsCall.args, [
+				[]
 			]);
 		});
 	});
