@@ -2,6 +2,7 @@
 "use strict";
 
 const assert = require("assert");
+const sinon = require("sinon");
 const path = require("path");
 const clone = require("clone");
 const readFile = require("./common/helper").readFile;
@@ -534,13 +535,9 @@ function assertLessToRtlCssEqual(filename) {
 	const cssFilename = "test/expected/rtl/" + filename + ".css";
 
 	return new Builder().build({
-		lessInput: readFile(lessFilename),
-		parser: {
-			filename: filename + ".less",
-			paths: "test/fixtures/rtl"
-		}
+		lessInputPath: lessFilename
 	}).then(function(result) {
-		assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should not be generated.");
+		assert.equal(result.cssRtl, readFile(cssFilename), "rtl css should be generated as expected");
 	});
 }
 
@@ -583,6 +580,107 @@ describe("rtl", function() {
 
 	it("variables", function() {
 		return assertLessToRtlCssEqual("variables");
+	});
+});
+
+describe("img-RTL check", function() {
+	it("Rewrite to img-RTL if file exists", async () => {
+		const builder = new Builder();
+
+		const findFileStub = sinon.stub(builder.fileUtils, "findFile");
+		findFileStub.rejects(new Error("Unexpected call"))
+			.withArgs("img-RTL/test.png")
+			.resolves({path: "img-RTL/test.png", stat: {}})
+			.withArgs("foo/img-RTL/noRtlVariant.png")
+			.resolves(null)
+			.withArgs("foo/img-RTL/some/image.png")
+			.resolves({path: "foo/img-RTL/some/image.png", stat: {}});
+
+		const result = await builder.build({
+			lessInput: `
+				.rule {
+					background: url('../img/test.png');
+					list-style-image: url('./img/noRtlVariant.png'); /* img-RTL doesn't exist => no rewrite */
+				}
+				.otherRule {
+					background: url('/absolute/img/test.png');
+					/* server-absolute url => no rewrite */
+				}
+				.urlViaVariable {
+					background: @myUrl;
+					cursor: @myUrl;
+				}
+				@myUrl: url("img/some/image.png");
+			`,
+			parser: {
+				filename: "foo/bar.less"
+			},
+			cssVariables: true
+		});
+		assert.equal(result.css, `.rule {
+  background: url('../img/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: url("img/some/image.png");
+  cursor: url("img/some/image.png");
+}
+`, "css should be generated as expected");
+		assert.equal(result.cssRtl, `.rule {
+  background: url('../img-RTL/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: url("img-RTL/some/image.png");
+  cursor: url("img-RTL/some/image.png");
+}
+`, "rtl css should be generated as expected");
+
+		assert.equal(result.cssSkeleton, `.rule {
+  background: url('../img/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: var(--myUrl);
+  cursor: var(--myUrl);
+}
+`, "css skeleton should be generated as expected");
+		assert.equal(result.cssSkeletonRtl, `.rule {
+  background: url('../img-RTL/test.png');
+  list-style-image: url('img/noRtlVariant.png');
+  /* img-RTL doesn't exist => no rewrite */
+}
+.otherRule {
+  background: url('/absolute/img/test.png');
+  /* server-absolute url => no rewrite */
+}
+.urlViaVariable {
+  background: var(--myUrl);
+  cursor: var(--myUrl);
+}
+`, "rtl css skeleton should be generated as expected");
+
+		assert.equal(result.cssVariables, `:root {
+  --myUrl: url("img/some/image.png");
+}
+`, "css variables should be generated as expected");
+
+		// NOTE: cssVariables are currently LTR only. There is no RTL-variant.
 	});
 });
 
