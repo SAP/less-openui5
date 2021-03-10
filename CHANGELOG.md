@@ -2,7 +2,24 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.10.0...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.0...HEAD).
+
+<a name="v0.11.0"></a>
+## [v0.11.0] - 2021-03-10
+### Breaking Changes
+- Only rewrite image paths for RTL-variant when files exist ([#162](https://github.com/SAP/less-openui5/issues/162)) [`88e7a74`](https://github.com/SAP/less-openui5/commit/88e7a7436fc7f197186c780a856bb9c6dff7c582)
+
+### BREAKING CHANGE
+
+This affects the output of the `rtl` (right-to-left) variant that is created by applying several mechanisms to create a mirrored variant of the CSS to be used in locales that use a right to left text direction.
+
+One aspect is adopting urls which contain an `img` folder in the path.
+Before this change, all urls have been changed to use a `img-RTL` folder instead. This allows mirrored images to be used, but it also requires an images to be available on that path even when the original image should be used (e.g. for a logo).
+
+With this change:
+- Urls are only adopted in case an `img-RTL` variant of that file exists
+- Urls with a protocol (http/https/data/...) or starting with a slash (`/`) are not adopted anymore
+
 
 <a name="v0.10.0"></a>
 ## [v0.10.0] - 2021-01-29
@@ -92,6 +109,7 @@ Only Node.js v10 or higher is supported.
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.11.0]: https://github.com/SAP/less-openui5/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://github.com/SAP/less-openui5/compare/v0.9.0...v0.10.0
 [v0.9.0]: https://github.com/SAP/less-openui5/compare/v0.8.7...v0.9.0
 [v0.8.7]: https://github.com/SAP/less-openui5/compare/v0.8.6...v0.8.7
