@@ -88,10 +88,10 @@
 	},
 	"devDependencies": {
 		"depcheck": "^1.4.0",
-		"eslint": "^7.25.0",
+		"eslint": "^7.26.0",
 		"eslint-config-google": "^0.14.0",
 		"graceful-fs": "^4.2.6",
-		"mocha": "^8.3.2",
+		"mocha": "^8.4.0",
 		"nyc": "^15.1.0",
 		"sinon": "^10.0.0"
 	}
