@@ -87,7 +87,7 @@
 		"mime": "^1.6.0"
 	},
 	"devDependencies": {
-		"depcheck": "^1.4.0",
+		"depcheck": "^1.4.1",
 		"eslint": "^7.26.0",
 		"eslint-config-google": "^0.14.0",
 		"graceful-fs": "^4.2.6",
