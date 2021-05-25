@@ -1,0 +1,16 @@
+
+:root {
+  --sapUiTheme-my-other-ui-lib: true;
+  --sapThemeMetaData-UI5-my-other-ui-lib: {"Path":"UI5.my/other/ui/lib.<theme-name>.library","PathPattern":"/%frameworkId%/%libId%/themes/%themeId%/%fileId%.css","Extends":["base"],"Scopes":[],"Engine":{"Version":"0.11.1","Name":"less-openui5"},"Version":{"Build":"<TODO>","Source":"<TODO>"}};
+}
+:root {
+  --_my_other_ui_lib_MyControl_color1: var(--color1);
+  --_my_other_ui_lib_MyOtherControl_color1: var(--color1);
+}
+
+.myOtherUiLibRule1 {
+  color: #fefefe;
+}
+.myOtherUiLibRule2 {
+  padding: 1px 4px 3px 2px;
+}

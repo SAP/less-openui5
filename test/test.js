@@ -394,6 +394,48 @@ describe("libraries (my/other/ui/lib)", function() {
 	});
 });
 
+describe("inlineCssVariables / inlineThemingParameters", function() {
+	it("should create base theme (inlineCssVariables: true / inlineThemingParameters: false)", function() {
+		return new Builder().build({
+			lessInputPath: "my/other/ui/lib/themes/base/library.source.less",
+			rootPaths: [
+				"test/fixtures/libraries/lib1",
+				"test/fixtures/libraries/lib3"
+			],
+			library: {
+				name: "my.other.ui.lib"
+			},
+			inlineCssVariables: true,
+			inlineThemingParameters: false
+		}).then(function(result) {
+			assert.strictEqual(result.css, readFile("test/expected/inlineCssVariables/lib3/my/other/ui/lib/themes/base/library.css"), "css should be correctly generated.");
+			assert.strictEqual(result.cssRtl, readFile("test/expected/inlineCssVariables/lib3/my/other/ui/lib/themes/base/library-RTL.css"), "rtl css should be correctly generated.");
+			assert.deepStrictEqual(result.variables, {
+				"_my_other_ui_lib_MyControl_color1": "#fefefe",
+				"_my_other_ui_lib_MyOtherControl_color1": "#fefefe"
+			}, "variables should be correctly collected.");
+			assert.deepStrictEqual(result.allVariables, {
+				"_my_other_ui_lib_MyControl_color1": "#fefefe",
+				"_my_other_ui_lib_MyOtherControl_color1": "#fefefe",
+				"color1": "#fefefe",
+				"url1": "url('../../../../../../my/ui/lib/themes/base/111')",
+			}, "allVariables should be correctly collected.");
+			assert.deepStrictEqual(result.imports, [
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
+				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less"),
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "MyControl.less"),
+				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "sub-directory", "MyOtherControl.less")
+			], "import list should be correct.");
+
+			// When using inlineCssVariables=true without cssVariables=true, there shouldn't be additional files exposed
+			assert.strictEqual(result.cssSkeleton, undefined);
+			assert.strictEqual(result.cssSkeletonRtl, undefined);
+			// assert.strictEqual(result.cssVariables, undefined); // TODO
+			assert.strictEqual(result.cssVariablesSource, undefined);
+		});
+	});
+});
+
 describe("error handling", function() {
 	it("should have correct error in case of undefined variable usage (lessInput)", function() {
 		return new Builder().build({
