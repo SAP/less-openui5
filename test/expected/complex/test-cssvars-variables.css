@@ -5,4 +5,11 @@
   --link-color-active: var(--link-color);
   --a: 100%;
   --var: var(--a);
+  --b: #245682;
+  --padLeft: 20px;
+  --top: 5rem;
+  --lineHeight: 2rem;
+  --c: calc(20%);
+  --d: -100%;
+  --function_lighten12: #3071a9;
 }

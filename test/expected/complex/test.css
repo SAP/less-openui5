@@ -12,3 +12,28 @@ a:hover {
 .lazy-eval {
   width: 9%;
 }
+.nested .calc-vars {
+  height: calc(20%);
+  width: -100%;
+  color: #3071a9;
+  top: -5rem;
+  line-height: 1rem;
+  background: #428bca;
+  border-color: #92bce0;
+  background: #5697d0;
+}
+.nested .calc-vars-duplicate {
+  color: #3071a9;
+  padding-left: calc(20px + 0.5rem);
+  border-color: #ffffff;
+  background: #ffffff;
+}
+.nested .calc-vars-duplicate somePrefix.somePadding {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@media (max-width: 599px) {
+  .nested .calc-vars-duplicate somePrefix.somePadding {
+    padding: 0;
+  }
+}

@@ -25,3 +25,53 @@ a:hover {
 
 @var: @a;
 @a: 100%;
+
+.nested {
+
+  @b: darken(@link-color-active, 20%);
+  @padLeft: 20px;
+  @top: 5rem;
+  @lineHeight: 2rem;
+
+  .my-mixin(@bgColor: #fff) {
+    background: @bgColor;
+    border-color: lighten(@bgColor, 20%);
+	& when not (@bgColor = #000) {
+		background: lighten(@bgColor, 5%);
+	}
+  }
+
+
+.other-mixin(@rootClass) {
+	@{rootClass}.somePadding {
+		padding: 1rem;
+		box-sizing: border-box;
+	}
+
+	@media (max-width:599px) {
+		@{rootClass}.somePadding {
+			padding: 0;
+		}
+	}
+}
+
+  .calc-vars {
+    @c: calc(100% - 80px);
+    @d: -@a;
+    height: @c;
+    width: @d;
+    color: lighten(@b, 10%);
+	top: -@top;
+	line-height: @lineHeight / 2;
+    .my-mixin(@link-color)
+  }
+
+  .calc-vars-duplicate {
+    color: lighten(@b, 10%);
+	padding-left: ~"calc(@{padLeft} + 0.5rem)";
+    .my-mixin(#fff);
+	.other-mixin(somePrefix);
+  }
+
+}
+
