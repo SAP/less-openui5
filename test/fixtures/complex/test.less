@@ -36,23 +36,23 @@ a:hover {
   .my-mixin(@bgColor: #fff) {
     background: @bgColor;
     border-color: lighten(@bgColor, 20%);
-	& when not (@bgColor = #000) {
-		background: lighten(@bgColor, 5%);
-	}
+    & when not (@bgColor = #000) {
+      background: lighten(@bgColor, 5%);
+    }
   }
 
 
 .other-mixin(@rootClass) {
-	@{rootClass}.somePadding {
-		padding: 1rem;
-		box-sizing: border-box;
-	}
+  @{rootClass}.somePadding {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-	@media (max-width:599px) {
-		@{rootClass}.somePadding {
-			padding: 0;
-		}
-	}
+  @media (max-width:599px) {
+    @{rootClass}.somePadding {
+      padding: 0;
+    }
+  }
 }
 
   .calc-vars {
@@ -61,16 +61,16 @@ a:hover {
     height: @c;
     width: @d;
     color: lighten(@b, 10%);
-	top: -@top;
-	line-height: @lineHeight / 2;
+    top: -@top;
+    line-height: @lineHeight / 2;
     .my-mixin(@link-color)
   }
 
   .calc-vars-duplicate {
     color: lighten(@b, 10%);
-	padding-left: ~"calc(@{padLeft} + 0.5rem)";
+    padding-left: ~"calc(@{padLeft} + 0.5rem)";
     .my-mixin(#fff);
-	.other-mixin(somePrefix);
+    .other-mixin(somePrefix);
   }
 
 }
