@@ -1,0 +1,33 @@
+@link-color: #428bca;
+@link-color-hover: darken(@link-color, 10%);
+@other-var: 0 0 0.25rem 0 rgba(0, 0, 0, 0.15), inset 0 -0.0625rem 0 0 @link-color;
+@link-color-active: @link-color;
+@backgroundVariant: 1;
+@backgroundImage: url(img.png);
+@a: 100%;
+@var: @a;
+@b: darken(@link-color-active, 20%);
+@padLeft: 20px;
+@top: 5rem;
+@lineHeight: 2rem;
+@c: calc(100% - 80px);
+@d: -@a;
+@function_lighten14: lighten(@b, 10%);
+
+:root {
+--link-color: @link-color;
+--link-color-hover: @link-color-hover;
+--other-var: @other-var;
+--link-color-active: @link-color-active;
+--backgroundVariant: @backgroundVariant;
+--backgroundImage: @backgroundImage;
+--a: @a;
+--var: @var;
+--b: @b;
+--padLeft: @padLeft;
+--top: @top;
+--lineHeight: @lineHeight;
+--c: @c;
+--d: @d;
+--function_lighten14: @function_lighten14;
+}

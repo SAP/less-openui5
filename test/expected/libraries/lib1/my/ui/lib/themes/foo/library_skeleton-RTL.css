@@ -1,0 +1,10 @@
+.myUiLibRule1 {
+  color: var(--color1);
+}
+.myUiLibRule2 {
+  padding: 1px 4px 3px 2px;
+}
+.fooContrast.myUiLibRule1,
+.fooContrast .myUiLibRule1 {
+  color: var(--color1);
+}

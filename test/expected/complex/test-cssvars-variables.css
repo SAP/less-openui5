@@ -3,6 +3,15 @@
   --link-color-hover: #3071a9;
   --other-var: 0 0 0.25rem 0 rgba(0, 0, 0, 0.15), inset 0 -0.0625rem 0 0 #428bca;
   --link-color-active: var(--link-color);
+  --backgroundVariant: 1;
+  --backgroundImage: url(img.png);
+  --a: 100%;
   --var: var(--a);
-  --a: 9%;
+  --b: #245682;
+  --padLeft: 20px;
+  --top: 5rem;
+  --lineHeight: 2rem;
+  --c: calc(20%);
+  --d: -100%;
+  --function_lighten14: #3071a9;
 }

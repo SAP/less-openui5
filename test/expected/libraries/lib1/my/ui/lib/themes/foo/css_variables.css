@@ -1,12 +1,9 @@
-.myUiLibRule1 {
-  color: #ffffff;
+:root {
+  --color1: #ffffff;
+  --url1: url('../base/111');
 }
-.myUiLibRule2 {
-  padding: 1px 2px 3px 4px;
-}
-.fooContrast.myUiLibRule1,
-.fooContrast .myUiLibRule1 {
-  color: #000000;
+.fooContrast {
+  --color1: #000000;
 }
 
 /* Inline theming parameters */

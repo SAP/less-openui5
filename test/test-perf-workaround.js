@@ -34,7 +34,7 @@ describe("performance workaround", function() {
 			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
-
+					"url1": "url('../base/111')",
 				},
 				"scopes": {
 					"fooContrast": {
