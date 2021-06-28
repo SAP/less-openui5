@@ -3,6 +3,9 @@
 @link-color-hover:  darken(@link-color, 10%);
 @other-var: 0 0 0.25rem 0 rgba(0, 0, 0, 0.15), inset 0 -0.0625rem 0 0 @link-color;
 @link-color-active: @link-color;
+@backgroundVariant: 2;
+@backgroundImage: extract(url(./img.png) none, @backgroundVariant);
+@backgroundVariant: 1;
 
 // Usage
 a,
@@ -15,6 +18,9 @@ a:hover {
 .widget {
   color: #fff;
   background: @link-color;
+}
+.background {
+	background-image: @backgroundImage;
 }
 
 // Lazy Evaluation

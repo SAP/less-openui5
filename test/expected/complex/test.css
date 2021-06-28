@@ -9,6 +9,9 @@ a:hover {
   color: #fff;
   background: #428bca;
 }
+.background {
+  background-image: url(img.png);
+}
 .lazy-eval {
   width: 9%;
 }

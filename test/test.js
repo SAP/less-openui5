@@ -118,8 +118,18 @@ describe("libraries (my/ui/lib)", function() {
 		}).then(function(result) {
 			assert.equal(result.css, readFile("test/expected/libraries/lib1/my/ui/lib/themes/base/library.css"), "css should be correctly generated.");
 			assert.equal(result.cssRtl, readFile("test/expected/libraries/lib1/my/ui/lib/themes/base/library-RTL.css"), "rtl css should be correctly generated.");
-			assert.deepEqual(result.variables, {color1: "#fefefe"}, "variables should be correctly collected.");
-			assert.deepEqual(result.allVariables, {color1: "#fefefe"}, "allVariables should be correctly collected.");
+			assert.deepEqual(result.variables,
+				{
+					color1: "#fefefe",
+					url1: "url('111')",
+				},
+				"variables should be correctly collected.");
+			assert.deepEqual(result.allVariables,
+				{
+					color1: "#fefefe",
+					url1: "url('111')",
+				},
+				"allVariables should be correctly collected.");
 			assert.deepEqual(result.imports, [
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "library.source.less"),
 				path.join("test", "fixtures", "libraries", "lib1", "my", "ui", "lib", "themes", "base", "global.less")
@@ -141,7 +151,7 @@ describe("libraries (my/ui/lib)", function() {
 			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
-
+					"url1": "url('../base/111')",
 				},
 				"scopes": {
 					"fooContrast": {
@@ -180,6 +190,7 @@ describe("libraries (my/ui/lib)", function() {
 			const oVariablesExpected = {
 				"default": {
 					"color1": "#ffffff",
+					"url1": "url('../base/111')",
 				},
 				"scopes": {
 					"barContrast": {
@@ -248,7 +259,8 @@ describe("libraries (my/other/ui/lib)", function() {
 			assert.deepEqual(result.allVariables, {
 				"_my_other_ui_lib_MyControl_color1": "#fefefe",
 				"_my_other_ui_lib_MyOtherControl_color1": "#fefefe",
-				"color1": "#fefefe"
+				"color1": "#fefefe",
+				"url1": "url('../../../../../../my/ui/lib/themes/base/111')",
 			}, "allVariables should be correctly collected.");
 			assert.deepEqual(result.imports, [
 				path.join("test", "fixtures", "libraries", "lib3", "my", "other", "ui", "lib", "themes", "base", "library.source.less"),
@@ -289,7 +301,8 @@ describe("libraries (my/other/ui/lib)", function() {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
 					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff",
-					"color1": "#ffffff"
+					"color1": "#ffffff",
+					"url1": "url('../../../../../../my/ui/lib/themes/base/111')",
 				},
 				"scopes": {
 					"fooContrast": {
@@ -349,7 +362,8 @@ describe("libraries (my/other/ui/lib)", function() {
 					"_my_other_ui_lib_MyControl_color1": "#ffffff",
 					"_my_other_ui_lib_MyControl_color2": "#008000",
 					"_my_other_ui_lib_MyOtherControl_color1": "#ffffff",
-					"color1": "#ffffff"
+					"color1": "#ffffff",
+					"url1": "url('../../../../../../my/ui/lib/themes/base/111')",
 				},
 				"scopes": {
 					"barContrast": {

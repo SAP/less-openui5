@@ -9,13 +9,16 @@ a:hover {
   color: #fff;
   background: var(--link-color);
 }
+.background {
+  background-image: var(--backgroundImage);
+}
 .lazy-eval {
   width: var(--var);
 }
 .nested .calc-vars {
   height: var(--c);
   width: var(--d);
-  color: var(--function_lighten12);
+  color: var(--function_lighten14);
   top: calc(-1 * var(--top));
   line-height: calc(var(--lineHeight) / 2);
   background: #428bca;
@@ -23,7 +26,7 @@ a:hover {
   background: #5697d0;
 }
 .nested .calc-vars-duplicate {
-  color: var(--function_lighten12);
+  color: var(--function_lighten14);
   padding-left: calc(20px + 0.5rem);
   border-color: #ffffff;
   background: #ffffff;
