@@ -1,6 +1,7 @@
 :root {
   --color1: #ffffff;
   --url1: url('../base/111');
+  --url1__asResolvedUrl: "ui5://my/ui/lib/themes/base/111";
 }
 .fooContrast {
   --color1: #000000;
