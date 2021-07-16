@@ -118,6 +118,8 @@ describe("CSSVariablesCollectorPlugin", function() {
 			libPath: "sap/ui/foo",
 			libName: "sap.ui.foo",
 			prefix: "_sap_ui_foo_"
+		}, {
+			createLibrarySkeleton: true
 		});
 		const tree = await parseContent({
 			content: `
@@ -167,6 +169,8 @@ describe("CSSVariablesCollectorPlugin", function() {
 			libPath: "sap/ui/foo",
 			libName: "sap.ui.foo",
 			prefix: "_sap_ui_foo_"
+		}, {
+			createLibrarySkeleton: true
 		});
 		const tree = await parseContent({
 			content: `
