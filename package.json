@@ -84,7 +84,7 @@
 	"dependencies": {
 		"clone": "^2.1.0",
 		"css": "^3.0.0",
-		"mime": "^1.6.0"
+		"mime": "^2.5.2"
 	},
 	"devDependencies": {
 		"depcheck": "^1.4.2",
