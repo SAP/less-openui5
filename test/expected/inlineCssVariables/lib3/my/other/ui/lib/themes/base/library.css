@@ -1,3 +1,9 @@
+.myOtherUiLibRule1 {
+  color: #fefefe;
+}
+.myOtherUiLibRule2 {
+  padding: 1px 2px 3px 4px;
+}
 
 :root {
   --sapUiTheme-my-other-ui-lib: true;
@@ -6,11 +12,4 @@
 :root {
   --_my_other_ui_lib_MyControl_color1: var(--color1);
   --_my_other_ui_lib_MyOtherControl_color1: var(--color1);
-}
-
-.myOtherUiLibRule1 {
-  color: #fefefe;
-}
-.myOtherUiLibRule2 {
-  padding: 1px 2px 3px 4px;
 }
