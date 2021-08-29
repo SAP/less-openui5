@@ -23,8 +23,8 @@
 	},
 	"scripts": {
 		"lint": "eslint ./",
-		"unit": "mocha test/*.js",
-		"unit-debug": "mocha --inspect --inspect-brk test/*.js",
+		"unit": "cross-env NODE_ENV=test mocha test/*.js",
+		"unit-debug": "cross-env NODE_ENV=test mocha --inspect --inspect-brk test/*.js",
 		"coverage": "nyc npm run unit",
 		"test": "npm run lint && npm run coverage && npm run depcheck",
 		"preversion": "npm test",
@@ -87,6 +87,7 @@
 		"mime": "^1.6.0"
 	},
 	"devDependencies": {
+		"cross-env": "^7.0.3",
 		"depcheck": "^1.4.2",
 		"eslint": "^7.32.0",
 		"eslint-config-google": "^0.14.0",

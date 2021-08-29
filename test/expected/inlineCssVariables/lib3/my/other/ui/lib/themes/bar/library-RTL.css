@@ -1,0 +1,13 @@
+.myOtherUiLibRule1 {
+  color: #ffffff;
+}
+.myOtherUiLibRule2 {
+  padding: 1px 4px 3px 2px;
+}
+.barContrast.myOtherUiLibRule1,
+.barContrast .myOtherUiLibRule1 {
+  color: #000000;
+}
+
+/* Inline theming parameters */
+#sap-ui-theme-my\.other\.ui\.lib{background-image:url('data:text/plain;utf-8,%7B%22default%22%3A%7B%22_my_other_ui_lib_MyControl_color1%22%3A%22%23ffffff%22%2C%22_my_other_ui_lib_MyOtherControl_color1%22%3A%22%23ffffff%22%2C%22_my_other_ui_lib_MyControl_color2%22%3A%22%23008000%22%7D%2C%22scopes%22%3A%7B%22barContrast%22%3A%7B%22_my_other_ui_lib_MyControl_color1%22%3A%22%23000000%22%2C%22_my_other_ui_lib_MyOtherControl_color1%22%3A%22%23000000%22%7D%7D%7D')}
