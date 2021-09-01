@@ -19,12 +19,12 @@ describe("Compiler#createFileHandler", function() {
 			options: {
 				rootPaths: ["foo"]
 			},
-			fileUtils: {},
+			fileUtils: undefined // This will cause a TypeError when calling fileUtils.readFile
 		});
 
 		const file = "someFile";
 		const currentFileInfo = {
-			currentDirectory: undefined // This will cause a TypeError when calling path.join
+			currentDirectory: "someFolder"
 		};
 		const handleDataAndCallCallback = sinon.stub();
 		const callback = sinon.stub();
@@ -34,8 +34,9 @@ describe("Compiler#createFileHandler", function() {
 		assert.equal(handleDataAndCallCallback.callCount, 0);
 		assert.equal(callback.callCount, 1);
 		assert.equal(callback.getCall(0).args.length, 1);
+		assert.equal(callback.getCall(0).args[0].name, "TypeError");
 		assert.equal(callback.getCall(0).args[0].message,
-			`The "path" argument must be of type string. Received undefined`
+			`Cannot read property 'readFile' of undefined`
 		);
 	});
 	it("should propagate errors via callback function (File not found)", async function() {
