@@ -34,7 +34,6 @@ describe("Compiler#createFileHandler", function() {
 		assert.equal(handleDataAndCallCallback.callCount, 0);
 		assert.equal(callback.callCount, 1);
 		assert.equal(callback.getCall(0).args.length, 1);
-		assert.equal(callback.getCall(0).args[0].name, "TypeError");
 		assert.equal(callback.getCall(0).args[0].message,
 			`The "path" argument must be of type string. Received undefined`
 		);
