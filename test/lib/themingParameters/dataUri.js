@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 
 const assert = require("assert");
-// const sinon = require("sinon");
 
 // tested module
 const themingParametersDataUri = require("../../../lib/themingParameters/dataUri");

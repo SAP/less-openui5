@@ -23,8 +23,8 @@
 	},
 	"scripts": {
 		"lint": "eslint ./",
-		"unit": "mocha test/*.js test/lib/**/*.js",
-		"unit-debug": "mocha --inspect --inspect-brk test/*.js test/lib/**/*.js",
+		"unit": "mocha test/*.js test/lib/**",
+		"unit-debug": "mocha --inspect --inspect-brk test/*.js test/lib/**",
 		"coverage": "nyc npm run unit",
 		"test": "npm run lint && npm run coverage && npm run depcheck",
 		"preversion": "npm test",
