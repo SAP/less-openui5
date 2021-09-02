@@ -9,9 +9,9 @@ describe("themingParameters/dataUri", function() {
 	it("should not add theming parameters when library name is missing", function() {
 		const result = {};
 		const options = {};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {}, "result object should not be modified");
 	});
 
@@ -25,9 +25,9 @@ describe("themingParameters/dataUri", function() {
 				name: "sap.ui.test"
 			}
 		};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {
 			variables: {foo: "bar"},
 			css: `/* css */
@@ -50,9 +50,9 @@ describe("themingParameters/dataUri", function() {
 				name: "sap.ui.test"
 			}
 		};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {
 			variables: {
 				foo: "50%",
@@ -78,9 +78,9 @@ data:text/plain;utf-8,%7B%22foo%22%3A%2250%25%22%2C%22bar%22%3A%22%27%5C%22%27%2
 			},
 			rtl: true
 		};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {
 			variables: {foo: "bar"},
 			css: `/* css */
@@ -106,9 +106,9 @@ data:text/plain;utf-8,%7B%22foo%22%3A%2250%25%22%2C%22bar%22%3A%22%27%5C%22%27%2
 			},
 			cssVariables: true
 		};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {
 			variables: {foo: "bar"},
 			css: `/* css */
@@ -136,9 +136,9 @@ data:text/plain;utf-8,%7B%22foo%22%3A%2250%25%22%2C%22bar%22%3A%22%27%5C%22%27%2
 			rtl: true,
 			cssVariables: true
 		};
-		const returnedResult = themingParametersDataUri.addInlineParameters({result, options});
+		const returnValue = themingParametersDataUri.addInlineParameters({result, options});
 
-		assert.equal(returnedResult, result, "result object reference should be returned");
+		assert.equal(returnValue, undefined, "nothing should be returned");
 		assert.deepEqual(result, {
 			variables: {foo: "bar"},
 			css: `/* css */
