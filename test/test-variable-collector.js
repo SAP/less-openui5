@@ -49,6 +49,52 @@ describe("VariableCollector", function() {
 			"_my_other_ui_lib_MyControl_color2": "#008000"
 		}, "relevant variables should be returned");
 	});
+	it("should return relevant variables when calling 'getVariables' (special case: sap.ui.core Base/baseLib/)",
+		function() {
+			const env = {};
+			const variableCollector = new VariableCollector(env);
+
+			variableCollector.mVariables = {
+				"baseColor1": {
+					"value": "#fffff0",
+					"filename": "sap/ui/core/theming/Base/baseLib/base/base.less",
+					"rootFilename": "sap/ui/core/themes/foo/library.source.less"
+				},
+				"baseColor2": {
+					"value": "#fffff1",
+					"filename": "sap/ui/core/theming/Base/baseLib/foo/base.less",
+					"rootFilename": "sap/ui/core/themes/foo/library.source.less"
+				},
+				"coreColor1": {
+					"value": "#fffff2",
+					"filename": "sap/ui/core/themes/base/global.less",
+					"rootFilename": "sap/ui/core/themes/foo/library.source.less"
+				},
+				"coreColor2": {
+					"value": "#fffff3",
+					"filename": "sap/ui/core/themes/foo/global.less",
+					"rootFilename": "sap/ui/core/themes/foo/library.source.less"
+				}
+			};
+
+			const aImports = [
+				"sap/ui/core/themes/base/global.less",
+				"sap/ui/core/themes/base/library.source.less",
+				"sap/ui/core/themes/foo/global.less",
+				"sap/ui/core/themes/foo/library.source.less",
+				"sap/ui/core/theming/Base/baseLib/base/base.less",
+				"sap/ui/core/theming/Base/baseLib/foo/base.less"
+			];
+
+			const variables = variableCollector.getVariables(aImports);
+
+			assert.deepEqual(variables, {
+				"baseColor1": "#fffff0",
+				"baseColor2": "#fffff1",
+				"coreColor1": "#fffff2",
+				"coreColor2": "#fffff3",
+			}, "relevant variables should be returned");
+		});
 	it("should return relevant variables when calling 'getVariables' (win32 paths)", function() {
 		const env = {};
 		const variableCollector = new VariableCollector(env);
