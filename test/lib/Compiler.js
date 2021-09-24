@@ -35,9 +35,6 @@ describe("Compiler#createFileHandler", function() {
 		assert.equal(callback.callCount, 1);
 		assert.equal(callback.getCall(0).args.length, 1);
 		assert.equal(callback.getCall(0).args[0].name, "TypeError");
-		assert.equal(callback.getCall(0).args[0].message,
-			`Cannot read property 'readFile' of undefined`
-		);
 	});
 	it("should propagate errors via callback function (File not found)", async function() {
 		const compiler = new Compiler({
