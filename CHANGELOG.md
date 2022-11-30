@@ -2,7 +2,13 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.2...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.3...HEAD).
+
+<a name="v0.11.3"></a>
+## [v0.11.3] - 2022-11-30
+### Bug Fixes
+- Switch to maintained fork of "css" package [`0abe66a`](https://github.com/SAP/less-openui5/commit/0abe66af1a70dc94f98fa136ce8fec89c08ba4be)
+
 
 <a name="v0.11.2"></a>
 ## [v0.11.2] - 2021-06-28
@@ -121,6 +127,7 @@ Only Node.js v10 or higher is supported.
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.11.3]: https://github.com/SAP/less-openui5/compare/v0.11.2...v0.11.3
 [v0.11.2]: https://github.com/SAP/less-openui5/compare/v0.11.1...v0.11.2
 [v0.11.1]: https://github.com/SAP/less-openui5/compare/v0.11.0...v0.11.1
 [v0.11.0]: https://github.com/SAP/less-openui5/compare/v0.10.0...v0.11.0
