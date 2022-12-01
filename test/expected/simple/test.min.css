@@ -1,1 +1,1 @@
-.myRule{float:left;color:#f00}
+.myRule{float:left;color:#f00}@keyframes myKeyframes{0%,80%,100%{transform:scale(1)}40%{transform:scale(2)}}@font-face{font-family:"MyFont";src:url("MyFont.woff2") format("woff2")}

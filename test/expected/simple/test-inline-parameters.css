@@ -2,6 +2,20 @@
   float: left;
   color: #ff0000;
 }
+@keyframes myKeyframes {
+  0%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(2);
+  }
+}
+@font-face {
+  font-family: "MyFont";
+  src: url("MyFont.woff2") format("woff2");
+}
 
 /* Inline theming parameters */
-#sap-ui-theme-foo\.bar{background-image:url('data:text/plain;utf-8,%7B%22myColor%22%3A%22%23ff0000%22%7D')}
+#sap-ui-theme-foo\.bar{background-image:url('data:text/plain;utf-8,%7B%22myColor%22%3A%22%23ff0000%22%2C%22myFontFamily%22%3A%22%5C%22MyFont%5C%22%22%2C%22myFontUrl%22%3A%22url(%5C%22MyFont.woff2%5C%22)%22%2C%22myScale1%22%3A%22scale(1)%22%2C%22myScale2%22%3A%22scale(2)%22%7D')}

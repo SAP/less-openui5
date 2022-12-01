@@ -1,6 +1,24 @@
 @myColor: #ff0000;
+@myFontFamily: "MyFont";
+@myFontUrl: url("./MyFont.woff2");
+@myScale1: scale(1);
+@myScale2: scale(2);
 
 .myRule {
   float: left;
   color: @myColor;
+}
+
+@keyframes myKeyframes {
+	0%, 80%, 100% {
+		transform: @myScale1;
+	}
+	40% {
+		transform: @myScale2;
+	}
+}
+
+@font-face {
+	font-family: @myFontFamily;
+	src: @myFontUrl format("woff2");
 }

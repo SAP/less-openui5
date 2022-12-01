@@ -1,3 +1,7 @@
 {
-  "myColor": "#ff0000"
+  "myColor": "#ff0000",
+  "myFontFamily": "\"MyFont\"",
+  "myFontUrl": "url(\"MyFont.woff2\")",
+  "myScale1": "scale(1)",
+  "myScale2": "scale(2)"
 }
