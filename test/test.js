@@ -908,7 +908,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -971,7 +971,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -986,7 +986,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1002,7 +1002,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1017,7 +1017,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1032,8 +1032,10 @@ describe("CSS Scoping (via .theming file) of", function() {
 					"test/fixtures/libraries/lib1"
 				]
 			}).then(function(result) {
-				assert.equal(result.css, readFile("test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.css, readFile("test/expected/libraries/scopes/html/lib1/html/themes/foo/library.css"),
+					"CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib1/html/themes/foo/library-RTL.css"),
+					"Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1047,8 +1049,55 @@ describe("CSS Scoping (via .theming file) of", function() {
 					"test/fixtures/libraries/lib2"
 				]
 			}).then(function(result) {
-				assert.equal(result.css, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.css, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library.css"),
+					"CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css"),
+					"Rtl CSS scoping should be correctly generated");
+			});
+		});
+	});
+
+	describe("HTML (compressed)", function() {
+		it("should return same CSS for foo", function() {
+			return new Builder().build({
+				lessInputPath: "html/themes/foo/library.source.less",
+				compiler: {
+					compress: true
+				},
+				rootPaths: [
+					"test/fixtures/libraries/scopes/html/lib1",
+					"test/fixtures/libraries/scopes/html/lib2",
+					"test/fixtures/libraries/lib1"
+				]
+			}).then(function(result) {
+				assert.equal(result.css,
+					readFile("test/expected/libraries/scopes/html-compressed/lib1/html/themes/foo/library.css"),
+					"CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl,
+					readFile("test/expected/libraries/scopes/html-compressed/lib1/html/themes/foo/library-RTL.css"),
+					"Rtl CSS scoping should be correctly generated");
+			});
+		});
+
+		it("should return same CSS for bar", function() {
+			return new Builder().build({
+				lessInputPath: "html/themes/bar/library.source.less",
+				compiler: {
+					compress: true
+				},
+				rootPaths: [
+					"test/fixtures/libraries/scopes/html/lib1",
+					"test/fixtures/libraries/scopes/html/lib2",
+					"test/fixtures/libraries/lib1",
+					"test/fixtures/libraries/lib2"
+				]
+			}).then(function(result) {
+				assert.equal(result.css,
+					readFile("test/expected/libraries/scopes/html-compressed/lib2/html/themes/bar/library.css"),
+					"CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl,
+					readFile("test/expected/libraries/scopes/html-compressed/lib2/html/themes/bar/library-RTL.css"),
+					"Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1065,7 +1114,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1080,7 +1129,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1096,7 +1145,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1111,7 +1160,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1127,7 +1176,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1142,7 +1191,7 @@ describe("CSS Scoping (via .theming file) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1205,7 +1254,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/css-scope-root/lib1/css-scope-root/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1286,7 +1335,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib1/dom/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1305,7 +1354,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/dom/lib2/dom/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1326,7 +1375,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib1/empty-media-queries/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1345,7 +1394,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/empty-media-queries/lib2/empty-media-queries/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1385,7 +1434,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/html/lib2/html/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1407,7 +1456,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib1/media-queries/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1426,7 +1475,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/media-queries/lib2/media-queries/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1447,7 +1496,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib1/mixins/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1466,7 +1515,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/mixins/lib2/mixins/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 	});
@@ -1487,7 +1536,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib1/multiple-imports/themes/foo/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
@@ -1506,7 +1555,7 @@ describe("CSS Scoping (via option) of", function() {
 				]
 			}).then(function(result) {
 				assert.equal(result.css, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library.css"), "CSS scoping should be correctly generated");
-				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css"), "CSS scoping should be correctly generated");
+				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/multiple-imports/lib2/multiple-imports/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 			});
 		});
 
