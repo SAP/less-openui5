@@ -1,6 +1,6 @@
 {
 	"name": "less-openui5",
-	"version": "0.11.4",
+	"version": "0.11.5",
 	"description": "Build OpenUI5 themes with Less.js",
 	"author": {
 		"name": "SAP SE",
