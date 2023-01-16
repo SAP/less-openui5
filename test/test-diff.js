@@ -2,7 +2,7 @@
 "use strict";
 
 const assert = require("assert");
-const css = require("css");
+const css = require("@adobe/css-tools");;
 const fs = require("fs");
 const path = require("path");
 
