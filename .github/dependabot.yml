@@ -13,5 +13,5 @@ updates:
     timezone: Etc/UCT
   reviewers:
   - matz3
-  - tobiasso85
+  - flovogt
   versioning-strategy: increase
