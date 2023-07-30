@@ -88,7 +88,7 @@
 	},
 	"devDependencies": {
 		"depcheck": "^1.4.3",
-		"eslint": "^8.45.0",
+		"eslint": "^8.46.0",
 		"eslint-config-google": "^0.14.0",
 		"graceful-fs": "^4.2.11",
 		"mocha": "^10.2.0",
