@@ -87,12 +87,12 @@
 		"mime": "^1.6.0"
 	},
 	"devDependencies": {
-		"depcheck": "^1.4.6",
+		"depcheck": "^1.4.7",
 		"eslint": "^8.51.0",
 		"eslint-config-google": "^0.14.0",
 		"graceful-fs": "^4.2.11",
 		"mocha": "^10.2.0",
 		"nyc": "^15.1.0",
-		"sinon": "^16.1.0"
+		"sinon": "^16.1.3"
 	}
 }
