@@ -84,7 +84,7 @@
 	"dependencies": {
 		"@adobe/css-tools": "^4.3.2",
 		"clone": "^2.1.2",
-		"mime": "^1.6.0"
+		"mime": "^4.0.1"
 	},
 	"devDependencies": {
 		"depcheck": "^1.4.7",
