@@ -1,23 +1,15 @@
 import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
-import path from "node:path";
-import {fileURLToPath} from "node:url";
 import js from "@eslint/js";
-import {FlatCompat} from "@eslint/eslintrc";
+import google from "eslint-config-google";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-	recommendedConfig: js.configs.recommended,
-	allConfig: js.configs.all,
-});
 
 export default [
+	js.configs.recommended,
+	google,
 	{
 		ignores: ["lib/thirdparty/"],
 	},
-	...compat.extends("eslint:recommended", "google"),
 	{
 		plugins: {
 			jsdoc,
@@ -76,7 +68,8 @@ export default [
 
 			"comma-dangle": "off",
 			"no-tabs": "off",
-
+			// This rule must be disabled as of ESLint 9. It's removed and causes issues when present.
+			// https://eslint.org/docs/latest/rules/valid-jsdoc
 			"valid-jsdoc": 0,
 			"jsdoc/require-param-description": 0,
 			"jsdoc/require-returns-description": 0,
