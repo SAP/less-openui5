@@ -88,6 +88,7 @@ describe("(custom fs) CSS Scoping of", function() {
 				assert.equal(result.cssRtl, readFile("test/expected/libraries/scopes/comments/lib3/comments/themes/bar/library-RTL.css"), "Rtl CSS scoping should be correctly generated");
 
 				const basePath = path.join("test/fixtures/libraries/scopes/comments/lib3/comments", "themes");
+
 				assert.deepEqual(readFileCalls, [
 					path.join(basePath, "bar/library.source.less"),
 					path.join(basePath, "other/sub/my.less"),
