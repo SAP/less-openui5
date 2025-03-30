@@ -91,7 +91,7 @@
 		"depcheck": "^1.4.7",
 		"eslint": "^9.23.0",
 		"eslint-config-google": "^0.14.0",
-		"eslint-plugin-jsdoc": "^50.6.8",
+		"eslint-plugin-jsdoc": "^50.6.9",
 		"globals": "^16.0.0",
 		"graceful-fs": "^4.2.11",
 		"mocha": "^11.1.0",
