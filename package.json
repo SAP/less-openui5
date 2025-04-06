@@ -87,7 +87,7 @@
 		"mime": "^1.6.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.15.0",
+		"@eslint/js": "^9.24.0",
 		"depcheck": "^1.4.7",
 		"eslint": "^9.23.0",
 		"eslint-config-google": "^0.14.0",
