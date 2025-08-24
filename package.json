@@ -82,14 +82,14 @@
 		"url": "git@github.com:SAP/less-openui5.git"
 	},
 	"dependencies": {
-		"@adobe/css-tools": "^4.4.3",
+		"@adobe/css-tools": "^4.4.4",
 		"clone": "^2.1.2",
 		"mime": "^1.6.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.33.0",
+		"eslint": "^9.34.0",
 		"eslint-config-google": "^0.14.0",
 		"eslint-plugin-jsdoc": "^52.0.4",
 		"globals": "^16.3.0",
