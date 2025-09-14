@@ -84,7 +84,7 @@
 	"dependencies": {
 		"@adobe/css-tools": "^4.4.4",
 		"clone": "^2.1.2",
-		"mime": "^1.6.0"
+		"mime": "^4.1.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",
