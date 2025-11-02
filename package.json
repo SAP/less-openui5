@@ -89,10 +89,10 @@
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.38.0",
+		"eslint": "^9.39.0",
 		"eslint-config-google": "^0.14.0",
 		"eslint-plugin-jsdoc": "^52.0.4",
-		"globals": "^16.4.0",
+		"globals": "^16.5.0",
 		"graceful-fs": "^4.2.11",
 		"mocha": "^11.7.4",
 		"nyc": "^15.1.0",
