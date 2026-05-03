@@ -92,7 +92,7 @@
 		"eslint": "^9.39.4",
 		"eslint-config-google": "^0.14.0",
 		"eslint-plugin-jsdoc": "61.5.0",
-		"globals": "^17.5.0",
+		"globals": "^17.6.0",
 		"graceful-fs": "^4.2.11",
 		"knip": "^5.88.1",
 		"mocha": "^11.7.5",
