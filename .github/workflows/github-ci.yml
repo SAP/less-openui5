@@ -29,9 +29,8 @@ jobs:
       run: npm test
 
     - name: Send report to Coveralls
-      uses: coverallsapp/github-action@v2.3.7
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+      continue-on-error: true # Do not fail the job if coverage reporting fails (e.g. service is down)
 
   test-matrix:
     name: Unit tests on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
