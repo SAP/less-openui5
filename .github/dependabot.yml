@@ -4,6 +4,8 @@ updates:
   directory: "/"
   schedule:
     interval: "weekly"
+  cooldown:
+    default-days: 2
 - package-ecosystem: npm
   directory: "/"
   schedule:
@@ -15,3 +17,5 @@ updates:
   - matz3
   - flovogt
   versioning-strategy: increase
+  cooldown:
+    default-days: 2
