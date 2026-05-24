@@ -83,7 +83,7 @@
 		"url": "git@github.com:SAP/less-openui5.git"
 	},
 	"dependencies": {
-		"@adobe/css-tools": "^4.4.4",
+		"@adobe/css-tools": "^4.5.0",
 		"clone": "^2.1.2",
 		"mime": "^1.6.0"
 	},
@@ -95,7 +95,7 @@
 		"globals": "^17.6.0",
 		"graceful-fs": "^4.2.11",
 		"knip": "^5.88.1",
-		"mocha": "^11.7.5",
+		"mocha": "^11.7.6",
 		"nyc": "^15.1.0",
 		"sinon": "^16.1.3"
 	}
