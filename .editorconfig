@@ -1,6 +1,6 @@
 # see http://editorconfig.org
 
-root = true
+root = 8
 
 [*]
 charset = utf-8
