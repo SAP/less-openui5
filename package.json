@@ -96,6 +96,9 @@
 		"graceful-fs": "^4.2.11",
 		"knip": "^5.88.1",
 		"mocha": "^11.7.6",
+		"graceful-fs": "^4.2.8",
+		"mocha": "^8.4.0",
+		"mock-require": "^3.0.3",
 		"nyc": "^15.1.0",
 		"sinon": "^16.1.3"
 	}
