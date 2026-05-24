@@ -1,7 +1,7 @@
 /*
  * multiline
  */
-a {
+b.test {
   color: black;
 }
 /* one */
@@ -9,13 +9,22 @@ a {
 /* three */
 b {
   color: black;
-}
+} b.test
 /* mine */
 html {
   background-color: black;
-}
+} b.test
 /* mine2 */
-/* single */
 b.test {
+  color: black;
+}
+/* one */
+/* two */
+/* three */
+html {
+  background-color: black;
+}
+/* single */
+a.test {
   color: black;
 }

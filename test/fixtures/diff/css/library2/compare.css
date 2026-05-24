@@ -1,7 +1,19 @@
+/*
+ * multiline
+ */
 a {
-  color: blue;
+  color: green;
 }
 /* one */
 b {
-  color: green;
+  color: pink;
+}
+/* two */
+/* three */
+b {
+  color: pink;
+}
+/* single */
+b.test {
+  color: orange;
 }

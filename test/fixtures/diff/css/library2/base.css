@@ -1,11 +1,30 @@
 a {
-  color: blue;
+  color: green;
 }
 /* one */
 b {
-  color: green;
+  color: blue;
 }
 b.test {
-  color: yellow;
+  color: pink;
 }
 /* two */
+/*
+ * multiline
+ */
+a {
+  color: pink;
+}
+b {
+  color: black;
+}
+/* one */
+/* two */
+/* three */
+html {
+  background-color: black;
+}
+/* single */
+b.test {
+  color: black;
+}

@@ -1,8 +1,49 @@
+//it("should create a diff with moved comment block in compare and additional rule in compare", function() {
+		const compareCSS = fs.readFileSync(path.join(cssPath, "library1/compare.css"), options);
+		const baseCSS = fs.readFileSync(path.join(cssPath, "library1/base.css"), options);
+
+		// Create diff object between embeddedCompare and embedded
+		const oBase = css.parse(baseCSS);
+		const oEmbedded = css.parse(compareCSS);
+
+		const oResult = diff(oBase, oEmbedded);
+
+		assert.deepStrictEqual(oResult.diff.stylesheet.rules.map(convertRuleToComparableString), [
+			{
+				"type": "rule",
+				"value": "b"
+			},
+			{
+				"type": "rule",
+				"value": "a"
+			},
+			{
+				"type": "comment",
+				"value": " your "
+			},
+			{
+				"type": "rule",
+				"value": "master"
+        Copyright 2019 SAP SE.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http: //www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+// either express or implied. See the License for the specific
+// language governing permissions and limitations under the License.
+
 /* eslint-env mocha */
 "use strict";
 
 const assert = require("assert");
 const css = require("@adobe/css-tools");
+const css = require("css");
 const fs = require("fs");
 const path = require("path");
 
@@ -29,37 +70,50 @@ describe("Diff algorithm", function() {
 		assert.deepStrictEqual(oResult.diff.stylesheet.rules.map(convertRuleToComparableString), [
 			{
 				"type": "rule",
-				"value": "a"
-			},
-			{
-				"type": "rule",
 				"value": "b"
 			},
 			{
+				"type": "rule",
+				"value": "a"
+			},
+			{
 				"type": "comment",
-				"value": " mine "
+				"value": " your "
 			},
 			{
 				"type": "rule",
-				"value": "b.test"
+				"value": "master"
 			}
 		]);
 		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
+			{
+				"type": "rule",
+		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
+			{
+				"type": "comment",
+				"value": " one "
+			},
+			{
+				"type": "comment",
+				"value": "zero"
+			},
 			{
 				"type": "rule",
 				"value": "html"
 			},
 			{
 				"type": "comment",
-				"value": " mine2 "
+				"value": "you"
 			},
 			{
 				"type": "comment",
-				"value": " single "
+				"value": "single"
 			}
 		]);
 	});
 	it("should create a diff with more rules in base than in compare", function() {
+
+	it("should create a diff with moved comment block in compare and additional rule in base", function() {
 		const compareCSS = fs.readFileSync(path.join(cssPath, "library2/compare.css"), options);
 		const baseCSS = fs.readFileSync(path.join(cssPath, "library2/base.css"), options);
 
@@ -80,6 +134,23 @@ describe("Diff algorithm", function() {
 			}
 		]);
 		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), []);
+		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
+			{
+				"type": "comment",
+				"value": " one "
+			},
+			{
+				"type": "comment",
+				"value": " two "
+			},
+			{
+				"type": "comment",
+				"value": " three "
+			},
+			{
+				"type": "rule",
+				"value": "b.test"
+			}]);
 	});
 });
 
