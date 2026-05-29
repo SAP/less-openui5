@@ -89,12 +89,14 @@ describe("(custom fs) CSS Scoping of", function() {
 
 				const basePath = path.join("test/fixtures/libraries/scopes/comments/lib3/comments", "themes");
 
-				assert.deepEqual(readFileCalls, [
+				// @imports are read concurrently, so completion order is non-deterministic.
+				// Compare as a sorted set instead of an ordered list.
+				assert.deepEqual(readFileCalls.slice().sort(), [
 					path.join(basePath, "bar/library.source.less"),
 					path.join(basePath, "other/sub/my.less"),
 					path.join(basePath, "bar/my2.less"),
 					path.join(basePath, "my3.less")
-				], "fs.readFile should have been called with import paths");
+				].sort(), "fs.readFile should have been called with import paths");
 				assert.equal(statCalls, 10, "fs.stat should have been called 19 times");
 			});
 		});
