@@ -2,7 +2,7 @@
 "use strict";
 
 const assert = require("assert");
-const css = require("@adobe/css-tools");
+const postcss = require("postcss");
 const fs = require("fs");
 const path = require("path");
 
@@ -21,12 +21,12 @@ describe("Diff algorithm", function() {
 		const baseCSS = fs.readFileSync(path.join(cssPath, "library1/base.css"), options);
 
 		// Create diff object between embeddedCompare and embedded
-		const oBase = css.parse(baseCSS);
-		const oEmbedded = css.parse(compareCSS);
+		const oBase = postcss.parse(baseCSS);
+		const oEmbedded = postcss.parse(compareCSS);
 
 		const oResult = diff(oBase, oEmbedded);
 
-		assert.deepStrictEqual(oResult.diff.stylesheet.rules.map(convertRuleToComparableString), [
+		assert.deepStrictEqual(oResult.diff.nodes.map(convertRuleToComparableString), [
 			{
 				"type": "rule",
 				"value": "a"
@@ -37,25 +37,25 @@ describe("Diff algorithm", function() {
 			},
 			{
 				"type": "comment",
-				"value": " mine "
+				"value": "mine"
 			},
 			{
 				"type": "rule",
 				"value": "b.test"
 			}
 		]);
-		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), [
+		assert.deepStrictEqual(oResult.stack.nodes.map(convertRuleToComparableString), [
 			{
 				"type": "rule",
 				"value": "html"
 			},
 			{
 				"type": "comment",
-				"value": " mine2 "
+				"value": "mine2"
 			},
 			{
 				"type": "comment",
-				"value": " single "
+				"value": "single"
 			}
 		]);
 	});
@@ -64,12 +64,12 @@ describe("Diff algorithm", function() {
 		const baseCSS = fs.readFileSync(path.join(cssPath, "library2/base.css"), options);
 
 		// Create diff object between embeddedCompare and embedded
-		const oBase = css.parse(baseCSS);
-		const oEmbedded = css.parse(compareCSS);
+		const oBase = postcss.parse(baseCSS);
+		const oEmbedded = postcss.parse(compareCSS);
 
 		const oResult = diff(oBase, oEmbedded);
 
-		assert.deepStrictEqual(oResult.diff.stylesheet.rules.map(convertRuleToComparableString), [
+		assert.deepStrictEqual(oResult.diff.nodes.map(convertRuleToComparableString), [
 			{
 				"type": "rule",
 				"value": "a"
@@ -79,7 +79,7 @@ describe("Diff algorithm", function() {
 				"value": "b"
 			}
 		]);
-		assert.deepStrictEqual(oResult.stack.stylesheet.rules.map(convertRuleToComparableString), []);
+		assert.deepStrictEqual(oResult.stack.nodes.map(convertRuleToComparableString), []);
 	});
 });
 
@@ -88,7 +88,7 @@ const convertRuleToComparableString = function(rule) {
 	if (rule.type === "comment") {
 		return {
 			type: rule.type,
-			value: rule.comment
+			value: rule.text
 		};
 	} else if (rule.type === "rule") {
 		return {

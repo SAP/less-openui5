@@ -7,26 +7,20 @@ a {
 b {
   text-align: center;
 }
+
 .sapContrastPlus {
   color: orange;
 }
-
-body.sapContrastPlus,
-body .sapContrastPlus {
+body.sapContrastPlus, body .sapContrastPlus {
   color: blue;
 }
-
 .sapContrastPlus a {
   color: blue;
 }
-/* ============================= */
 
+/* ============================= */
 /* Shared CSS 1 theme            */
-
 /* ============================= */
-
 /* ============================= */
-
 /* Shared CSS 2 theme            */
-
 /* ============================= */

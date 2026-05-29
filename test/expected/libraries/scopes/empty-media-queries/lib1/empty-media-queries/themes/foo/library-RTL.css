@@ -6,7 +6,6 @@
     width: 100px;
   }
 }
-.fooContrast.myRule1,
-.fooContrast .myRule1 {
+.fooContrast.myRule1, .fooContrast .myRule1 {
   color: #ffffff;
 }

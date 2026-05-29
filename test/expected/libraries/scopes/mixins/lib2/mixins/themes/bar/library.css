@@ -8,26 +8,23 @@
   }
 }
 @media screen and (min-width: 600px) {
-  body.barContrast,
-  body .barContrast {
+  body.barContrast, body .barContrast {
     background: #ffffff;
     font-size: 20px;
   }
-
   html.myRule1 .barContrast td {
     color: #ffffff;
   }
 }
+
 .myRule2 {
   background: #ffffff;
 }
-
 @media screen and (min-width: 600px) {
   body {
     background: #ffffff;
     font-size: 20px;
   }
-
   .myRule2 {
     background: #ffffff;
   }

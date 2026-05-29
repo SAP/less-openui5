@@ -32,14 +32,12 @@
     height: 3rem;
   }
 }
+
 @media (min-width: 600px) and (max-width: 1023px) {
-  .fooContrast.myRule1,
-  .fooContrast .myRule1 {
+  .fooContrast.myRule1, .fooContrast .myRule1 {
     color: #ffffff;
   }
-
-  .fooContrast.myRule2,
-  .fooContrast .myRule2 {
+  .fooContrast.myRule2, .fooContrast .myRule2 {
     color: #ffffff;
   }
 }

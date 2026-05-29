@@ -7,7 +7,6 @@ div.myRule1 > .myRule2 {
 .barContrast div.myRule1 {
   color: #ffffff;
 }
-
 .barContrast div.myRule1 > .myRule2 {
   color: #ffffff;
 }

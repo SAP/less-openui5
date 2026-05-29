@@ -32,16 +32,12 @@
 .sapContrast .sapMNLG-Body .sapMNLI {
   background: #f2f2f2;
 }
-.fooContrast.myRule1,
-.fooContrast .myRule1 {
+.fooContrast.myRule1, .fooContrast .myRule1 {
   color: #ffffff;
 }
-
-.fooContrast.myRule2,
-.fooContrast .myRule2 {
+.fooContrast.myRule2, .fooContrast .myRule2 {
   color: #ffffff;
 }
-
 .fooContrast.myRule5,
 .fooContrast .myRule5,
 .fooContrast.myRule6,
@@ -50,15 +46,12 @@
 .fooContrast .myRule7 {
   color: #ffffff;
 }
-
 .sapContrast .sapMNLI {
   background: #000000;
 }
-
 .sapContrast .sapMNLG-GroupHeader {
   background: #000000;
 }
-
 .sapContrast .sapMNLG-Body .sapMNLI {
   background: #000000;
 }

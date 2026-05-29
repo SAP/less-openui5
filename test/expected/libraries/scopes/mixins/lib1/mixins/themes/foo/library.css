@@ -8,12 +8,10 @@
   }
 }
 @media screen and (min-width: 600px) {
-  body.fooContrast,
-  body .fooContrast {
+  body.fooContrast, body .fooContrast {
     background: #ffffff;
     font-size: 20px;
   }
-
   html.myRule1 .fooContrast td {
     color: #ffffff;
   }

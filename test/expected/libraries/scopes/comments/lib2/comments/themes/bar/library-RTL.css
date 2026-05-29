@@ -7,7 +7,7 @@
 	*/
   color: #000000;
 }
-.barContrast.myRule1,
-.barContrast .myRule1 {
+
+.barContrast.myRule1, .barContrast .myRule1 {
   color: #ffffff;
 }

@@ -4,8 +4,7 @@
 .myUiLibRule2 {
   padding: 1px 4px 3px 2px;
 }
-.barContrast.myUiLibRule1,
-.barContrast .myUiLibRule1 {
+.barContrast.myUiLibRule1, .barContrast .myUiLibRule1 {
   color: #000000;
 }
 

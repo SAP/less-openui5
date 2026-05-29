@@ -7,7 +7,7 @@
 	*/
   color: #000000;
 }
-.fooContrast.myRule1,
-.fooContrast .myRule1 {
+
+.fooContrast.myRule1, .fooContrast .myRule1 {
   color: #ffffff;
 }
