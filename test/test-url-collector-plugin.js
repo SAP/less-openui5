@@ -105,6 +105,65 @@ describe("UrlCollectorPlugin", function() {
 		});
 	});
 
+	it("should not collect data-urls with leading whitespace", function() {
+		// The URL scheme detection must trim leading whitespace/control chars before looking
+		// for the scheme.
+		return new Builder().build({
+			lessInput: `
+.rule {
+	background-image: url("\tdata:image/png;base64,iVBORw0KGgoAAAAN");
+}
+			`,
+		}).then(function(/* result */) {
+			const collectedUrls = getUrlsSpy.getCall(0).returnValue;
+			assert.deepEqual(collectedUrls, []);
+		});
+	});
+
+	it("should not collect urls with a protocol", function() {
+		return new Builder().build({
+			lessInput: `
+.rule1 {
+	background-image: url(http://example.com/img/a.png);
+}
+.rule2 {
+	background-image: url(https://example.com/img/b.png);
+}
+			`,
+		}).then(function(/* result */) {
+			const collectedUrls = getUrlsSpy.getCall(0).returnValue;
+			assert.deepEqual(collectedUrls, []);
+		});
+	});
+
+	it("should not collect server-absolute urls", function() {
+		return new Builder().build({
+			lessInput: `
+.rule {
+	background-image: url(/server/absolute/img.png);
+}
+			`,
+		}).then(function(/* result */) {
+			const collectedUrls = getUrlsSpy.getCall(0).returnValue;
+			assert.deepEqual(collectedUrls, []);
+		});
+	});
+
+	it("should not collect protocol-relative urls", function() {
+		// A protocol-relative url ("//host/...") has no scheme but starts with "/", so it is
+		// ignored as a server-absolute url.
+		return new Builder().build({
+			lessInput: `
+.rule {
+	background-image: url(//example.com/img/a.png);
+}
+			`,
+		}).then(function(/* result */) {
+			const collectedUrls = getUrlsSpy.getCall(0).returnValue;
+			assert.deepEqual(collectedUrls, []);
+		});
+	});
+
 	it("should not fail on empty url", function() {
 		return new Builder().build({
 			lessInput: `

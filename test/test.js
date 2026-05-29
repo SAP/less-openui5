@@ -722,6 +722,36 @@ describe("img-RTL check", function() {
 
 		// NOTE: cssVariables are currently LTR only. There is no RTL-variant.
 	});
+
+	it("Do not rewrite urls with a scheme", async () => {
+		const builder = new Builder();
+
+		// findFile must never be consulted for scheme-carrying urls, they are ignored up front.
+		const findFileStub = sinon.stub(builder.fileUtils, "findFile");
+		findFileStub.rejects(new Error("Unexpected call"));
+
+		const result = await builder.build({
+			lessInput: `
+				.rule {
+					background: url(http://example.com/img/test.png);
+					list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAAN);
+					cursor: url("\tdata:image/png;base64,iVBORw0KGgoAAAAN");
+				}
+			`,
+			parser: {
+				filename: "foo/bar.less"
+			}
+		});
+
+		const expected = `.rule {
+  background: url(http://example.com/img/test.png);
+  list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAAN);
+  cursor: url("\tdata:image/png;base64,iVBORw0KGgoAAAAN");
+}
+`;
+		assert.equal(result.css, expected, "css should be generated as expected");
+		assert.equal(result.cssRtl, expected, "rtl css should not rewrite scheme urls");
+	});
 });
 
 describe("variables", function() {
