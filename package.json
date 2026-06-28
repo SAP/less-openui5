@@ -94,7 +94,7 @@
 		"eslint-plugin-jsdoc": "61.5.0",
 		"globals": "^17.7.0",
 		"graceful-fs": "^4.2.11",
-		"knip": "^5.88.1",
+		"knip": "^6.21.0",
 		"mocha": "^11.7.6",
 		"nyc": "^18.0.0",
 		"sinon": "^16.1.3"
