@@ -1716,13 +1716,18 @@ describe("underscore-property hack", function() {
 	});
 
 	it("should preserve underscore-hack properties verbatim in the scoped contrast diff block", function() {
+		// compress:true is the real theme-build path: the scoped diff is emitted via the
+		// custom compressing stringify(), which is where the leading "_" of the hack was
+		// being dropped. Without compression the default serializer is used and the bug
+		// does not surface, so the regression must be exercised in compressed mode.
 		return new Builder().build({
 			lessInputPath: "underscore-hack/themes/foo/library.source.less",
 			rootPaths: [
 				"test/fixtures/underscore-hack-scope/lib1"
-			]
+			],
+			compiler: {compress: true}
 		}).then(function(result) {
-			// Exact golden comparison (LTR + RTL of the scoped build).
+			// Exact golden comparison (LTR + RTL of the scoped, compressed build).
 			assert.equal(result.css, readFile("test/expected/underscore-hack-scope/library.css"),
 				"scoped css should be correctly generated.");
 			assert.equal(result.cssRtl, readFile("test/expected/underscore-hack-scope/library-RTL.css"),
@@ -1731,17 +1736,17 @@ describe("underscore-property hack", function() {
 			// The scoped contrast diff block (.fooContrast ...) must carry the
 			// underscore-hacked color declarations through the parse/diff/scope/stringify
 			// pipeline with the leading "_" intact.
-			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-right-color: cyan;/.test(result.css),
+			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-right-color:cyan/.test(result.css),
 				"scoped contrast block must contain _border-right-color verbatim");
-			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-left-color: cyan;/.test(result.css),
+			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-left-color:cyan/.test(result.css),
 				"scoped contrast block must contain _border-left-color verbatim");
-			assert.ok(result.css.includes("_filter: chroma(color=#00ffff);"),
+			assert.ok(result.css.includes("_filter:chroma(color=#0ff)"),
 				"scoped contrast block must contain _filter verbatim");
 
 			// The underscore props must not be mirrored in the scoped RTL diff block either.
-			assert.ok(result.cssRtl.includes("_border-right-color: cyan;"),
+			assert.ok(result.cssRtl.includes("_border-right-color:cyan"),
 				"scoped rtl contrast block must contain _border-right-color verbatim");
-			assert.ok(result.cssRtl.includes("_border-left-color: cyan;"),
+			assert.ok(result.cssRtl.includes("_border-left-color:cyan"),
 				"scoped rtl contrast block must contain _border-left-color verbatim");
 		});
 	});

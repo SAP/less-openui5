@@ -81,6 +81,58 @@ describe("Diff algorithm", function() {
 		]);
 		assert.deepStrictEqual(oResult.stack.nodes.map(convertRuleToComparableString), []);
 	});
+
+	it("should never split a /*!SAP_POSTPROCESS_REDUCE_START/END*/ marker pair across diff and stack", function() {
+		// A leading-comment count asymmetry between the base compile and the contrast
+		// compile shifts the lockstep walk by one node. That used to move one half of
+		// a REDUCE marker pair into the diff (always appended) or the stack (appended
+		// for cascading themes like *_plus) while the other half stayed elsewhere —
+		// orphaning the marker in the emitted CSS. Marker/banner comments are
+		// `/*! ... */` important comments and must never be carried into either.
+		const body = (color) =>
+			".pre{color:black}" +
+			"/*!SAP_POSTPROCESS_REDUCE_START*/" +
+			".a{color:" + color + "}" +
+			"/*!SAP_POSTPROCESS_REDUCE_END*/" +
+			".post{color:black}";
+
+		const countMarkers = function(root, marker) {
+			let n = 0;
+			root.walkComments(function(c) {
+				if (c.text.indexOf(marker) !== -1) {
+					n++;
+				}
+			});
+			return n;
+		};
+
+		const assertNoMarkers = function(oResult, label) {
+			for (const part of ["diff", "stack"]) {
+				for (const marker of ["SAP_POSTPROCESS_REDUCE_START", "SAP_POSTPROCESS_REDUCE_END"]) {
+					assert.strictEqual(countMarkers(oResult[part], marker), 0,
+						`${label}: ${part} must not contain a ${marker} marker`);
+				}
+			}
+		};
+
+		// Base-heavy shift (e.g. sap_belize): base accumulates one extra banner.
+		assertNoMarkers(
+			diff(
+				postcss.parse("/*! b1 */" + "/*! b2 */" + body("red")),
+				postcss.parse("/*! b1 */" + body("blue"))
+			),
+			"base-heavy"
+		);
+
+		// Compare-heavy shift (e.g. sap_belize_plus): compare has one extra banner.
+		assertNoMarkers(
+			diff(
+				postcss.parse("/*! b1 */" + body("red")),
+				postcss.parse("/*! b1 */" + "/*! b2 */" + body("blue"))
+			),
+			"compare-heavy"
+		);
+	});
 });
 
 
