@@ -4,8 +4,19 @@
 const assert = require("assert");
 const sinon = require("sinon");
 const path = require("path");
-const clone = require("clone");
 const readFile = require("./common/helper").readFile;
+
+// Deep clone that preserves function references. structuredClone can't be used here
+// because the theme cache holds compiled less functions, which are not serializable.
+function deepClone(value) {
+	if (Array.isArray(value)) {
+		return value.map(deepClone);
+	}
+	if (value && typeof value === "object") {
+		return Object.fromEntries(Object.entries(value).map(([key, val]) => [key, deepClone(val)]));
+	}
+	return value;
+}
 
 // tested module
 const Builder = require("../").Builder;
@@ -813,13 +824,13 @@ describe("theme caching", function() {
 		const builder = new Builder();
 
 		return builder.build(lessOptions).then(function(res) {
-			const cacheFirstRun = clone(builder.themeCacheMapping);
+			const cacheFirstRun = deepClone(builder.themeCacheMapping);
 
 			assert.notDeepEqual(cacheFirstRun, {}, "themeCache should not be empty.");
 
 			// second run
 			return builder.build(lessOptions).then(function(result) {
-				const cacheSecondRun = clone(builder.themeCacheMapping);
+				const cacheSecondRun = deepClone(builder.themeCacheMapping);
 
 				assert.deepEqual(res, result, "callback result should be the same");
 
@@ -845,7 +856,7 @@ describe("theme caching", function() {
 		const builder = new Builder();
 
 		return builder.build(lessOptions).then(function(res) {
-			const cacheFirstRun = clone(builder.themeCacheMapping);
+			const cacheFirstRun = deepClone(builder.themeCacheMapping);
 
 			assert.notDeepEqual(cacheFirstRun, {}, "themeCache should not be empty.");
 
@@ -855,7 +866,7 @@ describe("theme caching", function() {
 
 			// second run
 			return builder.build(lessOptions).then(function(result) {
-				const cacheSecondRun = clone(builder.themeCacheMapping);
+				const cacheSecondRun = deepClone(builder.themeCacheMapping);
 
 				assert.equal(JSON.stringify(res, null, 4), JSON.stringify(result, null, 4), "callback result should be the same");
 
