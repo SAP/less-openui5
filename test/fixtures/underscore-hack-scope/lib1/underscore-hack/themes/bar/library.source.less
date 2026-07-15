@@ -1,0 +1,24 @@
+/* Contrast compile. Same rules as library.source.less but different underscore-hack
+   color values, so the diff picks up the "_border-*-color" declarations. */
+.arrow-box {
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
+  _border-right-color: cyan;
+  _border-left-color: cyan;
+}
+
+.arrow-box-filter {
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
+  _border-right-color: cyan;
+  _border-left-color: cyan;
+  _filter: chroma(color=#00ffff);
+}

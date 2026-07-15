@@ -1642,3 +1642,126 @@ describe("CSS Scoping (via option) of", function() {
 		});
 	});
 });
+
+describe("underscore-property hack", function() {
+	// The leading "_" of IE-only underscore-hack properties (e.g. _border-left-color)
+	// must be preserved verbatim in every output path: plain LTR, RTL, and the scoped
+	// contrast diff blocks. The regression these tests guard against was the "_" being
+	// dropped during CSS (re-)serialization — which naive whitespace-normalization would
+	// not catch — so the assertions below are exact-string / underscore-presence checks.
+	//
+	// The RTL variant must NOT mirror or rename _border-right-color/_border-left-color:
+	// the hack is IE-only and was never meant to be L/R-swapped, unlike the plain
+	// border-right/border-left shorthands (which do mirror).
+
+	// Underscore-hacked declarations that are the last declaration in their rule block.
+	const lastInBlockProps = ["_border-right-color: pink;", "_border-left-color: pink;"];
+	// The same underscore-hacked declarations followed by another declaration (_filter).
+	const withFilterProps = [
+		"_border-right-color: pink;",
+		"_border-left-color: pink;",
+		"_filter: chroma(color=#ffc0cb);"
+	];
+
+	it("should preserve underscore-hack properties verbatim in LTR output", function() {
+		return new Builder().build({
+			lessInputPath: "test/fixtures/underscore-hack/test.less"
+		}).then(function(result) {
+			// Exact golden comparison (encodes the full underscore-preserving baseline).
+			assert.equal(result.css, readFile("test/expected/underscore-hack/test.css"),
+				"LTR css should be correctly generated.");
+
+			// Explicit underscore-presence checks (would fail loudly if the "_" is dropped).
+			lastInBlockProps.forEach(function(prop) {
+				assert.ok(result.css.includes(prop),
+					"LTR css must contain underscore-hack declaration verbatim: " + prop);
+			});
+			withFilterProps.forEach(function(prop) {
+				assert.ok(result.css.includes(prop),
+					"LTR css must contain underscore-hack declaration verbatim: " + prop);
+			});
+		});
+	});
+
+	it("should preserve underscore-hack properties verbatim in RTL output and not mirror them", function() {
+		return new Builder().build({
+			lessInputPath: "test/fixtures/underscore-hack/test.less"
+		}).then(function(result) {
+			// Exact golden comparison.
+			assert.equal(result.cssRtl, readFile("test/expected/underscore-hack/test-RTL.css"),
+				"RTL css should be correctly generated.");
+
+			// The underscore props must survive the RTL pass verbatim...
+			lastInBlockProps.forEach(function(prop) {
+				assert.ok(result.cssRtl.includes(prop),
+					"RTL css must contain underscore-hack declaration verbatim: " + prop);
+			});
+			withFilterProps.forEach(function(prop) {
+				assert.ok(result.cssRtl.includes(prop),
+					"RTL css must contain underscore-hack declaration verbatim: " + prop);
+			});
+
+			// ...and must NOT be L/R-mirrored/renamed. Since both _border-right-color and
+			// _border-left-color are present with the same value, an accidental mirror
+			// would leave the count of each unchanged, so instead assert that the plain
+			// (mirrored) shorthands did swap while the underscore props kept their order:
+			// _border-right-color must still appear before _border-left-color.
+			const rightIdx = result.cssRtl.indexOf("_border-right-color: pink;");
+			const leftIdx = result.cssRtl.indexOf("_border-left-color: pink;");
+			assert.ok(rightIdx > -1 && leftIdx > -1,
+				"both underscore border-color hacks must be present in RTL");
+			assert.ok(rightIdx < leftIdx,
+				"underscore border-color hacks must keep their original order in RTL (not mirrored)");
+		});
+	});
+
+	it("should preserve underscore-hack properties verbatim in the scoped contrast diff block", function() {
+		return new Builder().build({
+			lessInputPath: "underscore-hack/themes/foo/library.source.less",
+			rootPaths: [
+				"test/fixtures/underscore-hack-scope/lib1"
+			]
+		}).then(function(result) {
+			// Exact golden comparison (LTR + RTL of the scoped build).
+			assert.equal(result.css, readFile("test/expected/underscore-hack-scope/library.css"),
+				"scoped css should be correctly generated.");
+			assert.equal(result.cssRtl, readFile("test/expected/underscore-hack-scope/library-RTL.css"),
+				"scoped rtl css should be correctly generated.");
+
+			// The scoped contrast diff block (.fooContrast ...) must carry the
+			// underscore-hacked color declarations through the parse/diff/scope/stringify
+			// pipeline with the leading "_" intact.
+			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-right-color: cyan;/.test(result.css),
+				"scoped contrast block must contain _border-right-color verbatim");
+			assert.ok(/\.fooContrast[^{]*\{[^}]*_border-left-color: cyan;/.test(result.css),
+				"scoped contrast block must contain _border-left-color verbatim");
+			assert.ok(result.css.includes("_filter: chroma(color=#00ffff);"),
+				"scoped contrast block must contain _filter verbatim");
+
+			// The underscore props must not be mirrored in the scoped RTL diff block either.
+			assert.ok(result.cssRtl.includes("_border-right-color: cyan;"),
+				"scoped rtl contrast block must contain _border-right-color verbatim");
+			assert.ok(result.cssRtl.includes("_border-left-color: cyan;"),
+				"scoped rtl contrast block must contain _border-left-color verbatim");
+		});
+	});
+
+	it("should not change the underscore-hack output under whitespace normalization (sanity)", function() {
+		// Sanity check only: normalizing whitespace must not alter the presence of the
+		// underscore hack. This is deliberately weaker than the exact-string checks above
+		// (a dropped "_" survives naive normalization), so it complements but does not
+		// replace them.
+		const normalize = function(s) {
+			return s.replace(/\s+/g, " ").trim();
+		};
+		return new Builder().build({
+			lessInputPath: "test/fixtures/underscore-hack/test.less"
+		}).then(function(result) {
+			const normalized = normalize(result.css);
+			assert.ok(normalized.includes("_border-right-color: pink;"),
+				"underscore hack must survive whitespace normalization");
+			assert.ok(normalized.includes("_filter: chroma(color=#ffc0cb);"),
+				"underscore _filter hack must survive whitespace normalization");
+		});
+	});
+});

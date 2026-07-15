@@ -1,0 +1,24 @@
+/* IE-only underscore-property hack: the leading "_" must survive verbatim in every
+   output path (LTR, RTL, scoped contrast) and must never be L/R-mirrored in RTL. */
+.arrow-box {
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
+  _border-right-color: pink;
+  _border-left-color: pink;
+}
+
+.arrow-box-filter {
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
+  _border-right-color: pink;
+  _border-left-color: pink;
+  _filter: chroma(color=#ffc0cb);
+}
