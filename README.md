@@ -1,7 +1,7 @@
 ![OpenUI5](http://openui5.org/images/OpenUI5_new_big_side.png)
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/less-openui5)](https://api.reuse.software/info/github.com/SAP/less-openui5)
-[![Build Status](http://img.shields.io/travis/SAP/less-openui5.svg?style=flat)](https://travis-ci.org/SAP/less-openui5)
+[![GitHub CI](https://github.com/SAP/less-openui5/actions/workflows/github-ci.yml/badge.svg)](https://github.com/SAP/less-openui5/actions/workflows/github-ci.yml)
 [![NPM Version](http://img.shields.io/npm/v/less-openui5.svg?style=flat)](https://www.npmjs.org/package/less-openui5)
 
 # less-openui5
