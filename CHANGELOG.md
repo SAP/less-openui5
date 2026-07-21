@@ -2,7 +2,26 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.6...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.7...HEAD).
+
+<a name="v0.11.7"></a>
+## [v0.11.7] - 2026-05-29
+### Breaking Changes
+- Require Node.js >= 20.11.0 ([#360](https://github.com/SAP/less-openui5/issues/360)) [`e31fcbd`](https://github.com/SAP/less-openui5/commit/e31fcbd5f9f44d156cab48a2b510b7b60046c9dc)
+- Require Node.js >= 16.18.0 / npm >= 8 [`14b7c20`](https://github.com/SAP/less-openui5/commit/14b7c2033532d58075732ab35149fced90bc15a4)
+
+### Bug Fixes
+- Drop deprecated `url.parse()` [`237f922`](https://github.com/SAP/less-openui5/commit/237f9226bc2437d49ce6444268c5796a64992654)
+- Replace "clone" dependency with built-in structuredClone [`e3e3083`](https://github.com/SAP/less-openui5/commit/e3e30837f60fecae7a12513b6ac1bda87f21fecd)
+
+### BREAKING CHANGE
+
+Support for older Node.js and npm releases has been dropped.
+Only Node.js v20.11.0 and npm v8 or higher are supported.
+
+Support for older Node.js and npm releases has been dropped.
+Only Node.js v16.18.0 and npm v8 or higher are supported.
+
 
 <a name="v0.11.6"></a>
 ## [v0.11.6] - 2023-01-23
@@ -145,6 +164,7 @@ Only Node.js v10 or higher is supported.
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.11.7]: https://github.com/SAP/less-openui5/compare/v0.11.6...v0.11.7
 [v0.11.6]: https://github.com/SAP/less-openui5/compare/v0.11.5...v0.11.6
 [v0.11.5]: https://github.com/SAP/less-openui5/compare/v0.11.4...v0.11.5
 [v0.11.4]: https://github.com/SAP/less-openui5/compare/v0.11.3...v0.11.4
