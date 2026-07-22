@@ -2,10 +2,13 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.11.7...HEAD).
+A list of unreleased changes can be found [here](https://github.com/SAP/less-openui5/compare/v0.12.0...HEAD).
+
+<a name="v0.12.0"></a>
+## [v0.12.0] - 0001-01-01
 
 <a name="v0.11.7"></a>
-## [v0.11.7] - 2026-05-29
+## [v0.11.7] - 2026-07-21
 ### Breaking Changes
 - Require Node.js >= 20.11.0 ([#360](https://github.com/SAP/less-openui5/issues/360)) [`e31fcbd`](https://github.com/SAP/less-openui5/commit/e31fcbd5f9f44d156cab48a2b510b7b60046c9dc)
 - Require Node.js >= 16.18.0 / npm >= 8 [`14b7c20`](https://github.com/SAP/less-openui5/commit/14b7c2033532d58075732ab35149fced90bc15a4)
@@ -164,6 +167,7 @@ Only Node.js v10 or higher is supported.
 - Scope rule handling ([#92](https://github.com/SAP/less-openui5/issues/92)) [`89b56c1`](https://github.com/SAP/less-openui5/commit/89b56c1a975f53ea8e436878b07707f1fb061486)
 
 
+[v0.12.0]: https://github.com/SAP/less-openui5/compare/v0.11.7...v0.12.0
 [v0.11.7]: https://github.com/SAP/less-openui5/compare/v0.11.6...v0.11.7
 [v0.11.6]: https://github.com/SAP/less-openui5/compare/v0.11.5...v0.11.6
 [v0.11.5]: https://github.com/SAP/less-openui5/compare/v0.11.4...v0.11.5
