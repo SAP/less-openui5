@@ -89,12 +89,15 @@ describe("(custom fs) CSS Scoping of", function() {
 
 				const basePath = path.join("test/fixtures/libraries/scopes/comments/lib3/comments", "themes");
 
-				assert.deepEqual(readFileCalls, [
+				// The three @import statements are resolved in parallel, so the order in which
+				// fs.readFile fires is not deterministic (each read starts only after its own
+				// async stat resolves). Compare the set of read paths instead of the sequence.
+				assert.deepEqual([...readFileCalls].sort(), [
 					path.join(basePath, "bar/library.source.less"),
 					path.join(basePath, "other/sub/my.less"),
 					path.join(basePath, "bar/my2.less"),
 					path.join(basePath, "my3.less")
-				], "fs.readFile should have been called with import paths");
+				].sort(), "fs.readFile should have been called with import paths");
 				assert.equal(statCalls, 10, "fs.stat should have been called 19 times");
 			});
 		});
