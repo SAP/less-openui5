@@ -4,6 +4,7 @@
 const assert = require("assert");
 const sinon = require("sinon");
 const path = require("path");
+const fs = require("fs");
 const readFile = require("./common/helper").readFile;
 
 // Deep clone that preserves function references. structuredClone can't be used here
@@ -11,6 +12,14 @@ const readFile = require("./common/helper").readFile;
 function deepClone(value) {
 	if (Array.isArray(value)) {
 		return value.map(deepClone);
+	}
+	if (value instanceof fs.Stats) {
+		// fs.Stats exposes atime/mtime/ctime/birthtime as lazy getters that only become own
+		// enumerable properties once accessed. The theme cache holds live Stats objects, and the
+		// second build touches stat.mtime during its cache-freshness check. Reading the getters
+		// here materializes them on the shared Stats instance before Object.entries runs, so every
+		// snapshot of the same object is consistent regardless of access order.
+		void value.atime; void value.mtime; void value.ctime; void value.birthtime;
 	}
 	if (value && typeof value === "object") {
 		return Object.fromEntries(Object.entries(value).map(([key, val]) => [key, deepClone(val)]));
