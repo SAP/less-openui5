@@ -25,6 +25,9 @@ jobs:
     - name: Install dependencies
       run: npm ci --engine-strict # --engine-strict is used to fail-fast if deps require node versions unsupported by the repo
 
+    - name: Check Node.js engine compatibility
+      run: npm run check-engine
+
     - name: Perform checks and tests
       run: npm test
 

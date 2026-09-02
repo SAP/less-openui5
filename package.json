@@ -31,7 +31,8 @@
 		"version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md 0.7.0.. && git add CHANGELOG.md",
 		"prepublishOnly": "git push --follow-tags",
 		"release-note": "git-chglog -c .chglog/release-config.yml v$npm_package_version",
-		"knip": "knip --config knip.config.js"
+		"knip": "knip --config knip.config.js",
+		"check-engine": "check-engine-light ."
 	},
 	"files": [
 		"CONTRIBUTING.md",
@@ -88,6 +89,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",
+		"check-engine-light": "0.4.0",
 		"eslint": "^9.39.5",
 		"eslint-config-google": "^0.14.0",
 		"eslint-plugin-jsdoc": "61.5.0",
