@@ -32,7 +32,11 @@
 		"prepublishOnly": "git push --follow-tags",
 		"release-note": "git-chglog -c .chglog/release-config.yml v$npm_package_version",
 		"knip": "knip --config knip.config.js",
-		"check-engine": "check-engine-light ."
+		"check-engine": "check-engine-light .",
+		"theme-build:prepare": "node test/integration/framework-theme-build/scripts/prepare.js",
+		"theme-build:baseline": "ui5 build --clean-dest --all --exclude-task \"*\" --include-task buildThemes --cache Off --config test/integration/tmp/framework-theme-build/ui5.yaml --dest test/integration/tmp/framework-theme-build/dist-baseline",
+		"theme-build:compare-build": "ui5 build --clean-dest --all --exclude-task \"*\" --include-task buildThemes --cache Off --config test/integration/tmp/framework-theme-build/ui5.yaml --dest test/integration/tmp/framework-theme-build/dist-compare",
+		"theme-build:compare": "node test/integration/framework-theme-build/scripts/compare-themes.mjs"
 	},
 	"files": [
 		"CONTRIBUTING.md",
@@ -98,6 +102,7 @@
 		"knip": "^6.34.0",
 		"mocha": "^12.0.0",
 		"nyc": "^18.0.0",
+		"postcss": "^8.5.19",
 		"sinon": "^16.1.3"
 	}
 }
