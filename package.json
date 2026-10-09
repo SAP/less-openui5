@@ -92,7 +92,7 @@
 		"check-engine-light": "0.4.0",
 		"eslint": "^9.39.5",
 		"eslint-config-google": "^0.14.0",
-		"eslint-plugin-jsdoc": "65.0.1",
+		"eslint-plugin-jsdoc": "65.2.0",
 		"globals": "^17.13.0",
 		"graceful-fs": "^4.2.11",
 		"knip": "^6.40.0",
